@@ -1,6 +1,16 @@
-#include <unistd.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/06 17:44:46 by castorga          #+#    #+#             */
+/*   Updated: 2023/04/06 17:45:42 by castorga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int	ft_strlen(char *str);
+#include <unistd.h>
 
 int	ft_strlen(char *str)
 {
@@ -12,6 +22,4 @@ int	ft_strlen(char *str)
 		counter++;
 	}
 	return (counter);
-
 }
-
