@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_printable.c                              :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
+/*   By: apardo-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/12 13:10:05 by castorga          #+#    #+#             */
-/*   Updated: 2023/04/12 13:10:12 by castorga         ###   ########.fr       */
+/*   Created: 2023/04/01 17:26:57 by apardo-m          #+#    #+#             */
+/*   Updated: 2023/04/01 17:36:49 by apardo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_printable(char *str)
-{
-	int	count;
+#include <unistd.h>
 
-	count = 0;
-	while (str[count] != '\0')
-	{
-		if (!((str[count] >= 32) && str[count] < 127))
-		{
-			return (0);
-		}
-		count++;
-	}
-	return (1);
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
 }

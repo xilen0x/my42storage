@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strupcase.c                                     :+:      :+:    :+:   */
+/*   rev_print.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/12 13:11:07 by castorga          #+#    #+#             */
-/*   Updated: 2023/04/12 13:11:31 by castorga         ###   ########.fr       */
+/*   Created: 2023/04/14 10:53:24 by castorga          #+#    #+#             */
+/*   Updated: 2023/04/14 12:22:26 by castorga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include <stdio.h>*/
+#include <unistd.h>
 
-char	*ft_strupcase(char *str)
+char	*ft_rev_print(char *str)
 {
-	int	count;
+	int	i;
 
-	count = 0;
-	while (str[count] != '\0')
+	i = 0;
+	while (str[i] != '\0')
 	{
-		if (str[count] >= 'a' && str[count] <= 'z')
-		{
-			str[count] -= 32;
-		}
-		count++;
+		i++;
+	}
+	while (i >= 0)
+	{
+		write(1, &str[i], 1);
+		i--;
 	}
 	return (str);
 }
 
-/*int	main()
+int	main(void)
 {
-	char str[] = "hola mundo C en 42 bcn";
-	printf("%s\n", ft_strupcase(str));
-}*/
+	ft_rev_print("dub0 a POIL");
+	return (0);
+}

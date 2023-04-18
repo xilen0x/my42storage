@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strupcase.c                                     :+:      :+:    :+:   */
+/*   first_word.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/12 13:11:07 by castorga          #+#    #+#             */
-/*   Updated: 2023/04/12 13:11:31 by castorga         ###   ########.fr       */
+/*   Created: 2023/04/14 12:28:30 by castorga          #+#    #+#             */
+/*   Updated: 2023/04/14 14:52:06 by castorga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include <stdio.h>*/
+#include <unistd.h>
 
-char	*ft_strupcase(char *str)
+int	main(int argc, char **argv)
 {
-	int	count;
+	int		i;
+	char	tab_or_space;
 
-	count = 0;
-	while (str[count] != '\0')
+	i = 0;
+	if (argc == 2)
 	{
-		if (str[count] >= 'a' && str[count] <= 'z')
+		while (argv[1][i] != 0 && (argv[1][i] == '\t' || argv[1][i] ==' '))
 		{
-			str[count] -= 32;
+			i++;
 		}
-		count++;
+		while (argv[1][i] != 0 && (argv[1][i] != '\t' &&  argv[1][i] != ' '))
+		{
+			write(1, &argv[1][i], 1);
+			i++;
+		}
 	}
-	return (str);
-}
+	write(1, "\n", 1);
 
-/*int	main()
-{
-	char str[] = "hola mundo C en 42 bcn";
-	printf("%s\n", ft_strupcase(str));
-}*/
+	return (0);
+}

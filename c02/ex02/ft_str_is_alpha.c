@@ -9,7 +9,8 @@
 /*   Updated: 2023/04/10 18:30:03 by castorga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
+
+/*#include <stdio.h>*/
 
 int	ft_str_is_alpha(char *str)
 {
@@ -36,7 +37,11 @@ int	ft_str_is_alpha(char *str)
 
 /*int	main(void)
 {
-	char	song[] = "clarodieLuna";
+	char	song[] = "clarodeLuna";
 	printf("%d", ft_str_is_alpha(song));
+	char	song2[] = "clarode***Luna";
+	printf("%d", ft_str_is_alpha(song2));
+	char	song3[] = "";
+	printf("%d", ft_str_is_alpha(song3));
 	return (0);
 }*/

@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strupcase.c                                     :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/12 13:11:07 by castorga          #+#    #+#             */
-/*   Updated: 2023/04/12 13:11:31 by castorga         ###   ########.fr       */
+/*   Created: 2023/04/14 10:31:11 by castorga          #+#    #+#             */
+/*   Updated: 2023/04/14 10:48:43 by castorga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <stdio.h>
 
-/*#include <stdio.h>*/
-
-char	*ft_strupcase(char *str)
+void	ft_swap(int *a, int *b)
 {
-	int	count;
+	int aux;
 
-	count = 0;
-	while (str[count] != '\0')
-	{
-		if (str[count] >= 'a' && str[count] <= 'z')
-		{
-			str[count] -= 32;
-		}
-		count++;
-	}
-	return (str);
+	aux = *a;
+	*a = *b;
+	*b = aux;
+
 }
 
-/*int	main()
+int	main(void)
 {
-	char str[] = "hola mundo C en 42 bcn";
-	printf("%s\n", ft_strupcase(str));
-}*/
+	int	a;
+	int	b;
+
+	a = 2;
+	b = 5;
+	printf("Antes de funcion: %d %d", a, b);
+	ft_swap(&a, &b);
+	printf("\nDespues de funcion: %d %d", a, b);
+	return (0);
+}

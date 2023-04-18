@@ -1,35 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strupcase.c                                     :+:      :+:    :+:   */
+/*   ft_putstr_non_printable.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/12 13:11:07 by castorga          #+#    #+#             */
-/*   Updated: 2023/04/12 13:11:31 by castorga         ###   ########.fr       */
+/*   Created: 2023/04/18 19:44:23 by castorga          #+#    #+#             */
+/*   Updated: 2023/04/18 19:44:34 by castorga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include <stdio.h>*/
+#include <unistd.h>
 
-char	*ft_strupcase(char *str)
+void	ft_putstr_non_printable(char *str)
 {
-	int	count;
+	int		i;
+	char	c;
 
-	count = 0;
-	while (str[count] != '\0')
+	i = 0;
+	while (str[i] != '\0')
 	{
-		if (str[count] >= 'a' && str[count] <= 'z')
+		c = str[i];
+		if (c < 32 || c > 126)
 		{
-			str[count] -= 32;
+			write(1, "\\", 1);
+			write(1, &("0123456789abcdef"[(c / 16)]), 1);
+			write(1, &("0123456789abcdef"[(c % 16)]), 1);
 		}
-		count++;
+		else
+			write(1, &c, 1);
+		i++;
 	}
-	return (str);
 }
 
-/*int	main()
+int	main(void)
 {
-	char str[] = "hola mundo C en 42 bcn";
-	printf("%s\n", ft_strupcase(str));
-}*/
+	ft_putstr_non_printable("Coucou\ntu vas bien ?");
+	return (0);
+}

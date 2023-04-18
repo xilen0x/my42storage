@@ -10,28 +10,29 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
-
-char *ft_strcpy(char *dest, char *src)
+char	*ft_strcpy(char *dest, char *src)
 {
-    int i = 0;
-    while (src[i] != '\0')
-    {
-        dest[i] = src[i];
-        i++;
-    }
-    dest[i] = '\0';
-    return dest;
+	int	count;
+
+	count = 0;
+	while (src[count] != '\0')
+	{
+		dest[count] = src[count];
+		count++;
+	}
+	dest[count] = '\0';
+	return (dest);
 }
 
-int main()
+/*#include <stdio.h>*/
+//#include <string.h>
+/*int	main(void)
 {
-    char source[] = "welcome";
-    char destination[] = "destinationnnnnnnnn";
+	char	source[] = "welcome1234567891011121314151617181920";
+	char destination[] = "destination";
 
-    printf("%s", ft_strcpy(destination, source));
+	printf("%s", ft_strcpy(destination, source));
 
-    return 0;
+	return (0);
 }
-
+*/

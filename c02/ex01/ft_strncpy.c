@@ -6,36 +6,41 @@
 /*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 15:56:34 by castorga          #+#    #+#             */
-/*   Updated: 2023/04/10 15:56:42 by castorga         ###   ########.fr       */
+/*   Updated: 2023/04/17 16:24:14 by castorga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-char *ft_strncpy(char *dest, char *src, unsigned int n)
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
-    int i = 0;
-    while (src[i] != '\0' && i < n)
-    {
+	unsigned int	i;
+
+	i = 0;
+	while (src[i] != '\0' && i < n)
+	{
 		dest[i] = src[i];
-		i++;	
-    }
-	//printf("\niteraciones de i despues de primer while: %d \n", i);
+		i++;
+	}
 	while (i < n)
 	{
 		dest[i] = '\0';
 		i++;
 	}
-	//printf("\niteraciones de i despues de segundo while: %d \n", i);
-    return dest;
+	return (dest);
 }
 
-/*int main()
+/*
+#include <stdio.h>
+int	main(void)
 {
-	char source[] = "welcome";
+	unsigned int	n = 13;
+
+	char	source[] = "welcome1234567891011121314151617181920";
 	char destination[] = "destination";
-	int	n = 11;
-    ft_strncpy(destination, source, n);
+
+	ft_strncpy(destination, source, n);
 	printf("%s\n", destination);
-    return (0);
-}*/
+//	printf("Longitud de la cadena de origen es: %d\n", ft_strlen(source));
+//	printf("Longitud de la cadena de destino es: %d\n", ft_strlen(destination));
+	return (0);
+}
+*/
