@@ -1,21 +1,9 @@
 # my42storage
 
-# libft | 42 Madrid
-*Your very own first library :smile:*
+# libft | 42 BCN
+*Your first library*
 
-<div align="center">
-  <img src=https://user-images.githubusercontent.com/40824677/149224482-9a5f469c-4748-4dcb-8321-8eafd9a44715.png />
-</div>
-
-### Table of Contents
-* [Introduction](#introduction)
-* [Function Overview](#function-overview)
-* [Bonus](#bonus)
-* [Additional Functions](#additional-functions)
-* [Installation](#installation)
-* [Summary](#summary)
-
-## Introduction
+## Summary
 In this project we'll be implementing our home-made functions from libc, which will be very useful to get familiar with memory allocation, and to think of creative ways to code these functions.
 
 ## Function Overview
