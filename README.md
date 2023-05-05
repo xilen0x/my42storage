@@ -1,34 +1,22 @@
 # my42storage
 
-# libft | 42 Madrid
-*Your very own first library :smile:*
+# libft | 42 BCN
+*Your first library*
 
-<div align="center">
-  <img src=https://user-images.githubusercontent.com/40824677/149224482-9a5f469c-4748-4dcb-8321-8eafd9a44715.png />
-</div>
-
-### Table of Contents
-* [Introduction](#introduction)
-* [Function Overview](#function-overview)
-* [Bonus](#bonus)
-* [Additional Functions](#additional-functions)
-* [Installation](#installation)
-* [Summary](#summary)
-
-## Introduction
+## Summary
 In this project we'll be implementing our home-made functions from libc, which will be very useful to get familiar with memory allocation, and to think of creative ways to code these functions.
 
 ## Function Overview
 
 | Function | Description |
 | :------: | :---------: |
+| ``ft_isalpha`` | Returns ``1`` if the input is a letter in the ``ASCII`` table |
+| ``ft_isdigit`` | Returns ``1`` if the input is a number in the ``ASCII`` table |
+| ``ft_isalnum`` | Returns ``1`` if the input is a number or a letter in the ``ASCII`` table |
 | ``*ft_atoi`` | Reads a String, and, after ignoring spaces with ``ft_isspace``, saves the string into an integer |
 | ``*ft_bzero`` | Writes ``n`` zeroes to the string ``s`` |
 | ``*ft_calloc`` | Reserves ``x`` blocks of ``y`` bits of memory |
-| ``ft_isalnum`` | Returns ``1`` if the input is a number or a letter in the ``ASCII`` table |
-| ``ft_isalpha`` | Returns ``1`` if the input is a letter in the ``ASCII`` table |
 | ``*ft_isascii`` | Returns whether or not a value belongs to the ``ASCII`` table |
-| ``ft_isdigit`` | Returns ``1`` if the input is a number in the ``ASCII`` table |
 | ``*ft_isprint`` | Returns whether a character is printable |
 | ``*ft_itoa`` | Saves the given number as a string (char array) |
 | ``*ft_memccpy`` | Copies from one memory point to another, until the specified character is copied or until ``n`` bytes are copied |
