@@ -19,7 +19,7 @@ int	ft_isdigit(int num)
 	return (0);
 }
 
-#include <stdio.h>
+/*#include <stdio.h>
 #include <ctype.h>
 
 int	main(void)
@@ -35,3 +35,4 @@ int	main(void)
 	printf("\nWhen non-digit is passed: %d", ft_isdigit(d));
 	return (0);
 }
+*/

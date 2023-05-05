@@ -18,7 +18,7 @@ int	ft_isalpha(int arg)
 	}
 	return (0);
 }
-
+/*
 #include <stdio.h>
 #include <ctype.h>
 
@@ -38,3 +38,4 @@ int	main(void)
 	printf("\nWhen non-alphabetic character is passed: %d", ft_isalpha(e));
 	return (0);
 }
+*/
