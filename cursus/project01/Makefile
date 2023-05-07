@@ -1,27 +1,33 @@
-#Sintaxis: ##target ... : dependencies ...
-#			(1 tab)instructions
-
 NAME = libft.a
 
-# ------------------ Variables --------------
-SRC := ft_isalpha.c	ft_isalnum.c ft_isdigit.c
+SRC = main.c ft_isalpha.c	ft_isalnum.c ft_isdigit.c
 
-FLAGS := -Wall -Wextra -Werror
+OBJS = main.o ft_isalpha.o	ft_isalnum.o ft_isdigit.o
 
-CC := gcc
+CFLAGS = -Wall -Wextra -Werror
 
-HEAD := libft.h
+CC = gcc
 
-OBJECTS := $(SRC:.c=.o)
+HEAD = libft.h
 
-# ------------------ Rules ------------------
-libft: %.o %.c $(OBJECTS) $(SRC) $(HEAD)
-	$(CC) $(FLAGS) $(SRC)  
+all: libft
 
-$(NAME): $(SRC) 
+libft: $(OBJS)
+	$(CC) $(CFLAGS) -o libft $(OBJS)
 
-.PHONY: all clean fclean re
+main.o: main.c
+	$(CC) $(CFLAGS) -c main.c $(HEAD)
+
+ft_isalpha.o: ft_isalpha.c
+	$(CC) $(CFLAGS) -c ft_isalpha.c
+
+ft_isdigit.o: ft_isdigit.c
+	$(CC) $(CFLAGS) -c ft_isdigit.c
+
+ft_isalnum.o: ft_isalnum.c	
+	$(CC) $(CFLAGS) -c ft_isalnum.c $(HEAD)
+
+clean:
+	rm -f libft *.o
 
 
-#clean:
-#	rm -f libft *.o
