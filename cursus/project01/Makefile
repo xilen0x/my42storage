@@ -1,9 +1,15 @@
-# variables
+# - Makefile library libft -
+# ----------------- Variables ---------------------
 NAME = libft.a
 
-SRC = main.c ft_isalpha.c ft_isalnum.c ft_isdigit.c
-
-OBJS = main.o ft_isalpha.o ft_isalnum.o ft_isdigit.o
+myFunctions = ft_isalpha ft_isdigit ft_isalnum \
+ft_isascii ft_isprint #ft_strlen \
+ft_memset ft_bzero ft_memcpy \
+ft_memmove ft_strlcpy ft_strlcat \
+ft_toupper ft_tolower ft_strchr \
+ft_strrchr ft_strncmp ft_memchr \
+ft_memcmp ft_strnstr ft_atoi \
+ft_calloc ft_strdup
 
 CFLAGS = -Wall -Wextra -Werror
 
@@ -11,32 +17,24 @@ CC = gcc
 
 HEADER = libft.h
 
+
+# -------------------- Rules --------------------
+SRC = $(patsubst %,%.c,$(myFunctions))
+OBJS = $(patsubst %,%.o,$(myFunctions))
+
 all: $(NAME)
 
-$(NAME): libft.a
+$(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
-libft.a: $(OBJS)
-	ar rcs $(NAME) $(OBJS)
 
-main.o: main.c $(HEADER)
-	$(CC) $(CFLAGS) -c main.c $(HEADER)
 
-ft_isalpha.o: ft_isalpha.c $(HEADER)
-	$(CC) $(CFLAGS) -c ft_isalpha.c $(HEADER)
-
-ft_isdigit.o: ft_isdigit.c
-	$(CC) $(CFLAGS) -c ft_isdigit.c
-
-ft_isalnum.o: ft_isalnum.c $(HEADER)
-	$(CC) $(CFLAGS) -c ft_isalnum.c $(HEADER)
-
+# -------------------- Clean --------------------
 .PHONY: all clean fclean re
 
 clean:
-	rm -f *.o
+	rm -f $(NAME) $(OBJS) libft.h.gch
 
 fclean: clean
-	@rm -f $(NAME)
 
 re: fclean all
