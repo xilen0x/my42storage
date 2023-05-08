@@ -16,8 +16,8 @@ In this project we'll be implementing our home-made functions from libc, which w
 | ``*ft_atoi`` | Reads a String, and, after ignoring spaces with ``ft_isspace``, saves the string into an integer |
 | ``*ft_bzero`` | Writes ``n`` zeroes to the string ``s`` |
 | ``*ft_calloc`` | Reserves ``x`` blocks of ``y`` bits of memory |
-| ``*ft_isascii`` | Returns whether or not a value belongs to the ``ASCII`` table |
-| ``*ft_isprint`` | Returns whether a character is printable |
+| ``ft_isascii`` | Returns whether or not a value belongs to the ``ASCII`` table |
+| ``ft_isprint`` | Returns whether a character is printable |
 | ``*ft_itoa`` | Saves the given number as a string (char array) |
 | ``*ft_memccpy`` | Copies from one memory point to another, until the specified character is copied or until ``n`` bytes are copied |
 | ``*ft_memchr`` | Looks for a matching character inside a part of the memory |
