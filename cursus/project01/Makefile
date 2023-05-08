@@ -1,33 +1,42 @@
+# variables
 NAME = libft.a
 
-SRC = main.c ft_isalpha.c	ft_isalnum.c ft_isdigit.c
+SRC = main.c ft_isalpha.c ft_isalnum.c ft_isdigit.c
 
-OBJS = main.o ft_isalpha.o	ft_isalnum.o ft_isdigit.o
+OBJS = main.o ft_isalpha.o ft_isalnum.o ft_isdigit.o
 
 CFLAGS = -Wall -Wextra -Werror
 
 CC = gcc
 
-HEAD = libft.h
+HEADER = libft.h
 
-all: libft
+all: $(NAME)
 
-libft: $(OBJS)
-	$(CC) $(CFLAGS) -o libft $(OBJS)
+$(NAME): libft.a
+	ar rcs $(NAME) $(OBJS)
 
-main.o: main.c
-	$(CC) $(CFLAGS) -c main.c $(HEAD)
+libft.a: $(OBJS)
+	ar rcs $(NAME) $(OBJS)
 
-ft_isalpha.o: ft_isalpha.c
-	$(CC) $(CFLAGS) -c ft_isalpha.c
+main.o: main.c $(HEADER)
+	$(CC) $(CFLAGS) -c main.c $(HEADER)
+
+ft_isalpha.o: ft_isalpha.c $(HEADER)
+	$(CC) $(CFLAGS) -c ft_isalpha.c $(HEADER)
 
 ft_isdigit.o: ft_isdigit.c
 	$(CC) $(CFLAGS) -c ft_isdigit.c
 
-ft_isalnum.o: ft_isalnum.c	
-	$(CC) $(CFLAGS) -c ft_isalnum.c $(HEAD)
+ft_isalnum.o: ft_isalnum.c $(HEADER)
+	$(CC) $(CFLAGS) -c ft_isalnum.c $(HEADER)
+
+.PHONY: all clean fclean re
 
 clean:
-	rm -f libft *.o
+	rm -f *.o
 
+fclean: clean
+	@rm -f $(NAME)
 
+re: fclean all
