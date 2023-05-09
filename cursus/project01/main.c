@@ -114,3 +114,30 @@ int	main(void)
 
 	return (0);
 }*/
+
+/*#include <stdio.h>
+#include <string.h>
+
+int main ()
+{
+	printf("\n---------memset-------------*\n");
+	char str[] = "almost every programmer should know memset!";
+	printf("%s\n", (char *)memset(str, '-' , 3));
+
+	char str2[] = "almost every programmer should know memset!";
+	printf("\n---------ft_memset----------*\n");
+	printf("%s", (char *)ft_memset(str2, '-', 3));
+
+	return 0;
+}*/
+
+/*#include <string.h>
+
+int main(void) {
+    char str[20] = "Hola, mundo!";
+    printf("Antes de ft_bzero: %s\n", str);
+    ft_bzero(str, sizeof(str));
+    printf("Después de ft_bzero: %s\n", str);
+    return 0;
+}
+*/
