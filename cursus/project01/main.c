@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/09 12:42:19 by castorga          #+#    #+#             */
+/*   Updated: 2023/05/09 12:42:22 by castorga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <ctype.h>
 #include "libft.h"
@@ -72,3 +84,19 @@ int	main(void)
 	return (0);
 }
 */
+
+int	main(void)
+{
+	int	c;
+	int d;
+
+	c = '2';
+	d = 9;
+	printf("\n---isprint----");
+	printf("\nWhen printable is passed: %d", isprint(c));
+	printf("\nWhen non-printable is passed: %d\n", isprint(d));
+	printf("\n---ft_isprint----");
+	printf("\nWhen printable is passed: %d",   ft_isprint(c));
+	printf("\nWhen non-printable is passed: %d\n", ft_isprint(d));
+	return (0);
+}

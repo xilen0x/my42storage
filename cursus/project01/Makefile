@@ -1,9 +1,20 @@
-# - Makefile library libft -
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: castorga <castorga@student.42barcel>       +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/05/09 11:59:47 by castorga          #+#    #+#              #
+#    Updated: 2023/05/09 11:59:51 by castorga         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 # ----------------- Variables ---------------------
 NAME = libft.a
 
 myFunctions = ft_isalpha ft_isdigit ft_isalnum \
-ft_isascii ft_isprint #ft_strlen \
+ft_isascii #ft_isprint #ft_strlen \
 ft_memset ft_bzero ft_memcpy \
 ft_memmove ft_strlcpy ft_strlcat \
 ft_toupper ft_tolower ft_strchr \
@@ -24,7 +35,8 @@ OBJS = $(patsubst %,%.o,$(myFunctions))
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): 
+	$(CC) -I $(CFLAGS) -c $(SRC)
 	ar rcs $(NAME) $(OBJS)
 
 
