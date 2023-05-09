@@ -85,7 +85,7 @@ int	main(void)
 }
 */
 
-int	main(void)
+/*int	main(void)
 {
 	int	c;
 	int d;
@@ -99,4 +99,18 @@ int	main(void)
 	printf("\nWhen printable is passed: %d",   ft_isprint(c));
 	printf("\nWhen non-printable is passed: %d\n", ft_isprint(d));
 	return (0);
-}
+}*/
+
+/*#include <string.h>
+#include <stdio.h>
+int	main(void)
+{
+	char *arg = "welcome";
+
+	printf("\n---strlen----");
+	printf("\nstring lenght: %d", (unsigned)strlen(arg));
+	printf("\n---ft_strlen----");
+	printf("\nstring lenght: %d", (unsigned)ft_strlen(arg));
+
+	return (0);
+}*/
