@@ -10,4 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
+void	*ft_memcpy(void *dst, const void *src, size_t n)
+{
+	unsigned int	i;
+	char			*psrc;
+	char			*pdst;
+
+	if (dst == NULL && src == NULL)
+		return (NULL);
+	psrc = (char *)src;
+	pdst = (char *)dst;
+	i = 0;
+	while (i < n)
+	{
+		pdst[i] = psrc[i];
+		i++;
+	}
+	return (dst);
+}

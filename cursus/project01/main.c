@@ -141,3 +141,20 @@ int main(void) {
     return 0;
 }
 */
+
+/*#include <stdio.h>
+#include <string.h>
+
+int main ()
+{
+	// printf("\n---------memcpy-------------*\n");
+	char src[] = "almost every programmer should know memcpy!";
+	// char dst[] = "  ";
+	// printf("%s\n", (char *)memcpy(dst, src, 3));
+
+	char dst2[] = "  ";
+	printf("\n---------ft_memcpy----------*\n");
+	printf("%s", (char *)ft_memcpy(dst2, src, 3));
+
+	return 0;
+}*/
