@@ -22,8 +22,8 @@ In this project we'll be implementing our home-made functions from libc, which w
 | ``*ft_memccpy`` | Copies from one memory point to another, until the specified character is copied or until ``n`` bytes are copied |
 | ``*ft_memchr`` | Looks for a matching character inside a part of the memory |
 | ``*ft_memcmp`` | Compares two parts of memory, returning ``0`` if they're the same, or else a nonzero value |
-| ``*ft_memcpy`` | Copies from one part of memory to another, ignoring possible overlaps |
-| ``*ft_memmove`` | Copies from one part of memory to another, preventing possible overlaps |
+| ``ft_memcpy`` | Copies from one part of memory to another, ignoring possible overlaps |
+| ``ft_memmove`` | Copies from one part of memory to another, preventing possible overlaps |
 | ``ft_memset`` | Assigns a character ``n`` times to a part of the memory |
 | ``*ft_putchar_fd`` | Prints a character to the given file descriptor |
 | ``*ft_putendl_fd`` | Prints a string followed by a new line ``\n`` to a given file descriptor |
