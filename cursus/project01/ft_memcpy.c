@@ -1,20 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/09 12:01:21 by castorga          #+#    #+#             */
-/*   Updated: 2023/05/09 12:01:25 by castorga         ###   ########.fr       */
+/*   Created: 2023/05/09 17:49:08 by castorga          #+#    #+#             */
+/*   Updated: 2023/05/09 17:49:12 by castorga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int c)
+#include "libft.h"
+
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	if (c >= 32 && c <= 126)
+	unsigned int	i;
+	char			*psrc;
+	char			*pdst;
+
+	if (dst == NULL && src == NULL)
+		return (NULL);
+	psrc = (char *)src;
+	pdst = (char *)dst;
+	i = 0;
+	while (i < n)
 	{
-		return (1);
+		pdst[i] = psrc[i];
+		i++;
 	}
-	return (0);
+	return (dst);
 }

@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/09 12:01:21 by castorga          #+#    #+#             */
-/*   Updated: 2023/05/09 12:01:25 by castorga         ###   ########.fr       */
+/*   Created: 2023/05/09 14:12:31 by castorga          #+#    #+#             */
+/*   Updated: 2023/05/09 14:12:34 by castorga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int c)
+#include "libft.h"
+
+void	*ft_memset(void *b, int c, size_t len)
 {
-	if (c >= 32 && c <= 126)
+	unsigned int		i;
+	char				*p;
+
+	p = (char *)b;
+	i = 0;
+	while (i < len)
 	{
-		return (1);
+		p[i] = (char)c;
+		i++;
 	}
-	return (0);
+	return (b);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/09 12:42:19 by castorga          #+#    #+#             */
+/*   Updated: 2023/05/09 12:42:22 by castorga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <ctype.h>
 #include "libft.h"
@@ -72,3 +84,77 @@ int	main(void)
 	return (0);
 }
 */
+
+/*int	main(void)
+{
+	int	c;
+	int d;
+
+	c = '2';
+	d = 9;
+	printf("\n---isprint----");
+	printf("\nWhen printable is passed: %d", isprint(c));
+	printf("\nWhen non-printable is passed: %d\n", isprint(d));
+	printf("\n---ft_isprint----");
+	printf("\nWhen printable is passed: %d",   ft_isprint(c));
+	printf("\nWhen non-printable is passed: %d\n", ft_isprint(d));
+	return (0);
+}*/
+
+/*#include <string.h>
+#include <stdio.h>
+int	main(void)
+{
+	char *arg = "welcome";
+
+	printf("\n---strlen----");
+	printf("\nstring lenght: %d", (unsigned)strlen(arg));
+	printf("\n---ft_strlen----");
+	printf("\nstring lenght: %d", (unsigned)ft_strlen(arg));
+
+	return (0);
+}*/
+
+/*#include <stdio.h>
+#include <string.h>
+
+int main ()
+{
+	printf("\n---------memset-------------*\n");
+	char str[] = "almost every programmer should know memset!";
+	printf("%s\n", (char *)memset(str, '-' , 3));
+
+	char str2[] = "almost every programmer should know memset!";
+	printf("\n---------ft_memset----------*\n");
+	printf("%s", (char *)ft_memset(str2, '-', 3));
+
+	return 0;
+}*/
+
+/*#include <string.h>
+
+int main(void) {
+    char str[20] = "Hola, mundo!";
+    printf("Antes de ft_bzero: %s\n", str);
+    ft_bzero(str, sizeof(str));
+    printf("Después de ft_bzero: %s\n", str);
+    return 0;
+}
+*/
+
+/*#include <stdio.h>
+#include <string.h>
+
+int main ()
+{
+	// printf("\n---------memcpy-------------*\n");
+	char src[] = "almost every programmer should know memcpy!";
+	// char dst[] = "  ";
+	// printf("%s\n", (char *)memcpy(dst, src, 3));
+
+	char dst2[] = "  ";
+	printf("\n---------ft_memcpy----------*\n");
+	printf("%s", (char *)ft_memcpy(dst2, src, 3));
+
+	return 0;
+}*/
