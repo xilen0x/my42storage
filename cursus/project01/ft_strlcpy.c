@@ -23,22 +23,22 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	dst[j] = '\0';
 	return (count);
 }
-
 /*
 int	main(void)
 {
-	const char	*src = "welcome";
+	/*const char	*src = "welcome";
 	char		dst[8];
 	printf("-------strlcpy------------\n");
-	printf("%d\n", strlcpy(dst, src, sizeof(dst)));
+	printf("%d\n", strlcpy(dst, src, sizeof(dst)));*/
 
-	/*const char	*src2 = "welcome";
+/*	const char	*src2 = "welcome";
 	char		dst2[8];
 	printf("-------ft_strlcpy------------\n");
-	printf("%ld\n", ft_strlcpy(dst, src, sizeof(dst)));
-} */
+	printf("%ld\n", ft_strlcpy(dst2, src2, sizeof(dst2)));
+}*/
 
-/*
+/* Funcion original no esta funcionando en ubuntu
+probar en MAC a ver que pasa
 -------strlcpy------------
 7
 -------ft_strlcpy------------
