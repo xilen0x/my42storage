@@ -34,7 +34,7 @@ In this project we'll be implementing our home-made functions from libc, which w
 | ``*ft_strdup`` | Saves enoug space and duplicates a string |
 | ``*ft_strjoin`` | Concatenates two strings allocating enough space first |
 | ``*ft_strlcat`` | Concatenates two strings ensuring it ends with ``\0`` |
-| ``*ft_strlcpy`` | Copies ``n - 1`` bytes from a source string to a destination string |
+| ``ft_strlcpy`` | Copies ``n - 1`` bytes from a source string to a destination string |
 | ``ft_strlen`` | Returns length of a string |
 | ``*ft_strmapi`` | Applies a function (mapping) to every element in a string |
 | ``*ft_strncmp`` | Compares two strings up to the n-th character |
