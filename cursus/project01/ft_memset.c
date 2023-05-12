@@ -26,3 +26,28 @@ void	*ft_memset(void *b, int c, size_t len)
 	}
 	return (b);
 }
+
+/*#include <stdio.h>
+#include <string.h>
+
+int main ()
+{
+	printf("\n---------memset-------------*\n");
+	char str[] = "every programmer should know memset!";
+	printf("%s\n", (char *)memset(str, 'x' , 4));
+
+	char str2[] = "every programmer should know memset!";
+	printf("\n---------ft_memset----------*\n");
+	printf("%s", (char *)ft_memset(str2, 'x', 4));
+
+	return 0;
+}
+*/
+/*
+---------memset-------------*
+xxxxy programmer should know memset!
+
+---------ft_memset----------*
+xxxxy programmer should know memset!
+
+*/
