@@ -15,7 +15,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	}
 	if (size == 0)
 		return (count);
-	while (j < size - 1 && j < count)
+	while ((j < size - 1) && (j < count))
 	{
 		dst[j] = src[j];
 		j++;
@@ -35,8 +35,8 @@ int	main(void)
 	char		dst2[8];
 	printf("-------ft_strlcpy------------\n");
 	printf("%ld\n", ft_strlcpy(dst2, src2, sizeof(dst2)));
-}*/
-
+}
+*/
 /* Funcion original no esta funcionando en ubuntu
 probar en MAC a ver que pasa
 -------strlcpy------------

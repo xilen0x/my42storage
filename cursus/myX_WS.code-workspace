@@ -6,7 +6,9 @@
 	],
 	"settings": {
 		"files.associations": {
-			"cctype": "c"
+			"cctype": "c",
+			"algorithm": "c",
+			"libft.h": "c"
 		}
 	}
 }
