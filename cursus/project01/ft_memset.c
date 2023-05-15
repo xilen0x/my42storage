@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+/*Asigna un carácter n veces a una parte de la memoria*/
 
 void	*ft_memset(void *b, int c, size_t len)
 {
@@ -26,3 +27,29 @@ void	*ft_memset(void *b, int c, size_t len)
 	}
 	return (b);
 }
+
+/*#include <stdio.h>
+#include <string.h>
+
+int main ()
+{
+	printf("\n---------memset-------------*\n");
+	char str[] = "almost every programmer should know memset!";
+	printf("%s\n", memset(str + 5, '*' , 3));
+
+	char str2[] = "almost every programmer should know memset!";
+	printf("\n---------ft_memset----------*\n");
+	printf("%s", ft_memset(str + 5, '*', 3));
+	//printf("%s", ft_memset(str + 5, '*', 3));
+
+	return 0;
+}*/
+/*
+//In the case of ft_memset(str, '*', 3) of line 38
+ 0   1	 2	 3	 4	 5	 6	 7	 8	 9	10	
+'*' '*' '*' 'o' 's' 't' ' ' 'e' 'v' 'e' r'  ...etc
+
+//In the case of ft_memset(str + 5, '*', 3) of line 43
+ 0   1	 2	 3	 4	 5	 6	 7	 8	 9	10	
+'a' 'l' 'm' 'o' 's' '*' '*' '*' 'v' 'e' r'  ...etc
+*/

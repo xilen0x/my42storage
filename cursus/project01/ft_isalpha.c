@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/*Returns 1 if the input is a letter in the ASCII table*/
+
 int	ft_isalpha(int arg)
 {
 	if ((arg >= 'A' && arg <= 'Z') || (arg >= 'a' && arg <= 'z'))

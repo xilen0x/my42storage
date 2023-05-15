@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/*Copies from one part of memory to another, preventing possible overlaps*/
+
 #include "libft.h"
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
@@ -43,20 +45,21 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	return (dst);
 }
 
-/*
+
 #include <stdio.h>
 #include <string.h>
 
 int main ()
 {
+	//char src[] = "every programmer should know memmove!";
 	// printf("\n---------memmove-------------*\n");
-	char src[] = "almost every programmer should know memmove!";
 	//char dst[] = "  ";
 	//printf("%s\n", (char *)memmove(dst, src, 3));
 
-	char dst2[] = "  ";
+	char src[] = "every programmer should know memmove!";
 	printf("\n---------ft_memmove----------*\n");
+	char dst2[] = "  ";
 	printf("%s", (char *)ft_memmove(dst2, src, 3));
 
 	return 0;
-}*/
+}

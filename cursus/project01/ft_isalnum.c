@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/*Returns 1 if the input is a number or a letter in the ASCII table*/
+
 #include "libft.h"
 
 int	ft_isalnum(int c)

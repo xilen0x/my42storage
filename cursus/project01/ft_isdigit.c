@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/*Returns 1 if the input is a number in the ASCII table*/
 int	ft_isdigit(int num)
 {
 	if (num >= '0' && num <= '9')
