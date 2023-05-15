@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/15 11:22:43 by castorga          #+#    #+#             */
+/*   Updated: 2023/05/15 11:22:52 by castorga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 /*Concatenates two strings ensuring it ends with \0*/
@@ -27,7 +39,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	return (temp + len_src);
 }
 
-
+/*
 int	main(void)
 {
 	printf("-------strlcat------------\n");
@@ -42,3 +54,4 @@ int	main(void)
 	
 	return (0);
 }
+*/

@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/* Copies from one part of memory to another, ignoring possible overlaps */
 #include "libft.h"
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
@@ -37,12 +38,12 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 
 int main ()
 {
-	/*printf("\n---------memcpy-------------*\n");
+	printf("\n---------memcpy-------------*\n");
 	char src[] = "every programmer should know memcpy!";
 	char dst[] = "**********";
-	printf("%s\n", (char *)memcpy(dst + 4, src, 5));*/
+	printf("%s\n", (char *)memcpy(dst + 4, src, 5));
 
-	/*printf("\n---------ft_memcpy----------*\n");
+	printf("\n---------ft_memcpy----------*\n");
 	char src2[] = "every programmer should know memcpy!";
 	char dst2[] = "**********";
 	printf("%s\n", (char *)ft_memcpy(dst2 + 4, src2, 5));

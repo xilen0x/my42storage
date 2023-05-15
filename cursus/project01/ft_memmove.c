@@ -33,13 +33,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 		}
 	}
 	else
-	{
-		i = 0;
-		while (i < len)
-		{
-			pdst[i++] = psrc[i];
-		}
-	}
+		ft_memcpy(pdst, psrc, len);
 	return (dst);
 }
 
@@ -49,12 +43,12 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 
 int main (void)
 {
-	//char src[] = "every programmer should know memmove!";
+	//char src[] = "welcome!";
 	// printf("\n---------memmove-------------*\n");
 	//char dst[] = "  ";
 	//printf("%s\n", (char *)memmove(dst, src, 3));
 
-	char src[] = "every programmer should know memmove!";
+	char src[] = "welcome";
 	printf("\n---------ft_memmove----------*\n");
 	char dst2[] = "  ";
 	printf("%s", (char *)ft_memmove(dst2, src, 3));
