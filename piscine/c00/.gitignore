@@ -1,3 +1,4 @@
-out
+.o
 *.out
-t_main.c
+main.c
+*.code-workspace

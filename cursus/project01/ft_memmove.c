@@ -16,9 +16,9 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned int	i;
-	unsigned char	*psrc;
 	unsigned char	*pdst;
+	unsigned char	*psrc;
+	unsigned int	i;
 
 	if (dst == NULL && src == NULL)
 		return (NULL);
@@ -26,11 +26,10 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	pdst = (unsigned char *)dst;
 	if (pdst > psrc)
 	{
-		i = len;
-		while (i > 0)
+		while (len != 0)
 		{
-			pdst[i - 1] = psrc[i - 1];
-			i--;
+			len--;
+			pdst[len] = psrc[len];
 		}
 	}
 	else
@@ -38,18 +37,17 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 		i = 0;
 		while (i < len)
 		{
-			pdst[i] = psrc[i];
-			i++;
+			pdst[i++] = psrc[i];
 		}
 	}
 	return (dst);
 }
 
-
+/*
 #include <stdio.h>
 #include <string.h>
 
-int main ()
+int main (void)
 {
 	//char src[] = "every programmer should know memmove!";
 	// printf("\n---------memmove-------------*\n");
@@ -63,3 +61,4 @@ int main ()
 
 	return 0;
 }
+*/

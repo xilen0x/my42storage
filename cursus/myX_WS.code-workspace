@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"cctype": "c",
+			"algorithm": "c",
+			"libft.h": "c"
+		}
+	}
+}

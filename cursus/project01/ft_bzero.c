@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/* Writes n zeroes in the string s */
+
 #include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
