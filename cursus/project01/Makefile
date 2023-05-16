@@ -10,6 +10,8 @@
 #                                                                              #
 # **************************************************************************** #
 
+# falta modificar este make para que actualice solo la funcion que se editó.
+
 # ----------------- Variables ---------------------
 NAME = libft.a
 
@@ -18,7 +20,7 @@ ft_isascii ft_isprint ft_strlen \
 ft_memset ft_bzero ft_memcpy \
 ft_memmove ft_strlcpy ft_strlcat \
 ft_toupper ft_tolower ft_strchr \
-#ft_strrchr ft_strncmp ft_memchr \
+ft_strrchr #ft_strncmp ft_memchr \
 ft_memcmp ft_strnstr ft_atoi \
 ft_calloc ft_strdup
 
