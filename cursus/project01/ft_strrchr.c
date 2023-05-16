@@ -17,18 +17,18 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	char	*ret;
+	char			*found;
 
-	ret = 0;
+	found = 0;
 	while (*s)
 	{
 		if (*s == (unsigned char)c)
-			ret = (char *)s;
-		++s;
+			found = (char *)s;
+		s++;
 	}
-	if (!c)
-		ret = ((char *)s);
-	return (ret);
+	if (*s == (unsigned char)c)
+		found = ((char *)s);
+	return (found);
 }
 
 /*#include <stdio.h>
@@ -36,12 +36,14 @@ char	*ft_strrchr(const char *s, int c)
 
 int	main(void)
 {
-	int c = 'x';
+	int c = 'm';
 	char str[] = "holamundo";
 	printf("character found: %s\n", strrchr(str, c));
+	printf("in the position: %ld\n", (strrchr(str, c) - str));
 
 	char str2[] = "holamundo";
 	printf("character found: %s\n", ft_strrchr(str2, c));
+	printf("in the position: %ld\n", (ft_strrchr(str2, c) - str2));
 
 	return (0);
 }*/
