@@ -5,10 +5,11 @@ int resta(int num1, int *num2) {
 	return res;
 }
 
-int	main()
+int	main(void)
 {
 	int	a;
 	int	b;
+	int	resultado;
 
 	a = 50;
 	b = 40;

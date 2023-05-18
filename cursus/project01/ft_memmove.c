@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/*Copies from one part of memory to another, preventing possible overlaps*/
+/* Copies from one part of memory to another, preventing possible overlaps*/
 
 #include "libft.h"
 

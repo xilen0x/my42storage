@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 /* Copies from one part of memory to another, ignoring possible overlaps */
+
 #include "libft.h"
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
