@@ -10,6 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+DESCRIPTION
+     The strstr() function locates the first occurrence of the null-terminated
+     string needle in the null-terminated string haystack.
+
+     The strcasestr() function is similar to strstr(), but ignores the case of
+     both strings.
+
+RETURN VALUES
+     If needle is an empty string, haystack is returned; if needle occurs
+     nowhere in haystack, NULL is returned; otherwise a pointer to the first
+     character of the first occurrence of needle is returned.
+*/
+
 #include <stdio.h>
 
 char *ft_strstr(char *str, char *to_find)
