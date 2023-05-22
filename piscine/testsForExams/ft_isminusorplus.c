@@ -10,17 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isminusorplus(int *str)
+char	*ft_skip_sign(char *str)
 {
-	unsigned int	parity;
+	unsigned int	count_minus;
 
 	// skiping the + and -
 	while (*str == '+' || *str == '-')
 	{
 		if (*str == '-')//save the quantity of '-'
-			parity++;
+			count_minus++;
 		++str;
 	}
-	return (0);//entiendo q debe retornar el str...???
+	return (str);
+}
 
+#include <stdio.h>
+
+int	main(void)
+{
+	char	*str;
+
+	str = "+++---holamundo"; 
+	printf("%s\n", ft_skip_sign(str));
 }

@@ -26,13 +26,20 @@ RETURN VALUES
      returns non-zero if the character tests true.
 */
 
-int	ft_isspace(int c)
+char	*ft_isspace(char *str)
 {
-	int parity;
-	
-	// skiping the different spaces
 	while ((*str >= 9 && *str <= 13) || *str == 32)
 		++str;
 
-	return (0);
+	return (str);
+}
+
+#include <stdio.h>
+
+int	main(void)
+{
+	char	*str;
+
+	str = "   holamundo"; 
+	printf("%s\n", ft_isspace(str));
 }

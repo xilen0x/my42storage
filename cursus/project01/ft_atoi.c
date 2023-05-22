@@ -31,36 +31,45 @@ IMPLEMENTATION NOTES
 
 #include "libft.h"
 
+static char	*ft_isspace(char *str)
+{
+	while ((*str >= 9 && *str <= 13) || *str == 32)
+		++str;
+	return (str);
+}
+
 int	ft_atoi(const char *str)
 {
-	short	parity;
-	int		number;
+	short int	parity;
+	int			number;
+	char		*mystr;
 
-	number = 0;
 	parity = 0;
-
-	str = ft_isspace(str);//algo asi
-	str = ft_isminusorplus(str);//idem
-
-	// check the numbers
-	while (*str >= 48 && *str <= 57)
+	number = 0;
+	mystr = ft_isspace((char *)str);
+	if (*mystr == '+' || *mystr == '-')
+	{
+		if (*mystr == '-')
+			parity++;
+		mystr++;
+	}
+	while (*mystr >= '0' && *mystr <= '9')
 	{
 		number *= 10;
-		number += *str - 48;//convert char to int
-		++str;
+		number += *mystr - '0';
+		mystr++;
 	}
-// is the value even(par)?
-	if (! (parity % 2))
+	if (parity % 2 == 0)
 		return (number);
 	return (-number);
-	
-}
-	return (0);
 }
 
+/*
 int	main(void)
 {
-	char	*s = "   ---+--+1234ab567";
+	char	*s = "+-54";
+
 	printf("%d\n", ft_atoi(s));
 	return (0);
 }
+*/
