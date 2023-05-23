@@ -29,8 +29,6 @@ Descripción
 	máxima ’len’.
 */
 
-/* Copies from the n-th char of a string */
-
 #include "libft.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
@@ -39,21 +37,29 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	unsigned int	i;
 
 	i = 0;
+	
+	if (start >= ft_strlen(s))
+		len = 0;// len se establece en 0 para indicar una subcadena vacía.
+	
+	//Si ..., len se ajusta para que sea el número de caracteres restantes desde start hasta el final de s.	
+	else if (start + len > ft_strlen(s))
+		len = ft_strlen(s) - start;
+	
+	//asignacion de memoria
 	space_reserved = malloc(sizeof(char) * (len + 1));
-
-	if ((start > len) || (!s) || (!space_reserved) || start >= ft_strlen(s))
+	//si falla la asignacion, retorno NULL
+	if (!space_reserved)
 		return (NULL);
-	else
+	//mientras i sea menor que len y el carácter en la posición start de s no sea un terminador nulo.
+	while (i < len && s[start])
 	{
-		while (i < len && s[start])
-		{
-			space_reserved[i] = s[start];
-			i++;
-			start++;
-		}
-		space_reserved[i] = '\0';
-		return (space_reserved);
+	//copia de caracteres desde 's' a 'space_reserved'.
+		space_reserved[i] = s[start];
+		i++;
+		start++;
 	}
+	space_reserved[i] = '\0';
+	return (space_reserved);
 }
 
 /*
