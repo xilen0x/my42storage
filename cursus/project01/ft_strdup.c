@@ -32,7 +32,7 @@ char	*ft_strdup(const char *s1)
 
 	i = 0;
 	len = ft_strlen(s1);
-	space_reserved = malloc(len+ 1);
+	space_reserved = malloc(len + 1);
 	if (!space_reserved) //Si space_reserved es nulo 
 		return (0);
 	else
@@ -45,6 +45,7 @@ char	*ft_strdup(const char *s1)
 		return (space_reserved);
 	}
 }
+
 /*
 int	main(void)
 {
