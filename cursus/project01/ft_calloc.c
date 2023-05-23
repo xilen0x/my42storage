@@ -14,7 +14,7 @@
 DESCRIPTION
      The malloc(), calloc(), valloc(), realloc(), and reallocf() functions allocate
      memory.  The allocated memory is aligned such that it can be used for any data
-     type, including AltiVec- and SSE-related types. 
+     type. 
 
      The calloc() function contiguously allocates enough space for count objects that
      are size bytes of memory each and returns a pointer to the allocated memory.  The
@@ -31,38 +31,32 @@ RETURN VALUES
 
 #include "libft.h"
 
-void	*calloc(size_t count, size_t size)
+void	*ft_calloc(size_t count, size_t size)
 {
+	void	*space_reserved;
 
+	space_reserved = malloc(size * count);
+	if (!space_reserved) //Si space_reserved es nulo 
+		return (0);
+	else
+	{
+		ft_bzero(space_reserved, size * count);
+		return (space_reserved);
+	}
 }
 
-/*example from chatgpt*/
-#include <stdio.h>
-#include <stdlib.h>
-
-int main(void) {
-    int size = 5;
-    int* numbers = (int*)calloc(size, sizeof(int));
-
-    if (numbers == NULL) {
-        printf("Error: No se pudo asignar memoria\n");
-        return 1;
-    }
-
-    // Asignar valores a los elementos del arreglo
-    for (int i = 0; i < size; i++) {
-        numbers[i] = i + 1;
-    }
-
-    // Imprimir los valores asignados
-    printf("Valores asignados:\n");
-    for (int i = 0; i < size; i++) {
-        printf("%d ", numbers[i]);
-    }
-    printf("\n");
-
-    // Liberar la memoria asignada
-    free(numbers);
-
-    return 0;
+/*
+int	main(void)
+{
+	printf(":%s:\n", calloc(10, 4));
+	printf(":%s:\n", ft_calloc(10, 4));
+	return (0);
 }
+*/
+/*
+% cc ft_calloc.c ft_bzero.c
+% ./a.out                  
+::
+::
+note: funciona pero no esta claro pq no muestra los espacios
+*/
