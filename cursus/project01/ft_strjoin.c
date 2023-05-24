@@ -30,8 +30,25 @@ Reserva (con malloc(3)) y devuelve una nueva string, formada por la
 concatenación de ’s1’ y ’s2’.
 */
 
-
 #include "libft.h"
+
+static char	*ft_strncpy(char *dest, char *src, unsigned int n)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (src[i] != '\0' && i < n)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	while (i < n)
+	{
+		dest[i] = '\0';
+		i++;
+	}
+	return (dest);
+}
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
@@ -42,27 +59,23 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	len_s1 = ft_strlen(s1);
 	len_s2 = ft_strlen(s2);
-
-	if (s1 == NULL && s2 == NULL)
-		return (NULL);
-
+	if (s1 == 0 && s2 == 0)
+		return (0);
 	space_reserved = malloc((len_s1 + len_s2) + 1);
 	if (!space_reserved)
-		return (NULL);
-
-	if (len_s1 == NULL)
-		return (s2);
-	else if (len_s2 == NULL)
-		return (s1);
-	else
-	{
-		ft_strlcat(s2, s1, space_reserved);
-		return (space_reserved);
-	}
+		return (0);
+	ft_strncpy(space_reserved, (char *)s1, len_s1);
+	ft_strncpy(space_reserved + len_s1, (char *)s2, len_s2);
+	space_reserved[len_s1 + len_s2] = '\0';
+	return (space_reserved);
 }
-
+/*
 int	main(void)
 {
-	printf("")
+	char		dst[20] = "Hello ";
+	const char	src[] = "World!";
+
+	printf("%s", ft_strjoin(dst, src));
+	//printf("%s\n", ft_strjoin("", ""));
 	return (0);
-}
+}*/
