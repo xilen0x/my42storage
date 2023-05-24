@@ -36,3 +36,20 @@ RETURN VALUES
 
 // 	return (0);
 // }
+char	*ft_isspace(char *str)
+{
+	while ((*str >= 9 && *str <= 13) || *str == 32)
+		++str;
+
+	return (str);
+}
+
+#include <stdio.h>
+
+int	main(void)
+{
+	char	*str;
+
+	str = "   holamundo"; 
+	printf("%s\n", ft_isspace(str));
+}

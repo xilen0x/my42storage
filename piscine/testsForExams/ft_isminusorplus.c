@@ -24,3 +24,26 @@
 // 	return (0);//entiendo q debe retornar el str...???
 
 // }
+char	*ft_skip_sign(char *str)
+{
+	unsigned int	count_minus;
+
+	// skiping the + and -
+	while (*str == '+' || *str == '-')
+	{
+		if (*str == '-')//save the quantity of '-'
+			count_minus++;
+		++str;
+	}
+	return (str);
+}
+
+#include <stdio.h>
+
+int	main(void)
+{
+	char	*str;
+
+	str = "+++---holamundo"; 
+	printf("%s\n", ft_skip_sign(str));
+}
