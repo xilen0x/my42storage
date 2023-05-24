@@ -10,17 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isminusorplus(int *str)
-{
-	unsigned int	parity;
+// int	ft_isminusorplus(int *str)
+// {
+// 	unsigned int	parity;
 
-	// skiping the + and -
-	while (*str == '+' || *str == '-')
-	{
-		if (*str == '-')//save the quantity of '-'
-			parity++;
-		++str;
-	}
-	return (0);//entiendo q debe retornar el str...???
+// 	// skiping the + and -
+// 	while (*str == '+' || *str == '-')
+// 	{
+// 		if (*str == '-')//save the quantity of '-'
+// 			parity++;
+// 		++str;
+// 	}
+// 	return (0);//entiendo q debe retornar el str...???
 
-}
+// }

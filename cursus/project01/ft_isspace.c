@@ -26,13 +26,13 @@ RETURN VALUES
      returns non-zero if the character tests true.
 */
 
-int	ft_isspace(int c)
-{
-	int parity;
+// int	ft_isspace(int c)
+// {
+// 	int parity;
 	
-	// skiping the different spaces
-	while ((*str >= 9 && *str <= 13) || *str == 32)
-		++str;
+// 	// skiping the different spaces
+// 	while ((*str >= 9 && *str <= 13) || *str == 32)
+// 		++str;
 
-	return (0);
-}
+// 	return (0);
+// }

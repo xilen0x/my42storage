@@ -31,36 +31,55 @@ IMPLEMENTATION NOTES
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+static const char	*ft_isspace(const char *str)
 {
-	short	parity;
-	int		number;
+	// checking the different spaces
+	while ((*str >= 9 && *str <= 13) || *str == 32)
+		str++;
+	return (str);
+}
 
-	number = 0;
-	parity = 0;
+static const char	*ft_isminusorplus(const char *str, unsigned int *parity)
+{
+    *parity = 0;
 
-	str = ft_isspace(str);//algo asi
-	str = ft_isminusorplus(str);//idem
+    // skipping the + and -
+    while (*str == '+' || *str == '-')
+    {
+        if (*str == '-')
+            (*parity)++;
+        str++;
+    }
+    return str;
+}
+
+
+int ft_atoi(const char *str)
+{
+	unsigned int parity = 0;
+	int number = 0;
+
+    str = ft_isspace(str);
+    str = ft_isminusorplus(str, &parity);
 
 	// check the numbers
-	while (*str >= 48 && *str <= 57)
+	while (*str >= '0' && *str <= '9')
 	{
 		number *= 10;
-		number += *str - 48;//convert char to int
-		++str;
+		number += *str - '0'; // convert char to int
+		str++;
 	}
-// is the value even(par)?
-	if (! (parity % 2))
-		return (number);
-	return (-number);
-	
-}
-	return (0);
+
+	// is the value odd (par)?
+	if (parity % 2 == 1)
+		return number;
+	else
+		return -number;
 }
 
-int	main(void)
+int main(void)
 {
-	char	*s = "   ---+--+1234ab567";
+	const char *s = "   ---+--+1234ab567";
 	printf("%d\n", ft_atoi(s));
-	return (0);
+	return 0;
 }
