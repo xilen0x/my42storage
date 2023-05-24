@@ -64,13 +64,16 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	space_reserved = malloc((len_s1 + len_s2) + 1);
 	if (!space_reserved)
 		return (0);
-	ft_strncpy(space_reserved, (char *)s1, len_s1);
-	ft_strncpy(space_reserved + len_s1, (char *)s2, len_s2);
-	space_reserved[len_s1 + len_s2] = '\0';
-	return (space_reserved);
+	else
+	{
+		ft_strncpy(space_reserved, (char *)s1, len_s1);
+		ft_strncpy(space_reserved + len_s1, (char *)s2, len_s2);
+		space_reserved[len_s1 + len_s2] = '\0';
+		return (space_reserved);
+	}
 }
-/*
-int	main(void)
+
+/*int	main(void)
 {
 	char		dst[20] = "Hello ";
 	const char	src[] = "World!";
