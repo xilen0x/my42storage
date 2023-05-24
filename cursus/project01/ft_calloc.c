@@ -45,18 +45,17 @@ void	*ft_calloc(size_t count, size_t size)
 	}
 }
 
-/*
-int	main(void)
+
+/*int	main(void)
 {
 	printf(":%s:\n", calloc(10, 4));
 	printf(":%s:\n", ft_calloc(10, 4));
 	return (0);
 }
-*/
+
 /*
 % cc ft_calloc.c ft_bzero.c
 % ./a.out                  
 ::
 ::
-note: funciona pero no esta claro pq no muestra los espacios
 */
