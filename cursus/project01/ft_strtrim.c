@@ -20,15 +20,14 @@ La string recortada.
 NULL si falla la reserva de memoria.
 
 Descripción
-Elimina todos los caracteres de la string ’set’
-desde el principio y desde el final de ’s1’, hasta
-encontrar un caracter no perteneciente a ’set’. La
-string resultante se devuelve con una reserva de
-malloc(3
+Elimina todos los caracteres de la string ’set’ desde el principio y desde
+el final de ’s1’, hasta encontrar un caracter no perteneciente a ’set’. 
+La string resultante se devuelve con una reserva de malloc(3)
 */
 
 #include "libft.h"
 
+/* Función que verifica si un carácter está presente en un conjunto de caracteres.*/
 static int	ft_isset(char c, const char *set)
 {
 	while (*set)
@@ -46,32 +45,41 @@ char	*ft_strtrim(char const *s1, char const *set)
 	unsigned int	i;
 	const char		*start;
 	const char		*end;
-	char			*str;
+	char			*reserved;
 
 	i = 0;
 	start = s1;
-	end = s1 + ft_strlen(s1) - 1;
-	while (ft_isset(*start, set))
+	end = s1 + ft_strlen(s1) - 1;//Asigno el puntero end para que apunte al último carácter de la cadena s1
+	while (ft_isset(*start, set))//Este bucle se ejecuta mientras el carácter apuntado por start esté presente en el conjunto set.
 		start++;
-	while (ft_isset(*end, set))
+	while (start <= end && ft_isset(*end, set))
 		end--;
-	len = end - start + 1;
-	str = (char *)malloc((len + 1) * sizeof(char));
-	if (str == NULL)
+	len = end - start + 1;//Asigno a len, la longitud del string recortado
+
+	reserved = (char *)malloc((len + 1) * sizeof(char));
+	if (reserved == NULL)
 		return (NULL);
+	//copia los caracteres de la cadena start a la cadena reserved.	
 	while (i < len)
 	{
-		str[i] = start[i];
+		reserved[i] = start[i];
 		i++;
 	}
-	str[len] = '\0';
-	return (str);
+	reserved[len] = '\0';
+	return (reserved);
 }
 
-
+/*
 int	main(void)
 {
 	printf("***%s***\n", ft_strtrim(" holamundo ", " "));
 	printf("***%s***\n", ft_strtrim("           ", " "));
 	return (0);
 }
+*/
+/*
+castorga@car15s6 project01 % cc -Wextra -Werror -Wall ft_strtrim.c ft_strlen.c
+castorga@car15s6 project01 % ./a.out 
+***holamundo***
+******
+*/
