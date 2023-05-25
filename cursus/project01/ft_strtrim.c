@@ -27,46 +27,51 @@ string resultante se devuelve con una reserva de
 malloc(3
 */
 
-# include "libft.h"
+#include "libft.h"
+
+static int	ft_isset(char c, const char *set)
+{
+	while (*set)
+	{
+		if (*set == c)
+			return (1);
+		set++;
+	}
+	return (0);
+}
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char			space_reserved;
 	unsigned int	len;
 	unsigned int	i;
-	unsigned int	j;
+	const char		*start;
+	const char		*end;
+	char			*str;
 
 	i = 0;
-	j = len - 1;
-	len = ft_strlen(s1);
-	if (!s1)
+	start = s1;
+	end = s1 + ft_strlen(s1) - 1;
+	while (ft_isset(*start, set))
+		start++;
+	while (ft_isset(*end, set))
+		end--;
+	len = end - start + 1;
+	str = (char *)malloc((len + 1) * sizeof(char));
+	if (str == NULL)
 		return (NULL);
-	//mientras i <= a mitad de s1 y no se encuentre el caracter q hay en s1[i]
-	while ((i <= (len / 2)) && (!ft_strchr(set, s1[i])))
+	while (i < len)
+	{
+		str[i] = start[i];
 		i++;
-	while ((j >= (len / 2)) && (!ft_strchr(set, s1[j])))
-		j--;
-	//si i > j , significa que todos los caracteres de s1 están presentes en set,	
-	if (i > j)
-		return (ft_strdup(""));//retorno una cadena vacia
-	//calculo la nueva longitud de len
-	len = j - i;
-	//Se obtiene la subcadena de s1 que comienza en el índice i y tiene una longitud de len + 1. 
-	return (ft_substr(s1, i, len + 1));
+	}
+	str[len] = '\0';
+	return (str);
 }
+
 
 int	main(void)
 {
-	printf("%s\n", ft_strtrim(" holamundo ", " "));
-
+	printf("***%s***\n", ft_strtrim(" holamundo ", " "));
+	printf("***%s***\n", ft_strtrim("           ", " "));
 	return (0);
 }
-/*
-% cc ft_strtrim.c ft_strlen.c ft_strchr.c ft_substr.c ft_strdup.c 
-castorga@car15s3 project01 % ./a.out 
-zsh: segmentation fault  ./a.out
-
-
-El error de segmentación (segmentation fault) que estás experimentando indica que se está accediendo a una memoria no
- válida durante la ejecución de tu programa. Esto puede ocurrir cuando hay errores en la gestión de punteros o en el acceso a datos.
-*/

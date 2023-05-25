@@ -52,7 +52,7 @@ void	*ft_calloc(size_t count, size_t size)
 	printf(":%s:\n", ft_calloc(10, 4));
 	return (0);
 }
-
+*/
 /*
 % cc ft_calloc.c ft_bzero.c
 % ./a.out                  

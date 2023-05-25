@@ -12,7 +12,7 @@
 
 #include<stdio.h>
 
-int	ft_strlen(char *str)
+int	ft_strlen2(char *str)
 {
 	int	i;
 
@@ -24,8 +24,10 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
+/*
 int	main(void)
 {
-	printf("%d", ft_strlen("holanda"));
+	printf("%d", ft_strlen2("holanda"));
 	return (0);
 }
+*/
