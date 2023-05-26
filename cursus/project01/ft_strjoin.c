@@ -6,7 +6,7 @@
 /*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 09:41:52 by castorga          #+#    #+#             */
-/*   Updated: 2023/05/24 09:41:55 by castorga         ###   ########.fr       */
+/*   Updated: 2023/05/26 11:57:24 by castorga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static char	*ft_strncpy(char *dest, char *src, unsigned int n)
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char			*space_reserved;
-	unsigned int	i;
+	//unsigned int	i;
 	unsigned int	len_s1;
 	unsigned int	len_s2;
 

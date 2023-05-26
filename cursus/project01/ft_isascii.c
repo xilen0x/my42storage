@@ -18,3 +18,22 @@ int	ft_isascii(int c)
 		return (1);
 	return (0);
 }
+
+/*#include <stdio.h>
+#include <ctype.h>
+
+int	main(void)
+{
+	char	c;
+	char	d;
+
+	c = 2;
+	d = 128;
+	printf("\nWhen assci is passed: %d", isascii(c));
+	printf("\nWhen non-assci is passed: %d", isascii(d));
+	printf("\n-------\n");
+	printf("\nWhen assci is passed: %d", ft_isascii(c));
+	printf("\nWhen non-assci is passed: %d\n", ft_isascii(d));
+	return (0);
+}
+*/

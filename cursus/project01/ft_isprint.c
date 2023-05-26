@@ -20,3 +20,19 @@ int	ft_isprint(int c)
 	}
 	return (0);
 }
+
+/*int	main(void)
+{
+	int	c;
+	int d;
+
+	c = '2';
+	d = 9;
+	printf("\n---isprint----");
+	printf("\nWhen printable is passed: %d", isprint(c));
+	printf("\nWhen non-printable is passed: %d\n", isprint(d));
+	printf("\n---ft_isprint----");
+	printf("\nWhen printable is passed: %d",   ft_isprint(c));
+	printf("\nWhen non-printable is passed: %d\n", ft_isprint(d));
+	return (0);
+}*/

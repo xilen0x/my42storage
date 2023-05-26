@@ -23,3 +23,17 @@ size_t	ft_strlen(const char *s)
 	}
 	return (i);
 }
+
+/*#include <string.h>
+#include <stdio.h>
+int	main(void)
+{
+	char *arg = "welcome";
+
+	printf("\n---strlen----");
+	printf("\nstring lenght: %d", (unsigned)strlen(arg));
+	printf("\n---ft_strlen----");
+	printf("\nstring lenght: %d", (unsigned)ft_strlen(arg));
+
+	return (0);
+}*/
