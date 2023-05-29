@@ -30,12 +30,23 @@ Reserva (utilizando malloc(3)) un array de strings resultante de separar
 la string ’s’ en substrings utilizando el caracter ’c’ como delimitador.
 El array debe terminar con un puntero NULL.
 */
-# include "libft.h"
 
-//----------------funcion que encuentra todos los 'c' y retorne sus indices----------------
-#include <stdlib.h>
+#include "libft.h"
 
-int	*ft_find_index_of_c(char *s, int c, size_t n, size_t *count)
+//----------------funcion que reserva memoria----------------
+static int	*ft_my_malloc(size_t *count)
+{
+	int	*temp;
+
+	temp = (int *)malloc((*count) * sizeof(int));
+	if (temp == NULL)
+		return (NULL);
+	return (temp);
+}
+
+//---------funcion que encuentra todos los 'c' y retorna sus indices---------
+
+static int	*ft_find_index_of_c(char *s, int c, size_t n, size_t *count)
 {
 	unsigned char	c_to_find;
 	size_t			i;
@@ -53,16 +64,10 @@ int	*ft_find_index_of_c(char *s, int c, size_t n, size_t *count)
 		if (s[i] == c_to_find)
 		{
 			(*count)++;
-			temp = (int *)malloc((*count) * sizeof(int));
-			if (temp == NULL)
-			{
-				free(indices);
-				return (NULL);
-			}
-			memcpy(temp, indices, (j) * sizeof(int));
-			temp[j] = i;
-			free(indices);
+			temp = ft_my_malloc(count);
+			ft_memcpy(temp, indices, (j) * sizeof(int));
 			indices = temp;
+			indices[j] = i;
 			j++;
 		}
 		i++;
@@ -76,17 +81,15 @@ int	*ft_find_index_of_c(char *s, int c, size_t n, size_t *count)
 
 
 
-//----------------funcion que reserva memoria----------------
-
 
 
 //----------------funcion principal split----------------
-// char	**ft_split(char const *s, char c)
+// char **ft_split(char const *s, char c)
 // {
-// 	unsigned int	len_main_string;
+//  unsigned int    len_main_string;
 
-// 	len_main_string = ft_strlen(s);
-// 	return ("el nuevo array de strings generadas(doble puntero)");
+//  len_main_string = ft_strlen(s);
+//  return ("el nuevo array de strings generadas(doble puntero)");
 // }
 
 #include <stdio.h>
