@@ -32,28 +32,44 @@ El array debe terminar con un puntero NULL.
 */
 # include "libft.h"
 
-//----------------funcion que encuentre todos los 'c' y retorne los indices----------------
-static char	*ft_find_c_create_substr(const void *s, int c, size_t n)
-{
-	const unsigned char	*my_string;
-	unsigned char		c_to_find;
-	unsigned int		i;
-	unsigned char		*new_string;
+//----------------funcion que encuentra todos los 'c' y retorne sus indices----------------
+#include <stdlib.h>
 
-	my_string = (const unsigned char *)s;
+int	*ft_find_index_of_c(char *s, int c, size_t n, size_t *count)
+{
+	unsigned char	c_to_find;
+	size_t			i;
+	size_t			j;
+	int				*indices;
+	int				*temp;
+
 	c_to_find = (unsigned char)c;
 	i = 0;
+	j = 0;
+	indices = NULL;
+	*count = 0;
 	while (i < n)
 	{
-		if (*my_string == c_to_find)
-		{//si se encontro el '-' --> crea la substring
-			new_string[i] = ft_substr((char)s, i, 1);
+		if (s[i] == c_to_find)
+		{
+			(*count)++;
+			temp = (int *)malloc((*count) * sizeof(int));
+			if (temp == NULL)
+			{
+				free(indices);
+				return (NULL);
+			}
+			memcpy(temp, indices, (j) * sizeof(int));
+			temp[j] = i;
+			free(indices);
+			indices = temp;
+			j++;
 		}
-		my_string++;
 		i++;
 	}
-	return (new_string);
+	return (indices);
 }
+
 
 
 //----------------funcion que cree substrings----------------
@@ -65,16 +81,30 @@ static char	*ft_find_c_create_substr(const void *s, int c, size_t n)
 
 
 //----------------funcion principal split----------------
-char	**ft_split(char const *s, char c)
-{
-	unsigned int	len_main_string;
+// char	**ft_split(char const *s, char c)
+// {
+// 	unsigned int	len_main_string;
 
-	len_main_string = ft_strlen(s);
-	return ("el nuevo array de strings generadas(doble puntero)");
+// 	len_main_string = ft_strlen(s);
+// 	return ("el nuevo array de strings generadas(doble puntero)");
+// }
+
+#include <stdio.h>
+
+int main()
+{
+    const char *str = "Hello World 42 !";
+    int character = ' ';
+    size_t count;
+    int *indices = ft_find_index_of_c((char *)str, character, ft_strlen(str), &count);
+    printf("El carácter '%c' se encuentra en los siguientes índices:\n", character);
+    for (size_t i = 0; i < count; i++)
+    {
+        printf("%d ", indices[i]);
+    }
+    printf("\n");
+    free(indices);
+
+    return 0;
 }
 
-int	main(void)
-{
-	printf("%s\n", ft_split("hola-mundo-42", '-'));
-	return (0);
-}
