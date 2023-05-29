@@ -41,7 +41,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (start >= ft_strlen(s))
 		len = 0;// len se establece en 0 para indicar una subcadena vacía.
 	
-	//Si ..., len se ajusta para que sea el número de caracteres restantes desde start hasta el final de s.	
+	//de lo contrario si ..., len se establece en el número de caracteres restantes desde start hasta el final de s.	
 	else if (start + len > ft_strlen(s))
 		len = ft_strlen(s) - start;
 	

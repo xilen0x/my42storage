@@ -32,72 +32,49 @@ El array debe terminar con un puntero NULL.
 */
 # include "libft.h"
 
-char	**ft_split(char const *s, char c)
+//----------------funcion que encuentre todos los 'c' y retorne los indices----------------
+static char	*ft_find_c_create_substr(const void *s, int c, size_t n)
 {
-	unsigned int	i;
-	unsigned int	count;
-	char			**result;
+	const unsigned char	*my_string;
+	unsigned char		c_to_find;
+	unsigned int		i;
+	unsigned char		*new_string;
 
+	my_string = (const unsigned char *)s;
+	c_to_find = (unsigned char)c;
 	i = 0;
-	count = 0;
-	while (s[i])
+	while (i < n)
 	{
-		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
-			count++;
+		if (*my_string == c_to_find)
+		{//si se encontro el '-' --> crea la substring
+			new_string[i] = ft_substr((char)s, i, 1);
+		}
+		my_string++;
 		i++;
 	}
-	result = (char **)malloc((count + 1) * sizeof(char *));
-	if (!result)
-		return (NULL);
-	i = 0;
-	count = 0;
-	while (s[i])
-	{
-		if (s[i] != c)
-		{
-			const char *end = ft_memchr(s + i, c);
-			size_t len = (end) ? (size_t)(end - (s + i)) : strlen(s + i);
-			result[count] = ft_substr(s, i, len);
-			if (!result[count])
-			{
-				while (count > 0)
-				{
-					count--;
-					free(result[count]);
-				}
-				free(result);
-				return (NULL);
-			}
-			count++;
-			i += len;
-		}
-		else
-		{
-			i++;
-		}
-	}
-	result[count] = NULL;
-	return (result);
+	return (new_string);
+}
+
+
+//----------------funcion que cree substrings----------------
+
+
+
+//----------------funcion que reserva memoria----------------
+
+
+
+//----------------funcion principal split----------------
+char	**ft_split(char const *s, char c)
+{
+	unsigned int	len_main_string;
+
+	len_main_string = ft_strlen(s);
+	return ("el nuevo array de strings generadas(doble puntero)");
 }
 
 int	main(void)
 {
-	char	**split_result;
-	
-	split_result = ft_split("hola-mundo-42", '-');
-	if (!split_result)
-	{
-		printf("Error: falló la reserva de memoria.\n");
-		return (1);
-	}
-
-	int i = 0;
-	while (split_result[i])
-	{
-		printf("%s\n", split_result[i]);
-		free(split_result[i]);
-		i++;
-	}
-	free(split_result);
+	printf("%s\n", ft_split("hola-mundo-42", '-'));
 	return (0);
 }
