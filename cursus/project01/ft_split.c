@@ -65,7 +65,7 @@ static int	*ft_find_index_of_c(char *s, int c, size_t n, size_t *count)
 		{
 			(*count)++;
 			temp = ft_my_malloc(count);
-			ft_memcpy(temp, indices, (j) * sizeof(int));
+			ft_memcpy(temp, indices, j * sizeof(int));
 			indices = temp;
 			indices[j] = i;
 			j++;
@@ -75,39 +75,55 @@ static int	*ft_find_index_of_c(char *s, int c, size_t n, size_t *count)
 	return (indices);
 }
 
-
-
-//----------------funcion que cree substrings----------------
-
-
-
-
-
 //----------------funcion principal split----------------
-// char **ft_split(char const *s, char c)
-// {
-//  unsigned int    len_main_string;
+char	**ft_split(char const *s, char c)
+{
+	size_t			count;
+	size_t			i;
+	int				*indices;
+	char			**result;
 
-//  len_main_string = ft_strlen(s);
-//  return ("el nuevo array de strings generadas(doble puntero)");
-// }
+	indices = ft_find_index_of_c((char *)s, c, ft_strlen(s), &count);
+	result = (char **)malloc((count + 2) * sizeof(char *));
+	if (!result)
+		return (NULL);
+	i = 0;
+	while (indices && i <= count)
+	{
+		//result[i] = ft_substr(s, indices[i], (indices[i + 1]) - indices[1]);
+		//result[i] = ft_strdup((char *)&s[indices[i]]);
+		result[i] = strndup(s + indices[i], indices[i + 1] - indices[i] - 1);
+		i++;
+	}
+	result[i] = NULL;//final de array de punteros
+	free(indices);
+	return (result);
+}
 
-#include <stdio.h>
 
 int main()
 {
-    const char *str = "Hello World 42 !";
-    int character = ' ';
-    size_t count;
-    int *indices = ft_find_index_of_c((char *)str, character, ft_strlen(str), &count);
-    printf("El carácter '%c' se encuentra en los siguientes índices:\n", character);
-    for (size_t i = 0; i < count; i++)
+    char *str = "0123-567-9!";
+    int character = '-';
+    char **result = ft_split(str, character);
+    if (result)
     {
-        printf("%d ", indices[i]);
+        printf("El resultado es:\n");
+        size_t i = 0;
+        while (result[i])
+        {
+            printf("%s\n", result[i]);
+            i++;
+        }
+        // Liberar la memoria asignada a las subcadenas y al arreglo de punteros
+        i = 0;
+        while (result[i])
+        {
+            free(result[i]);
+            i++;
+        }
+        free(result);
     }
-    printf("\n");
-    free(indices);
 
     return 0;
 }
-

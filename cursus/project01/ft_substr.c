@@ -24,7 +24,7 @@ Funciones autorizadas
 	malloc
 
 Descripción
-	Reserva (con malloc(3)) y devuelve una substring de	la string ’s’.
+	Reserva memoria y devuelve una substring de	la string principal ’s’.
 	La substring empieza desde el índice ’start’ y tiene una longitud
 	máxima ’len’.
 */
@@ -65,7 +65,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 /*
 int	main(void)
 {
+	//en este ej. imprime del string, despues del 3er caracter, los 4 caracteres siguientes
 	printf("%s\n", ft_substr("holamundo", 3, 4));
 	return (0);
-}
-*/
+}*/
