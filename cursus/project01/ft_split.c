@@ -32,128 +32,37 @@ El array debe terminar con un puntero NULL.
 */
 
 #include "libft.h"
-
-//----------------funcion que reserva memoria----------------
-// static int	*ft_my_malloc(size_t *count)
-// {
-// 	int	*temp;
-
-// 	temp = (int *)malloc((*count) * sizeof(int));
-// 	if (temp == NULL)
-// 		return (NULL);
-// 	return (temp);
-// }
-
-/*
-//----------------funcion que reserva memoria----------------
-static char	*ft_my_malloc(const char *src, size_t len)
+/* función q calcula la longitud real de una cadena saltando los carecteres repetidos de 'c'.*/
+static size_t	ft_real_strlen(const char *s, char c)
 {
-	char	*dst;
+	size_t	counter;
 
-	dst = malloc(len + 1);
-	if (dst == NULL)
-		return (NULL);
-	memcpy(dst, src, len);
-	dst[len] = '\0';
-	return (dst);
-}
-
-//---------funcion que encuentra todos los 'c' y retorna sus indices---------
-
-static int	*ft_find_index_of_c(char *s, int c, size_t n)
-{
-	unsigned char	c_to_find;
-	size_t			i;
-	size_t			j;
-	int				*indices;
-
-	c_to_find = (unsigned char)c;
-	i = 0;
-	j = 0;
-	indices = 0;
-	while (i < n)
-	{
-		if (s[i] == c_to_find)
-			(*indices)++;
-		i++;
-	}
-	if (*indices == 0)
-		return (NULL);
-	indices = (int *)malloc((*indices) * sizeof(int));
-	i = 0;
-	while (i < n)
-	{
-		if (s[i] == c_to_find)
-		{
-			indices[j] = i;
-			j++;
-		}
-		i++;
-	}
-	return (indices);
-}
-
-//----------------funcion principal split----------------
-char	**ft_split(char const *s, char c)
-{
-	size_t	i;
-	int		*indices;
-	char	**result;
-	size_t	start;
-	size_t	len;
-
-	indices = ft_find_index_of_c((char *)s, c, strlen(s));
-    result = (char **)malloc((2) * sizeof(char *));
-	if (!result)
-		return (NULL);
-	i = 0;
-	start = 0;
-	while (s)
-	{
-		len = indices[i] - start;
-		result[i] = ft_my_malloc(s + start, len);
-		start = indices[i] + 1;
-		i++;
-	}
-	//result[i] = ft_my_malloc(s + start, strlen(s) - start);
-	result[i] = ft_my_malloc(s + start, indices[i-1] - start + 1); // Actualizar la longitud de la última subcadena
-	result[i + 1] = NULL; // final de array de punteros
-	free(indices);
-	return (result);
-return (NULL);
-}
-*/
-
-static size_t	ft_toklen(const char *s, char c)
-{
-	size_t	ret;
-
-	ret = 0;
+	counter = 0;
 	while (*s)
 	{
 		if (*s != c)
 		{
-			++ret;
+			++counter;
 			while (*s && *s != c)
 				++s;
 		}
 		else
 			++s;
 	}
-	return (ret);
+	return (counter);
 }
 
 char	**ft_split(const char *s, char c)
 {
-	char	**ret;
+	char	**array_strings;
 	size_t	i;
 	size_t	len;
 
 	if (!s)
 		return (0);
 	i = 0;
-	ret = malloc(sizeof(char *) * (ft_toklen(s, c) + 1));
-	if (!ret)
+	array_strings = malloc(sizeof(char *) * (ft_real_strlen(s, c) + 1));
+	if (!array_strings)
 		return (0);
 	while (*s)
 	{
@@ -162,13 +71,13 @@ char	**ft_split(const char *s, char c)
 			len = 0;
 			while (*s && *s != c && ++len)
 				++s;
-			ret[i++] = ft_substr(s - len, 0, len);
+			array_strings[i++] = ft_substr(s - len, 0, len);
 		}
 		else
 			++s;
 	}
-	ret[i] = 0;
-	return (ret);
+	array_strings[i] = 0;
+	return (array_strings);
 }
 
 /*
@@ -187,16 +96,6 @@ int	main(void)
 	printf("Se espera: , 'olol'\n");
 	char **result2 = ft_split(str2, character);
 
-	// char *str3 = "\0aa\0bbb";
-	// int character3 = '\0';
-	// //printf("Se espera: {"aa\0", "bbb\0", NULL}");
-	// char **result3 = ft_split(str3, character3);
-
-	// char *str4 = "split  ||this|for|me|||||!|";
-	// int character4 = '|';
-	// printf("Se espera: , 'split', 'this', 'for', 'me', '!'\n");
-	// char **result4 = ft_split(str4, character4);
-
 	// if (result)
 	// {
 	// 	size_t i = 0;
@@ -206,6 +105,7 @@ int	main(void)
 	// 		i++;
 	// 	}
 	// }
+	
 	if (result2)
 	{
 		size_t i = 0;
@@ -223,6 +123,7 @@ int	main(void)
         //     i++;
         // }
         // free(result);
+		
     return (0);
 }
 */
