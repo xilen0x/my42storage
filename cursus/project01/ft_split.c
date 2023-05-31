@@ -32,10 +32,10 @@ El array debe terminar con un puntero NULL.
 */
 
 #include "libft.h"
-/* función q calcula la longitud real de una cadena saltando los carecteres repetidos de 'c'.*/
+/* función q calcula la longitud real de una cadena(saltando los carecteres repetidos a 'c').*/
 static size_t	ft_real_strlen(const char *s, char c)
 {
-	size_t	counter;
+	size_t	counter;//pra contar la longitud real de la cadena distinto a 'c'.
 
 	counter = 0;
 	while (*s)
@@ -43,7 +43,7 @@ static size_t	ft_real_strlen(const char *s, char c)
 		if (*s != c)
 		{
 			++counter;
-			while (*s && *s != c)
+			while (*s && (*s != c))
 				++s;
 		}
 		else
@@ -58,9 +58,9 @@ char	**ft_split(const char *s, char c)
 	size_t	i;
 	size_t	len;
 
+	i = 0;
 	if (!s)
 		return (0);
-	i = 0;
 	array_strings = malloc(sizeof(char *) * (ft_real_strlen(s, c) + 1));
 	if (!array_strings)
 		return (0);
@@ -69,9 +69,9 @@ char	**ft_split(const char *s, char c)
 		if (*s != c)
 		{
 			len = 0;
-			while (*s && *s != c && ++len)
+			while ((*s) && (*s != c) && (++len))//len es x contar la long. del substring. 
 				++s;
-			array_strings[i++] = ft_substr(s - len, 0, len);
+			array_strings[i++] = ft_substr(s - len, 0, len);//asigno substring
 		}
 		else
 			++s;
@@ -83,35 +83,24 @@ char	**ft_split(const char *s, char c)
 /*
 int	main(void)
 {
-	// char *str0 = "hola mundo 42 Chile";
-	// printf("Se espera: , 'hola', 'mundo', '42', 'Chile'\n");
+	char *str0 = "hola mundo 42 Chile";
 	int character = ' ';
-	// char **result = ft_split(str0, character);
+	char **result = ft_split(str0, character);
 
 	//char *str1 = "      split       this for   me  !       ";
 	//printf("Se espera: , 'split', 'this', 'for', 'me', '!'\n");
 	//char **result1 = ft_split(str1, character);
 
-	char *str2 = "                  olol";
-	printf("Se espera: , 'olol'\n");
-	char **result2 = ft_split(str2, character);
+	//char *str2 = "                  olol";
+	//printf("Se espera: , 'olol'\n");
+	//char **result2 = ft_split(str2, character);
 
-	// if (result)
-	// {
-	// 	size_t i = 0;
-	// 	while (result[i])
-	// 	{
-	// 		printf("%s\n", result[i]);
-	// 		i++;
-	// 	}
-	// }
-	
-	if (result2)
+	if (result)
 	{
 		size_t i = 0;
-		while (result2[i])
+		while (result[i])
 		{
-			printf("%s\n", result2[i]);
+			printf("%s\n", result[i]);
 			i++;
 		}
 	}
