@@ -38,6 +38,8 @@ static size_t	ft_numlen(int n)
 	size_t	count;
 
 	count = 1;
+	if (n <= 0)
+		count++;
 	while (n / 10 != 0)
 	{
 		n /= 10;
@@ -46,21 +48,50 @@ static size_t	ft_numlen(int n)
 	return (count);
 }
 
-// char	*ft_itoa(int n)
-// {
-// 	//int str;
-
-// 	str = ft_numlen(n);
-// 	return (str);
-// }
-
-int main()
+static char	*ft_int_to_str(int n, size_t len)
 {
-    int number = -12345;
-    //char *str_number = ft_itoa(number);
-    printf("Number: %d\n", number);
-    printf("%zu", ft_numlen(number));
-	//printf("String: %s\n", str_number);
-    //free(str_number);
-    return 0;
-}	
+	char	*str;
+	size_t	i;
+
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (!str)
+		return (NULL);
+	i = len - 1;
+	if (n < 0)
+	{
+		str[0] = '-';
+		n = -n;
+	}
+	while (n > 0)
+	{
+		str[i--] = (n % 10) + '0';
+		n /= 10;
+	}
+	str[len] = '\0';
+	return (str);
+}
+
+
+char	*ft_itoa(int n)
+{
+	int			len;
+	char		*str;
+	long int	num;//long para no tener problemas con los limites de int
+
+	num = n;
+	len = ft_numlen(num);
+	str = ft_int_to_str(num, len);
+	return (str);
+}
+
+/*
+int	main(void)
+{
+	int number = -12345;
+	char *str_number = ft_itoa(number);
+	printf("Number: %d\n", number);
+	printf("String: %s\n", str_number);
+	free(str_number);
+	return (0);
+}
+*/
