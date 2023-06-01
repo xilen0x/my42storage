@@ -33,7 +33,7 @@ Los números negativos tienen que gestionarse.
 */
 # include "libft.h"
 
-static size_t	ft_numlen(int n)
+static size_t	ft_numlen(long long n)
 {
 	size_t	count;
 
@@ -45,10 +45,12 @@ static size_t	ft_numlen(int n)
 		n /= 10;
 		count++;
 	}
+	if (n == 0)//este es el caso que n=0 el len era 2 y luego aumetaba 1 lo q producia un mal uso de mem.
+		return --count;
 	return (count);
 }
 
-static char	*ft_int_to_str(int n, size_t len)
+static char	*ft_int_to_str(long long n, size_t len)
 {
 	char	*str;
 	size_t	i;
@@ -62,6 +64,11 @@ static char	*ft_int_to_str(int n, size_t len)
 		str[0] = '-';
 		n = -n;
 	}
+	if (n == 0)
+	{
+		str[0] = '0';
+		str[1] = '\0';
+	}
 	while (n > 0)
 	{
 		str[i--] = (n % 10) + '0';
@@ -74,9 +81,9 @@ static char	*ft_int_to_str(int n, size_t len)
 
 char	*ft_itoa(int n)
 {
-	int			len;
+	long long	num;
+	size_t		len;
 	char		*str;
-	long int	num;//long para no tener problemas con los limites de int
 
 	num = n;
 	len = ft_numlen(num);
@@ -87,7 +94,8 @@ char	*ft_itoa(int n)
 /*
 int	main(void)
 {
-	int number = -12345;
+	int number = -2147483648;
+	//int number = 0;
 	char *str_number = ft_itoa(number);
 	printf("Number: %d\n", number);
 	printf("String: %s\n", str_number);
