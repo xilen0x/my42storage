@@ -49,7 +49,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	space_reserved = malloc(sizeof(char) * (len + 1));
 	//si falla la asignacion, retorno NULL
 	if (!space_reserved)
-		return (NULL);
+		return (0);
 	//mientras i sea menor que len y el carácter en la posición start de s no sea un terminador nulo.
 	while (i < len && s[start])
 	{

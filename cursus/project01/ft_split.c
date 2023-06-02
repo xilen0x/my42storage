@@ -32,7 +32,7 @@ El array debe terminar con un puntero NULL.
 */
 
 #include "libft.h"
-/* función q calcula la longitud real de una cadena(saltando los carecteres repetidos a 'c').*/
+/* función q calcula la long real de un string(salta los c repetidos a 'c').*/
 static size_t	ft_real_strlen(const char *s, char c)
 {
 	size_t	counter;//pra contar la longitud real de la cadena distinto a 'c'.
@@ -52,31 +52,60 @@ static size_t	ft_real_strlen(const char *s, char c)
 	return (counter);
 }
 
-char	**ft_split(const char *s, char c)
+static void	ft_free_split(char **array_strings)
 {
-	char	**array_strings;
 	size_t	i;
-	size_t	len;
 
 	i = 0;
-	if (!s)
-		return (0);
-	array_strings = malloc(sizeof(char *) * (ft_real_strlen(s, c) + 1));
-	if (!array_strings)
-		return (0);
+	if (array_strings)
+	{
+		while (array_strings[i])
+		{
+			free(array_strings[i]);
+			i++;
+		}
+		free(array_strings);
+	}
+}
+
+static char	**ft_process(const char *s, char c, char **array_strings)
+{
+	size_t	len;
+	size_t	i;
+
+	i = 0;
 	while (*s)
 	{
 		if (*s != c)
 		{
 			len = 0;
-			while ((*s) && (*s != c) && (++len))//len es x contar la long. del substring. 
+			while ((*s) && (*s != c) && (++len))
 				++s;
-			array_strings[i++] = ft_substr(s - len, 0, len);//asigno substring
+			array_strings[i] = ft_substr(s - len, 0, len);
+			if (!array_strings[i])
+			{
+				ft_free_split(array_strings);
+				return (NULL);
+			}
+			i++;
 		}
 		else
 			++s;
 	}
-	array_strings[i] = 0;
+	array_strings[i] = (NULL);
+	return (array_strings);
+}
+
+char	**ft_split(const char *s, char c)
+{
+	char	**array_strings;
+
+	if (!s)
+		return (0);
+	array_strings = malloc(sizeof(char *) * (ft_real_strlen(s, c) + 1));
+	if (!array_strings)
+		return (0);
+	array_strings = ft_process(s, c, array_strings);
 	return (array_strings);
 }
 
@@ -104,15 +133,6 @@ int	main(void)
 			i++;
 		}
 	}
-        // Liberar la memoria asignada a las subcadenas y al arreglo de punteros
-        // i = 0;
-        // while (result[i])
-        // {
-        //     free(result[i]);
-        //     i++;
-        // }
-        // free(result);
-		
     return (0);
 }
 */
