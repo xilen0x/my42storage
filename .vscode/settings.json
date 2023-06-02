@@ -1,0 +1,7 @@
+{
+	"files.associations": {
+		"*.a": "c",
+		"cstring": "c",
+		"locale": "c"
+	}
+}

@@ -36,20 +36,23 @@ int main ()
 	printf("\n---------memset-------------*\n");
 	char str[] = "almost every programmer should know memset!";
 	printf("%s\n", memset(str + 5, '*' , 3));
+	printf("%s\n", (char *)memset(str, '-' , 3));
 
-	char str2[] = "almost every programmer should know memset!";
 	printf("\n---------ft_memset----------*\n");
+	char str2[] = "almost every programmer should know memset!";
 	printf("%s", ft_memset(str + 5, '*', 3));
-	//printf("%s", ft_memset(str + 5, '*', 3));
+	printf("%s", (char *)ft_memset(str2, '-', 3));
 
 	return 0;
 }*/
+
+
 /*
-//In the case of ft_memset(str, '*', 3) of line 38
+//In the case of ft_memset(str, '*', 3)
  0   1	 2	 3	 4	 5	 6	 7	 8	 9	10	
 '*' '*' '*' 'o' 's' 't' ' ' 'e' 'v' 'e' r'  ...etc
 
-//In the case of ft_memset(str + 5, '*', 3) of line 43
+//In the case of ft_memset(str + 5, '*', 3)
  0   1	 2	 3	 4	 5	 6	 7	 8	 9	10	
 'a' 'l' 'm' 'o' 's' '*' '*' '*' 'v' 'e' r'  ...etc
 */

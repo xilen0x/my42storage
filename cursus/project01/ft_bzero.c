@@ -27,3 +27,19 @@ void	ft_bzero(void *s, size_t n)
 		i++;
 	}
 }
+/*
+int	main(void)
+{
+	char	s[] = "+-54";
+	size_t	n = 10;
+	ft_bzero((void *)s, n);
+	printf(":%s:\n", s);
+    
+    char str[20] = "Hola, mundo!";
+	printf("Antes de ft_bzero: %s\n", str);
+    ft_bzero(str, sizeof(str));
+    printf("Después de ft_bzero: %s\n", str);
+	
+	return (0);
+}
+*/

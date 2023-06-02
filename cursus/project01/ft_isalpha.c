@@ -20,3 +20,22 @@ int	ft_isalpha(int arg)
 	}
 	return (0);
 }
+
+/*
+int	main(void)
+{
+	char	c, d, e;
+
+	c = 'Q';
+	d = 'q';
+	e = '+';
+	printf("\nWhen uppercase alphabet is passed: %d", isalpha(c));
+	printf("\nWhen lowercase alphabet is passed: %d", isalpha(d));
+	printf("\nWhen non-alphabetic character is passed: %d", isalpha(e));
+	printf("\n-------\n");
+	printf("\nWhen uppercase alphabet is passed: %d", ft_isalpha(c));
+	printf("\nWhen lowercase alphabet is passed: %d", ft_isalpha(d));
+	printf("\nWhen non-alphabetic character is passed: %d", ft_isalpha(e));
+	return (0);
+}
+*/
