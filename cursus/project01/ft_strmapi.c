@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 /*
+(Applies a function (mapping) to every element in a string)
+
 Prototipo 
 char *ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
@@ -31,8 +33,51 @@ parámetros el índice de cada carácter dentro de ’s’ y el propio carácter
 Genera una nueva string con el resultado del uso sucesivo de ’f’
 */
 /*
+static char	xtoupper(unsigned int index, char c)
+{
+	if (c >= 'a' && c <= 'z')
+		return (c - 32);
+	return (c);
+}
+*/
+#include "libft.h"
+
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
+	unsigned int	i;
+	unsigned int	len;
+	char			*str;
 
-	return (s);
-}*/
+	i = 0;
+	if (!s)
+		return (0);
+	len = ft_strlen(s);
+	str = malloc(len + 1);
+	if (!str)
+		return (0);
+	while (i < len)
+	{
+		str[i] = f(i, s[i]);
+		i++;
+	}
+	str[len] = '\0';
+	return (str);
+}
+
+/*
+int	main(void)
+{
+	const char *str = "Hello, World!";
+	char *result = ft_strmapi(str, &xtoupper);
+
+	if (result)
+	{
+		printf("Original string		: %s\n", str);
+		printf("Transformed string	: %s\n", result);
+		free(result);
+	}
+	else
+		printf("Error: Failed to allocate memory.\n");
+	return (0);
+}
+*/
