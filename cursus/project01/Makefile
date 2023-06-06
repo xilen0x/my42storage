@@ -25,8 +25,10 @@ SRC = ft_isalpha.c ft_isdigit.c ft_isalnum.c \
 	  ft_itoa.c ft_strmapi.c ft_striteri.c \
 	  ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c \
 	  ft_putnbr_fd.c
+SRCBONUS = ft_lstnew.c ft_lstadd_front
 
 OBJ = $(SRC:.c=.o)
+OBJBONUS = $(SRCBONUS:.c=.o)
 
 CFLAGS = -Wall -Wextra -Werror -I.
 
@@ -46,16 +48,17 @@ $(NAME): $(OBJ) $(HEADER)
 %.o: %.c $(HEADER)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-
+bonus: $(OBJ) $(OBJBONUS)
+		ar rcs $(NAME) $(OBJ) $(OBJBONUS)
 
 
 # -------------------- Clean --------------------
-.PHONY: all clean fclean re
-
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJ) $(OBJBONUS)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(bonus)
 
 re: fclean all
+
+.PHONY: all bonus clean fclean re
