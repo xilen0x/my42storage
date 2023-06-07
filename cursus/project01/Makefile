@@ -13,6 +13,8 @@
 # ----------------- Variables ---------------------
 NAME = libft.a
 
+OBJ_DIR = ./obj/
+
 SRC = ft_isalpha.c ft_isdigit.c ft_isalnum.c \
 	  ft_isascii.c ft_isprint.c ft_strlen.c \
 	  ft_memset.c ft_bzero.c ft_memcpy.c \
@@ -25,12 +27,18 @@ SRC = ft_isalpha.c ft_isdigit.c ft_isalnum.c \
 	  ft_itoa.c ft_strmapi.c ft_striteri.c \
 	  ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c \
 	  ft_putnbr_fd.c
-SRCBONUS = ft_lstnew.c ft_lstadd_front
 
-OBJ = $(SRC:.c=.o)
-OBJBONUS = $(SRCBONUS:.c=.o)
+SRCBONUS = ft_lstnew_bonus.c ft_lstadd_front_bonus.c
 
-CFLAGS = -Wall -Wextra -Werror -I.
+OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
+OBJBONUS = $(addprefix $(OBJ_DIR), $(SRCBONUS:.c=.o))
+
+DEPS = $(addsuffix .d, $(basename $(OBJ)))
+MK = mkdir -p
+
+CFLAGS = -Wall -Wextra -Werror
+
+INCLUDE = -I ./
 
 CC = cc
 
@@ -40,25 +48,30 @@ HEADER = libft.h
 #SRC = $(patsubst %,%.c,$(myFunctions))
 #OBJS = $(patsubst %,%.o,$(myFunctions))
 
+$(OBJ_DIR)%.o: %.c Makefile
+	@echo "Compiling... $<"
+	@$(MK) $(dir $@)
+	@$(CC) $(CFLAGS) -MMD $(INCLUDE) -c $< -o $@
+
 all: $(NAME)
 
 $(NAME): $(OBJ) $(HEADER)
+	@echo "Building... $@"
 	ar rcs $(NAME) $(OBJ)
 
-%.o: %.c $(HEADER)
-	$(CC) $(CFLAGS) -c $< -o $@
+bonus: $(OBJBONUS)
+		@echo "Building bonus..."
+		ar rcs $(NAME) $(OBJBONUS)
 
-bonus: $(OBJ) $(OBJBONUS)
-		ar rcs $(NAME) $(OBJ) $(OBJBONUS)
-
+-include $(DEPS)
 
 # -------------------- Clean --------------------
 clean:
-	rm -f $(OBJ) $(OBJBONUS)
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
-	rm -f $(NAME) $(bonus)
+	rm -rf $(NAME)
 
-re: fclean all
+re: fclean $(NAME)
 
-.PHONY: all bonus clean fclean re
+.PHONY: all clean fclean re
