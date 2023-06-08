@@ -46,7 +46,7 @@ static size_t	ft_numlen(long long n)
 		count++;
 	}
 	if (n == 0)//este es el caso que n=0 el len era 2 y luego aumetaba 1 lo q producia un mal uso de mem.
-		return --count;
+		return (--count);
 	return (count);
 }
 
