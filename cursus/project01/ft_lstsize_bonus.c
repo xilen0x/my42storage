@@ -42,6 +42,7 @@ int	ft_lstsize(t_list *lst)
 	return (len);
 }
 
+/*
 int	main(void)
 {
 	int *data1 = (int *)malloc(sizeof(int));
@@ -68,4 +69,4 @@ int	main(void)
 	printf("%d\n", ft_lstsize(node1));
 	return (0);
 }
-
+*/
