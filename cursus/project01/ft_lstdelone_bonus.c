@@ -28,7 +28,10 @@ Descripción
 Toma como parámetro un nodo ’lst’ y libera la memoria del contenido utilizando 
 la función ’del’ dada como parámetro, además de liberar el nodo. La memoria de 
 ’next’ no debe liberarse.
+
+Elimina, libera y aplica la función 'del' al contenido de un nodo dado
 */
+
 #include "libft.h"
 
 void	ft_lstdelone(t_list *lst, void (*del)(void*))
@@ -39,6 +42,7 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*))
 		free(lst);
 	}
 }
+
 /*
 //------------------------funcion que imprime la lista------------------------
 static void	ft_print_list(t_list *lst)
@@ -78,7 +82,7 @@ int	main(void)
 	printf("Contenido de la lista antes de eliminacion de nodo: ");
 	ft_print_list(node1);
 	
-	// eliminacion nodo
+	// eliminacion contenido nodo
 	ft_lstdelone(node2, &free);
 
 	printf("Contenido de la lista despues de eliminacion de nodo: ");
@@ -97,7 +101,7 @@ int	main(void)
 */
 
 /*
-castorga@cbr5s5 project01 % ./a.out
+castorga@cbr5s5 project01 %% ./a.out
 Contenido de la lista antes de eliminacion de nodo: 42 75 100
 Contenido de la lista despues de eliminacion de nodo: 42 0 100
 */
