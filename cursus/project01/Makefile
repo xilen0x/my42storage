@@ -61,9 +61,12 @@ $(NAME): $(OBJ) $(HEADER)
 	@echo "Building... $@"
 	ar rcs $(NAME) $(OBJ)
 
-bonus: $(OBJBONUS)
+bonus: .bonus 
+
+.bonus: $(OBJBONUS)
 		@echo "Building bonus..."
 		ar rcs $(NAME) $(OBJBONUS)
+		@touch .bonus
 
 -include $(DEPS)
 
@@ -76,4 +79,4 @@ fclean: clean
 
 re: fclean $(NAME)
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
