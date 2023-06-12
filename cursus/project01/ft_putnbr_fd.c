@@ -8,6 +8,7 @@ fd: El file descriptor sobre el que escribir.
 
 Valor devuelto 
 Nada
+
 Funciones autorizadas
 write
 
