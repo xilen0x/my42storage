@@ -27,7 +27,7 @@ La string resultante se devuelve con una reserva de malloc(3)
 
 #include "libft.h"
 
-/* Función que verifica si un carácter está presente en un conjunto de caracteres.*/
+/* F. que verifica si un carácter está presente en un conjunto de caracteres.*/
 static int	ft_isset(char c, const char *set)
 {
 	while (*set)
@@ -49,17 +49,15 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	i = 0;
 	start = s1;
-	end = s1 + ft_strlen(s1) - 1;//Asigno el puntero end para que apunte al último carácter de la cadena s1
-	while (ft_isset(*start, set))//Este bucle se ejecuta mientras el carácter apuntado por start esté presente en el conjunto set.
+	end = s1 + ft_strlen(s1) - 1;
+	while (ft_isset(*start, set))
 		start++;
 	while (start <= end && ft_isset(*end, set))
 		end--;
-	len = end - start + 1;//Asigno a len, la longitud del string recortado
-
+	len = end - start + 1;
 	reserved = (char *)malloc((len + 1) * sizeof(char));
 	if (reserved == NULL)
 		return (NULL);
-	//copia los caracteres de la cadena start a la cadena reserved.	
 	while (i < len)
 	{
 		reserved[i] = start[i];

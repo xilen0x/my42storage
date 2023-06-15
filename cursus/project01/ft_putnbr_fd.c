@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/12 14:03:03 by castorga          #+#    #+#             */
+/*   Updated: 2023/06/12 14:03:05 by castorga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*
 Prototipo 
 void ft_putnbr_fd(int n, int fd);
@@ -16,7 +28,7 @@ Descripción
 Envía el número ’n’ al file descriptor dado.
 */
 
-# include "libft.h"
+#include "libft.h"
 
 void	ft_putnbr_fd(int n, int fd)
 {
@@ -40,7 +52,6 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putchar_fd(n % 10 + '0', fd);
 	}
 }
-
 
 /*
 int	main(void)

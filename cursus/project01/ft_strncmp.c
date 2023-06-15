@@ -6,7 +6,7 @@
 /*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:10:59 by castorga          #+#    #+#             */
-/*   Updated: 2023/05/17 10:11:02 by castorga         ###   ########.fr       */
+/*   Updated: 2023/06/15 13:26:22 by castorga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*Compares two strings up to the n-th character*/
@@ -22,8 +22,7 @@ DESCRIPTION
 RETURN VALUES
      The strcmp() and strncmp() functions return an integer greater than,
      equal to, or less than 0, according as the string s1 is greater than,
-     equal to, or less than the string s2.  The comparison is done using
-     unsigned characters, so that `\200' is greater than `\0'.
+     equal to, or less than the string s2.
 */
 #include "libft.h"
 
@@ -53,8 +52,6 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 }
 
 /*
-#include <stdio.h>
-#include <string.h>
 int	main(void)
 {
 	printf("\n--------- strncmp ---------\n");

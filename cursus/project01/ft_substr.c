@@ -37,23 +37,15 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	unsigned int	i;
 
 	i = 0;
-	
 	if (start >= ft_strlen(s))
-		len = 0;// len se establece en 0 para indicar una subcadena vacía.
-	
-	//de lo contrario si ..., len se establece en el número de caracteres restantes desde start hasta el final de s.	
+		len = 0;
 	else if (start + len > ft_strlen(s))
 		len = ft_strlen(s) - start;
-	
-	//asignacion de memoria
 	space_reserved = malloc(sizeof(char) * (len + 1));
-	//si falla la asignacion, retorno NULL
 	if (!space_reserved)
 		return (0);
-	//mientras i sea menor que len y el carácter en la posición start de s no sea un terminador nulo.
 	while (i < len && s[start])
 	{
-	//copia de caracteres desde 's' a 'space_reserved'.
 		space_reserved[i] = s[start];
 		i++;
 		start++;
@@ -65,7 +57,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 /*
 int	main(void)
 {
-	//en este ej. imprime del string, despues del 3er caracter, los 4 caracteres siguientes
+	//en este ej. imprime del string, despues del 3er caracter, 
+	//los 4 caracteres siguientes
 	printf("%s\n", ft_substr("holamundo", 3, 4));
 	return (0);
 }*/

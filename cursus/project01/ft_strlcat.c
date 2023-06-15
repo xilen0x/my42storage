@@ -6,13 +6,13 @@
 /*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 11:22:43 by castorga          #+#    #+#             */
-/*   Updated: 2023/05/15 11:22:52 by castorga         ###   ########.fr       */
+/*   Updated: 2023/06/15 12:51:41 by castorga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*Concatenates two strings ensuring it ends with \0*/
+/*Concatena el string src a dst, retornando dst y asegurando su fin con nulo*/
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {

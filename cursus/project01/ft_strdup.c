@@ -22,7 +22,7 @@ DESCRIPTION
      The strndup() function copies at most n characters from the string s1
      always NUL terminating the copied string.
 */
-# include "libft.h"
+#include "libft.h"
 
 char	*ft_strdup(const char *s1)
 {
@@ -33,7 +33,7 @@ char	*ft_strdup(const char *s1)
 	i = 0;
 	len = ft_strlen(s1);
 	space_reserved = malloc(len + 1);
-	if (!space_reserved) //Si space_reserved es nulo 
+	if (!space_reserved)
 		return (0);
 	else
 	{

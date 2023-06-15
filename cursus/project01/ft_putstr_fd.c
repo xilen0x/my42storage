@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/12 14:04:25 by castorga          #+#    #+#             */
+/*   Updated: 2023/06/12 14:04:28 by castorga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*
 Prototipo 
 void ft_putstr_fd(char *s, int fd);
@@ -16,7 +28,7 @@ Descripción
 Envía la string ’s’ al file descriptor especificado.
 */
 
-# include "libft.h"
+#include "libft.h"
 
 void	ft_putstr_fd(char *s, int fd)
 {

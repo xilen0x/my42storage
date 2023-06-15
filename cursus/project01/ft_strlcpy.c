@@ -6,7 +6,7 @@
 /*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 11:23:17 by castorga          #+#    #+#             */
-/*   Updated: 2023/05/15 11:23:20 by castorga         ###   ########.fr       */
+/*   Updated: 2023/06/15 13:14:21 by castorga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	main(void)
 	const char	*src = "welcome";
 	char		dst[8];
 	printf("-------strlcpy------------\n");
-	printf("%d\n", strlcpy(dst, src, sizeof(dst)));
+	printf("%zu\n", strlcpy(dst, src, sizeof(dst)));
 
 	const char	*src2 = "welcome";
 	char		dst2[8];
@@ -50,8 +50,7 @@ int	main(void)
 }
 */
 
-/* Funcion original no esta funcionando en ubuntu
-probar en MAC a ver que pasa
+/* 
 -------strlcpy------------
 7
 -------ft_strlcpy------------

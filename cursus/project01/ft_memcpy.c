@@ -6,7 +6,7 @@
 /*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 17:49:08 by castorga          #+#    #+#             */
-/*   Updated: 2023/05/09 17:49:12 by castorga         ###   ########.fr       */
+/*   Updated: 2023/06/14 13:06:26 by castorga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 }
 
 /*
-#include <stdio.h>
-#include <string.h>
 
 int main ()
 {

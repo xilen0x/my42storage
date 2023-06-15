@@ -6,7 +6,7 @@
 /*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 14:12:31 by castorga          #+#    #+#             */
-/*   Updated: 2023/05/09 14:12:34 by castorga         ###   ########.fr       */
+/*   Updated: 2023/06/14 15:21:29 by castorga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,7 @@ void	*ft_memset(void *b, int c, size_t len)
 	return (b);
 }
 
-/*#include <stdio.h>
-#include <string.h>
-
+/*
 int main ()
 {
 	printf("\n---------memset-------------*\n");
@@ -45,7 +43,6 @@ int main ()
 
 	return 0;
 }*/
-
 
 /*
 //In the case of ft_memset(str, '*', 3)

@@ -6,7 +6,7 @@
 /*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 09:41:52 by castorga          #+#    #+#             */
-/*   Updated: 2023/05/26 11:57:24 by castorga         ###   ########.fr       */
+/*   Updated: 2023/06/15 12:52:48 by castorga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Funciones autorizadas
 malloc
 
 Descripción 
-Reserva (con malloc(3)) y devuelve una nueva string, formada por la 
+Reserva (con malloc) y devuelve una nueva string, formada por la 
 concatenación de ’s1’ y ’s2’.
 */
 
@@ -53,7 +53,6 @@ static char	*ft_strncpy(char *dest, char *src, unsigned int n)
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char			*space_reserved;
-	//unsigned int	i;
 	unsigned int	len_s1;
 	unsigned int	len_s2;
 

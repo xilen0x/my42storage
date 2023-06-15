@@ -6,7 +6,7 @@
 /*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 10:11:11 by castorga          #+#    #+#             */
-/*   Updated: 2023/05/26 10:11:14 by castorga         ###   ########.fr       */
+/*   Updated: 2023/06/15 14:45:53 by castorga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@ s: La string a separar.
 c: El carácter delimitador.
 
 Valor devuelto
-El array de nuevas strings resulatente de la separación.
+El array de nuevas strings resultante de la separación.
 NULL si falla la reserva de memoria.
 
 Funciones autorizadas
 malloc, free
 
 Descripción
-Reserva (utilizando malloc(3)) un array de strings resultante de separar
-la string ’s’ en substrings utilizando el caracter ’c’ como delimitador.
+Reserva (con malloc) un array de strings, resultante de separar
+la string ’s’ en substrings, utilizando el caracter ’c’ como delimitador.
 El array debe terminar con un puntero NULL.
 */
 
@@ -35,7 +35,7 @@ El array debe terminar con un puntero NULL.
 /* función q calcula la long real de un string(salta los c repetidos a 'c').*/
 static size_t	ft_real_strlen(const char *s, char c)
 {
-	size_t	counter;//pra contar la longitud real de la cadena distinto a 'c'.
+	size_t	counter;
 
 	counter = 0;
 	while (*s)

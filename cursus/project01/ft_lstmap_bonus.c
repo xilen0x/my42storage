@@ -34,7 +34,7 @@ Itera la lista ’lst’ y aplica la función ’f’ al contenido de cada nodo.
 Crea una lista resultante de la aplicación correcta y sucesiva de la 
 función ’f’ sobre cada nodo. 
 
-La función ’del’ se utiliza para eliminar el contenido de un nodo, si hace falta.
+Función ’del’ se utiliza para eliminar el contenido de un nodo, si hace falta.
 */
 
 #include "libft.h"
@@ -47,7 +47,6 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 
 	if (!lst || !f)
 		return (NULL);
-
 	new_list = NULL;
 	while (lst)
 	{
@@ -130,7 +129,6 @@ int	main(void)
 */
 
 /*
-castorga@cbr2s1 project01 % gcc -Wall -Wextra -Werror ft_lstmap_bonus.c ft_lstnew_bonus.c ft_lstadd_back_bonus.c ft_lstclear_bonus.c ft_lstlast_bonus.c
 castorga@cbr2s1 project01 % ./a.out
 Contenido de la lista antes de aplicar la funcion a los nodos: 42 75 100
 Contenido de la lista después de aplicar la función a los nodos: 44 77 102

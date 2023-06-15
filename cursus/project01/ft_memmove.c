@@ -6,7 +6,7 @@
 /*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 13:31:08 by castorga          #+#    #+#             */
-/*   Updated: 2023/05/26 11:57:04 by castorga         ###   ########.fr       */
+/*   Updated: 2023/06/14 15:04:35 by castorga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	unsigned char	*pdst;
 	unsigned char	*psrc;
-	//unsigned int	i;
 
 	if (dst == NULL && src == NULL)
 		return (NULL);
@@ -38,9 +37,6 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 }
 
 /*
-#include <stdio.h>
-#include <string.h>
-
 int main (void)
 {
 	//char src[] = "welcome!";

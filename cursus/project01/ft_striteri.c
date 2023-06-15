@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/12 14:07:52 by castorga          #+#    #+#             */
+/*   Updated: 2023/06/12 14:07:54 by castorga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*
 Prototipo 
 void ft_striteri(char *s, void (*f)(unsigned int, char*));
@@ -49,7 +61,7 @@ int	main(void)
 	const char *str = "hello, world!";
 	char *result = ft_strdup(str); // Create a copy of the original string
 
-	ft_striteri(result, &transform_char); // Pass the address of transform_char as the function argument to ft_striteri
+	ft_striteri(result, &transform_char);
 
 	printf("Original string     : %s\n", str);
 	printf("Transformed string  : %s\n", result);

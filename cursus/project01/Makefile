@@ -6,7 +6,7 @@
 #    By: castorga <castorga@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/09 11:59:47 by castorga          #+#    #+#              #
-#    Updated: 2023/05/26 12:52:25 by castorga         ###   ########.fr        #
+#    Updated: 2023/06/15 15:55:12 by castorga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,11 +26,11 @@ SRC = ft_isalpha.c ft_isdigit.c ft_isalnum.c \
 	  ft_strjoin.c ft_strtrim.c ft_split.c \
 	  ft_itoa.c ft_strmapi.c ft_striteri.c \
 	  ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c \
-	  ft_putnbr_fd.c ft_lstmap_bonus.c
+	  ft_putnbr_fd.c 
 
 SRCBONUS = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
 		   ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c \
-		   ft_lstclear_bonus.c ft_lstiter_bonus.c
+		   ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c
 
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 OBJBONUS = $(addprefix $(OBJ_DIR), $(SRCBONUS:.c=.o))
@@ -50,13 +50,17 @@ HEADER = libft.h
 #SRC = $(patsubst %,%.c,$(myFunctions))
 #OBJS = $(patsubst %,%.o,$(myFunctions))
 
+#Regla para construir archivos objeto a partir de los archivos fuente .c.
 $(OBJ_DIR)%.o: %.c Makefile
 	@echo "Compiling... $<"
 	@$(MK) $(dir $@)
 	@$(CC) $(CFLAGS) -MMD $(INCLUDE) -c $< -o $@
 
+#Regla principal para construir el archivo de biblioteca principal libft.a.
 all: $(NAME)
 
+#Regla para construir el archivo de biblioteca principal libft.a utilizando 
+# los archivos objeto y el archivo de encabezado.
 $(NAME): $(OBJ) $(HEADER)
 	@echo "Building... $@"
 	ar rcs $(NAME) $(OBJ)
@@ -79,4 +83,7 @@ fclean: clean
 
 re: fclean $(NAME)
 
+#Al declarar estos objetivos como .PHONY, se garantiza que las reglas
+# asociadas se ejecuten independientemente de si hay un archivo con el
+# mismo nombre o no.
 .PHONY: all clean fclean re bonus

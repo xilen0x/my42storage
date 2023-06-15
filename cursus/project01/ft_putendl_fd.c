@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/12 14:02:10 by castorga          #+#    #+#             */
+/*   Updated: 2023/06/12 14:02:13 by castorga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*
 Nombre de función
 ft_putendl_fd
@@ -18,7 +30,7 @@ Descripción
 Envía la string ’s’ al file descriptor dado, seguido de un salto de línea.
 */
 
-# include "libft.h"
+#include "libft.h"
 
 void	ft_putendl_fd(char *s, int fd)
 {

@@ -6,13 +6,12 @@
 /*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 12:37:26 by castorga          #+#    #+#             */
-/*   Updated: 2023/05/16 12:37:29 by castorga         ###   ########.fr       */
+/*   Updated: 2023/06/15 14:03:14 by castorga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*  The strrchr() function is identical to strchr(), except it locates the
-     last occurrence of c.
-	 (Looks for a given character in a string, reading it from back to front)*/
+     last occurrence of c.*/
 #include "libft.h"
 
 char	*ft_strrchr(const char *s, int c)

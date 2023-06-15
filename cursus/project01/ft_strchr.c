@@ -6,7 +6,7 @@
 /*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 13:38:38 by castorga          #+#    #+#             */
-/*   Updated: 2023/05/15 13:38:41 by castorga         ###   ########.fr       */
+/*   Updated: 2023/06/15 11:14:20 by castorga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,6 @@ char	*ft_strchr(const char *s, int c)
 }
 
 /*
-#include <stdio.h>
-#include <string.h>
-
 int	main(void)
 {
 	int c = 'x';

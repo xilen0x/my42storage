@@ -27,11 +27,11 @@ Funciones autorizadas
 malloc
 
 Descripción 
-Utilizando malloc(3), genera una string que
-represente el valor entero recibido como argumento.
+Utilizando malloc(3), genera una string que represente el valor entero recibido 
+como argumento.
 Los números negativos tienen que gestionarse.
 */
-# include "libft.h"
+#include "libft.h"
 
 static size_t	ft_numlen(long long n)
 {
@@ -45,7 +45,7 @@ static size_t	ft_numlen(long long n)
 		n /= 10;
 		count++;
 	}
-	if (n == 0)//este es el caso que n=0 el len era 2 y luego aumetaba 1 lo q producia un mal uso de mem.
+	if (n == 0)
 		return (--count);
 	return (count);
 }
@@ -77,7 +77,6 @@ static char	*ft_int_to_str(long long n, size_t len)
 	str[len] = '\0';
 	return (str);
 }
-
 
 char	*ft_itoa(int n)
 {

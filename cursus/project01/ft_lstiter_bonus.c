@@ -31,11 +31,10 @@ Itera la lista ’lst’ y aplica la función ’f’ en el contenido de cada no
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	while (lst != NULL)
+	while (lst != 0)
 	{
 		f(lst->content);
-		lst = lst->next;//avanzo al nodo sig.
-
+		lst = lst->next;
 	}
 }
 
