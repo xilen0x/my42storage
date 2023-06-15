@@ -4,3 +4,4 @@
 *.dSYM/
 *.code-workspace
 42-EXAM/
+/obj
