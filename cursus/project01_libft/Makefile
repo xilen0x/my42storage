@@ -6,7 +6,7 @@
 #    By: castorga <castorga@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/09 11:59:47 by castorga          #+#    #+#              #
-#    Updated: 2023/06/15 15:55:12 by castorga         ###   ########.fr        #
+#    Updated: 2023/06/16 10:20:38 by castorga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,12 +65,13 @@ $(NAME): $(OBJ) $(HEADER)
 	@echo "Building... $@"
 	ar rcs $(NAME) $(OBJ)
 
-bonus: .bonus 
+bonus: .bonus
 
 .bonus: $(OBJBONUS)
 		@echo "Building bonus..."
 		ar rcs $(NAME) $(OBJBONUS)
 		@touch .bonus
+
 
 -include $(DEPS)
 
