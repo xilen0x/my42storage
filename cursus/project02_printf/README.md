@@ -1,54 +1,47 @@
 # my42storage
 
 # printf | 42 BCN
-*Crea tu propio printf*
+*Create your own printf*
 
 ## Summary
-
+library that contain the function ft_printf(), which mimics the original printf().
 
 ## Projects Overview
 
-| Projects | Description |
-| :------: | :---------: |
-| ``Printf`` | Nombre de programa
+Program name
 libftprintf.a
 
 Makefile 
 NAME, all, clean, fclean, re
 
-Funciones autorizadas
+Authorized functions
 malloc, free, write, va_start, va_arg, va_copy, va_end
 
-Se permite usar libft
+libft is allowed
 Yes
 
-Descripción 
-Escribe una librería que contenga la función ft_printf(), que imite el 
-printf() original. 
-
-Debes reprogramar la función printf() de la libc.
-
-Prototipo:
+Prototype:
 int ft_printf(char const *, ...);
 
-Requisitos:
-• No implementes la gestión del buffer del printf() original.
-• Deberás implementar las siguientes conversiones: cspdiuxX %
-• Tu función se comparará con el printf() original.
-• Tienes que usar el comando ar para crear tu librería. El uso de libtool command
-is forbidden.
-• Tu archivo libftprintf.a deberá ser creado en la raiz de tu repositorio.
+Requirements:
 
-Tienes que implementar las siguientes conversiones:
-• %c Imprime un solo carácter.
-• %s Imprime una string (como se define por defecto en C).
-• %p El puntero void * dado como argumento se imprime en formato hexadecimal.
-• %d Imprime un número decimal (base 10).
-• %i Imprime un entero en base 10.
-• %u Imprime un número decimal (base 10) sin signo.
-• %x Imprime un número hexadecimal (base 16) en minúsculas.
-• %X Imprime un número hexadecimal (base 16) en mayúsculas.
-• % % para imprimir el símbolo del porcentaje. |
+• Do not implement the buffer management of the original printf() .
+• You must implement the following conversions: cspdiuxX %
+• Your function will be compared to the original printf() .
+• You have to use the ar command to create your library. The use of libtool command is prohibited.
+• Your libftprintf.a file should be created in the root of your repository.
+
+You have to implement the following conversions:
+
+• %c Prints a single character.
+• %s Prints a string (as defined by default in C).
+• %p The void * pointer given as an argument is printed in hexadecimal format.
+• %d Prints a decimal number (base 10).
+• %i Prints a base 10 integer.
+• %u Prints an unsigned decimal (base 10) number.
+• %x Prints a hexadecimal number (base 16) in lower case.
+• %X Prints a hexadecimal number (base 16) in upper case.
+• % % to print the percentage symbol.
 
 
 
