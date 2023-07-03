@@ -14,9 +14,6 @@
 Nombre de programa
 libftprintf.a
 
-Archivos a entregar
-Makefile, *.h, */*.h, *.c, */*.c
-
 Makefile 
 NAME, all, clean, fclean, re
 
