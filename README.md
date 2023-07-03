@@ -4,7 +4,7 @@
 *Your first library*
 
 ## Summary
-In this project we'll be implementing our home-made functions from libc, which will be very useful to get familiar with memory allocation, and to think of creative ways to code these functions.
+In this project I have implemented my own version of some of the main libc functions. `Libft` is a C library that provides a set of essential functions commonly used in programming. It includes functions for character and string manipulation, memory handling, and more. Additionally, it offers linked list operations. These functions aim to facilitate C programming tasks.
 
 ## Function Overview
 
@@ -45,8 +45,8 @@ In this project we'll be implementing our home-made functions from libc, which w
 | ``ft_tolower`` | Makes every uppercase character in a string lowercase |
 | ``ft_toupper`` | Makes every lowercase character in a string uppercase |
 
-## Bonus
-For this part we implemented a struct defining the well-known linked lists
+## Function Overview - Bonus part regarding lists
+For this part I implemented a struct defining the well-known linked lists
 ```C
 typedef	struct	s_list
 {
@@ -55,9 +55,7 @@ typedef	struct	s_list
 }			t_list;
 ```
 
-Bonus functions to implement
-
-| Bonus Function | Description |
+| Function | Description |
 | :------------: | :---------: |
 | ``ft_lstnew`` | Creates new node allocating with ``malloc`` |
 | ``ft_lstadd_front`` | Adds new node at the beginning of the linked list |
@@ -70,15 +68,10 @@ Bonus functions to implement
 | ``ft_lstmap`` | Applies function to a copy of the list, freeing when necessary |
 | ``ft_lstget_at`` | ``[EXTRA]`` Retrieves linked list node at idex ``i``, or ``NULL``|
 
-
-## Additional Functions
-
-Besides ``mandatory`` and ``bonus`` functions, I also have a set of functions inside the ``srca/`` folder. These functions are not part of the ``libft`` subject but they will be useful in future projects. You can check their description in the [libft.h file](https://gitlab.com/madebypixel02/libft/-/blob/main/inc/libft.h)
-
 ## Installation
-To test this library out, it's recommended that you have the following packages installed
+To test this library out, it's recommended that you have the cc or gcc packages installed
 ```
-gcc clang make python-norminette valgrind (linux)
+$ sudo apt install gcc
 ```
 
 Clone the repository
@@ -90,13 +83,14 @@ make
 
 - Usage:
 
-The makefile compiles all files from the ``src/``, ``srcb/`` or ``srca/`` folders and saves the object files to the ``obj/``, ``objb/`` and ``obja/`` folders. It then generates the output file ``libft.a`` inside the ``bin/`` folder. Here are some of the commands you can try:
+The makefile compiles all files from the ``src/`` folder and saves the object files to the ``obj/`` folder. It then generates the output file ``libft.a``. Here are some of the commands you can try:
 
 ```
 make all		Compiles the libft.a file
 make bonus		Compiles all bonus files instead of the mandatory ones
-make norminette		Checks Norm for all .c and .h files in the libft/ folder
+make clean		Clean the .o files
+make fclean		Clean the .a file
 ```
 
 
-2023
+castorga 2023
