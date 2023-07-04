@@ -10,21 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include <stdlib.h>
-# include <stdio.h>
-# include <string.h>
+# include <stdarg.h>
+# include <stddef.h>
 # include <unistd.h>
 
-struct libftprintf
-{
-	/* data */
-}va_list;
+// Protoypes
 
-
-int	ft_printf(char const *, ...);
+void	ft_putcharacter_length(char character, int *length);
+void	ft_string(char *args, int *length);
+void	ft_number(int number, int *length);
+void	ft_hexadecimal(unsigned int x, int *length, char x_or_x);
+void	ft_unsigned_int(unsigned int u, int *length);
+void	ft_pointer(size_t pointer, int *length);
+int		ft_printf(char const *str, ...);
 
 #endif

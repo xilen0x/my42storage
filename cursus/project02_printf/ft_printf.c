@@ -36,8 +36,8 @@ Requisitos:
 • No implementes la gestión del buffer del printf() original.
 • Deberás implementar las siguientes conversiones: cspdiuxX %
 • Tu función se comparará con el printf() original.
-• Tienes que usar el comando ar para crear tu librería. El uso de libtool command
-is forbidden.
+• Tienes que usar el comando ar para crear tu librería. El uso de libtool 
+command is forbidden.
 • Tu archivo libftprintf.a deberá ser creado en la raiz de tu repositorio.
 
 Tienes que implementar las siguientes conversiones:
@@ -52,40 +52,71 @@ Tienes que implementar las siguientes conversiones:
 • % % para imprimir el símbolo del porcentaje.
 */
 
-int ft_printf(char const *, ...)
-{
-	va_list ap, ap2;
-	int d;
-    char c, *s;
+//#include "../project01_libft/libft.h"
+#include "ft_printf.h"
 
-	va_start(ap, fmt);
-	va_copy(ap2, ap);
-	while (*fmt)
-		switch(*fmt++)
-		{
-			case 's':                       /* string */
-				s = va_arg(ap, char *);
-				printf("string %s\n", s);
-				break;
-			case 'd':                       /* int */
-				d = va_arg(ap, int);
-				printf("int %d\n", d);
-				break;
-			case 'c':                       /* char */
-				/* Note: char is promoted to int. */
-				c = va_arg(ap, int);
-				printf("char %c\n", c);
-				break;
-		}
-	va_end(ap);
-	...
-	/* use ap2 to iterate over the arguments again */
-    ...
-	va_end(ap2);
+static void	ft_printf_checker(char s, va_list *args, int *len, int *i)
+{
+	if (s == 's')
+		ft_string(va_arg(*args, char *), len);
+	else if (s == 'd' || s == 'i')
+		ft_number(va_arg(*args, int), len);
+	else if (s == 'u')
+		ft_unsigned_int(va_arg(*args, unsigned int), len);
+	else if (s == 'x')
+		ft_hexadecimal(va_arg(*args, unsigned int), len, 'x');
+	else if (s == 'X')
+		ft_hexadecimal(va_arg(*args, unsigned int), len, 'X');
+	else if (s == 'p')
+		ft_pointer(va_arg(*args, size_t), len);
+	else if (s == 'c')
+		ft_putcharacter_length(va_arg(*args, int), len);
+	else if (s == '%')
+		ft_putcharacter_length('%', len);
+	else
+		(*i)--;
 }
 
-int main(void)
+int	ft_printf(char const *str, ...)
 {
-	ft_printf("holamundo");
+	va_list	args;
+	int		i;
+	int		length;
+
+	i = 0;
+	length = 0;
+	va_start(args, str);
+	while (str[i] != '\0')
+	{
+		if (str[i] == '%')
+		{
+			i++;
+			ft_printf_checker(str[i], &args, &length, &i);
+			i++;
+		}
+		else
+		{
+			ft_putcharacter_length((char)str[i], &length);
+			i++;
+		}
+	}
+	va_end(args);
+	return (length);
+}
+
+/*
+int	main(void)
+{
+	ft_printf("                           :    HolaMundo\n");
+	ft_printf("Cadena                     :    %s\n", "Mundo");
+	ft_printf("Digito                     :    %d\n", 8);
+	ft_printf("Caracter                   :    %c\n", 'A');
+	ft_printf("Pointer                    :    %p\n", (void *)0xDEADBEEF);
+	ft_printf("Entero en base10           :    %i\n", 42);
+	ft_printf("Decimal en base10 sin signo:    %u\n", -42,9);
+	ft_printf("Hexadecimal(base 16) en min:    %x\n", 255);
+	ft_printf("Hexadecimal(base 16) en may:    %X\n", 255);
+	ft_printf("Simbolo porcentaje         :    %%\n");
 	return (0);
 }
+*/
