@@ -70,9 +70,9 @@ static void	ft_printf_checker(char s, va_list *args, int *len, int *i)
 	else if (s == 'p')
 		ft_pointer(va_arg(*args, size_t), len);
 	else if (s == 'c')
-		ft_putcharacter_length(va_arg(*args, int), len);
+		ft_putcharacter_len(va_arg(*args, int), len);
 	else if (s == '%')
-		ft_putcharacter_length('%', len);
+		ft_putcharacter_len('%', len);
 	else
 		(*i)--;
 }
@@ -81,30 +81,30 @@ int	ft_printf(char const *str, ...)
 {
 	va_list	args;
 	int		i;
-	int		length;
+	int		len;
 
 	i = 0;
-	length = 0;
+	len = 0;
 	va_start(args, str);
 	while (str[i] != '\0')
 	{
 		if (str[i] == '%')
 		{
 			i++;
-			ft_printf_checker(str[i], &args, &length, &i);
+			ft_printf_checker(str[i], &args, &len, &i);
 			i++;
 		}
 		else
 		{
-			ft_putcharacter_length((char)str[i], &length);
+			ft_putcharacter_len((char)str[i], &len);
 			i++;
 		}
 	}
 	va_end(args);
-	return (length);
+	return (len);
 }
 
-/*
+
 int	main(void)
 {
 	ft_printf("                           :    HolaMundo\n");
@@ -119,4 +119,3 @@ int	main(void)
 	ft_printf("Simbolo porcentaje         :    %%\n");
 	return (0);
 }
-*/

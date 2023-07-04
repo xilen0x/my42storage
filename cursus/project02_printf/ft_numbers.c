@@ -2,30 +2,30 @@
 
 //--------------Digit / Integer--------------
 
-void	ft_number(int number, int *length)
+void	ft_number(int number, int *len)
 {
 	if (number == -2147483648)
 	{
 		write(1, "-2147483648", 11);
-		(*length) += 11;
+		(*len) += 11;
 		return ;
 	}
 	if (number < 0)
 	{
-		ft_putcharacter_length('-', length);
-		ft_number(number * -1, length);
+		ft_putcharacter_len('-', len);
+		ft_number(number * -1, len);
 	}
 	else
 	{
 		if (number > 9)
-			ft_number(number / 10, length);
-		ft_putcharacter_length(number % 10 + '0', length);
+			ft_number(number / 10, len);
+		ft_putcharacter_len(number % 10 + '0', len);
 	}
 }
 
 //--------------Pointer--------------
 
-void	ft_pointer(size_t pointer, int *length)
+void	ft_pointer(size_t pointer, int *len)
 {
 	char	string[25];
 	int		i;
@@ -34,10 +34,10 @@ void	ft_pointer(size_t pointer, int *length)
 	base_character = "0123456789abcdef";
 	i = 0;
 	write(1, "0x", 2);
-	(*length) += 2;
+	(*len) += 2;
 	if (pointer == 0)
 	{
-		ft_putcharacter_length('0', length);
+		ft_putcharacter_len('0', len);
 		return ;
 	}
 	while (pointer != 0)
@@ -48,13 +48,13 @@ void	ft_pointer(size_t pointer, int *length)
 	}
 	while (i--)
 	{
-		ft_putcharacter_length(string[i], length);
+		ft_putcharacter_len(string[i], len);
 	}
 }
 
 //--------------Hexadecimal --------------
 
-void	ft_hexadecimal(unsigned int x, int *length, char x_or_x)
+void	ft_hexadecimal(unsigned int x, int *len, char x_or_x)
 {
 	char	string[25];
 	char	*base_character;
@@ -67,7 +67,7 @@ void	ft_hexadecimal(unsigned int x, int *length, char x_or_x)
 	i = 0;
 	if (x == 0)
 	{
-		ft_putcharacter_length('0', length);
+		ft_putcharacter_len('0', len);
 		return ;
 	}
 	while (x != 0)
@@ -77,14 +77,14 @@ void	ft_hexadecimal(unsigned int x, int *length, char x_or_x)
 		i++;
 	}
 	while (i--)
-		ft_putcharacter_length(string[i], length);
+		ft_putcharacter_len(string[i], len);
 }
 
 //--------------unsigned int--------------
 
-void	ft_unsigned_int(unsigned int u, int *length)
+void	ft_unsigned_int(unsigned int u, int *len)
 {
 	if (u >= 10)
-		ft_unsigned_int(u / 10, length);
-	ft_putcharacter_length(u % 10 + '0', length);
+		ft_unsigned_int(u / 10, len);
+	ft_putcharacter_len(u % 10 + '0', len);
 }

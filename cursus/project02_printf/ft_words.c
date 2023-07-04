@@ -2,15 +2,15 @@
 
 //--------------Character--------------
 
-void	ft_putcharacter_length(char character, int *length)
+void	ft_putcharacter_len(char character, int *len)
 {
 	write(1, &character, 1);
-	(*length)++;
+	(*len)++;
 }
 
 //--------------String--------------
 
-void	ft_string(char *args, int *length)
+void	ft_string(char *args, int *len)
 {
 	size_t	i;
 
@@ -18,12 +18,12 @@ void	ft_string(char *args, int *length)
 	if (!args)
 	{
 		write(1, "(null)", 6);
-		(*length) += 6;
+		(*len) += 6;
 		return ;
 	}
 	while (args[i] != '\0')
 	{
-		ft_putcharacter_length(args[i], length);
+		ft_putcharacter_len(args[i], len);
 		i++;
 	}
 }
