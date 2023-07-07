@@ -14,9 +14,6 @@
 Nombre de programa
 libftprintf.a
 
-Archivos a entregar
-Makefile, *.h, */*.h, *.c, */*.c
-
 Makefile 
 NAME, all, clean, fclean, re
 
@@ -55,11 +52,13 @@ Tienes que implementar las siguientes conversiones:
 • % % para imprimir el símbolo del porcentaje.
 */
 
-int ft_printf(char const *, ...)
+#include <stdarg.h>
+
+int	ft_printf(char const *, ...)
 {
 	va_list ap, ap2;
-	int d;
-    char c, *s;
+	int		d;
+    char 	c, *s;
 
 	va_start(ap, fmt);
 	va_copy(ap2, ap);

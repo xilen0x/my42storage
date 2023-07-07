@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   first_word.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/19 10:42:56 by castorga          #+#    #+#             */
-/*   Updated: 2023/06/19 10:42:59 by castorga         ###   ########.fr       */
+/*   Created: 2023/06/29 09:16:20 by castorga          #+#    #+#             */
+/*   Updated: 2023/06/29 09:16:22 by castorga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include<unistd.h>
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+int	main(int argc, char *argv[])
+{
+	int	i;
 
-# include <stdlib.h>
-# include <stdio.h>
-# include <string.h>
-# include <unistd.h>
-
-
-
-
-int	ft_printf(char const *, ...);
-
-#endif
+	i = 0;
+	if (argc == 2)
+	{
+		while (argv[1][i] == ' ' || argv[1][i] == '\t')
+			i++;
+		while ((argv[1][i] != ' ' && argv[1][i] != '\t') && argv[1][i])
+		{
+			write(1, &argv[1][i], 1);
+			i++;
+		}
+	}
+	write(1, "\n", 1);
+	return (0);
+}

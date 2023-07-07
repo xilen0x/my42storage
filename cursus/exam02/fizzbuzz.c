@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   fizzbuzz.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/19 10:42:56 by castorga          #+#    #+#             */
-/*   Updated: 2023/06/19 10:42:59 by castorga         ###   ########.fr       */
+/*   Created: 2023/06/29 11:22:44 by castorga          #+#    #+#             */
+/*   Updated: 2023/06/29 11:22:47 by castorga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include<unistd.h>
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+int	main(void)
+{
 
-# include <stdlib.h>
-# include <stdio.h>
-# include <string.h>
-# include <unistd.h>
-
-
-
-
-int	ft_printf(char const *, ...);
-
-#endif
+	return (0);
+}
