@@ -15,52 +15,42 @@ NAME = libftprintf.a
 
 OBJ_DIR = ./obj/
 
-SRC = ft_printf.c 
+SRC = ft_printf.c ft_numbers.c ft_words.c
 
-OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
+OBJS = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 
-DEPS = $(addsuffix .d, $(basename $(OBJ)))
+DEPS = $(addsuffix .d, $(basename $(OBJS)))
 MK = mkdir -p
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror
 
 INCLUDE = -I ./
 
-CC = cc
+RM	= rm -rf
 
-HEADER = libftprintf.h
+CC	= gcc
 
 # -------------------- Rules --------------------
-#SRC = $(patsubst %,%.c,$(myFunctions))
-#OBJS = $(patsubst %,%.o,$(myFunctions))
-
-#Construccion de archivos objeto a partir de los archivos fuente .c.
 $(OBJ_DIR)%.o: %.c Makefile
 	@echo "Compiling... $<"
 	@$(MK) $(dir $@)
 	@$(CC) $(CFLAGS) -MMD $(INCLUDE) -c $< -o $@
 
-#Construccion de el archivo de biblioteca principal libft.a.
 all: $(NAME)
 
-#Construccion de el archivo de biblioteca principal libft.a utilizando 
-# los archivos objeto y el archivo de encabezado.
-$(NAME): $(OBJ) $(HEADER)
+$(NAME): $(OBJS)
 	@echo "Building... $@"
-	ar rcs $(NAME) $(OBJ)
+	ar rcs $(NAME) $(OBJS)
 
 -include $(DEPS)
 
 # -------------------- Clean --------------------
 clean:
-	rm -rf $(OBJ_DIR)
+	$(RM) $(OBJ_DIR)
 
-fclean: clean
-	rm -rf $(NAME)
+fclean:	clean
+	$(RM) $(NAME)
 
-re: fclean $(NAME)
+re:	fclean $(NAME)
 
-#Al declarar estos objetivos como .PHONY, se garantiza que las reglas
-# asociadas se ejecuten independientemente de si hay un archivo con el
-# mismo nombre o no.
-.PHONY: all clean fclean re
+.PHONY:	all clean fclean re
