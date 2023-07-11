@@ -20,9 +20,6 @@ NAME, all, clean, fclean, re
 Funciones autorizadas
 malloc, free, write, va_start, va_arg, va_copy, va_end
 
-Se permite usar libft
-Yes
-
 Descripción 
 Escribe una librería que contenga la función ft_printf(), que imite el 
 printf() original. 
@@ -52,51 +49,52 @@ Tienes que implementar las siguientes conversiones:
 • % % para imprimir el símbolo del porcentaje.
 */
 
-//#include "../project01_libft/libft.h"
 #include "ft_printf.h"
 
-static void	ft_printf_checker(char s, va_list *args, int *len, int *i)
+static void	ft_printf_options(char op, va_list *args, int *len, int *i)
 {
-	if (s == 's')
+	if (op == 's')
 		ft_string(va_arg(*args, char *), len);
-	else if (s == 'd' || s == 'i')
-		ft_number(va_arg(*args, int), len);
-	else if (s == 'u')
-		ft_unsigned_int(va_arg(*args, unsigned int), len);
-	else if (s == 'x')
+	else if (op == 'd' || op == 'i')
+		ft_putnbr(va_arg(*args, int), len);
+	//else if (op == 'u')
+	//	ft_unsigned_int(va_arg(*args, unsigned int), len);
+	/*else if (op == 'x')
 		ft_hexadecimal(va_arg(*args, unsigned int), len, 'x');
-	else if (s == 'X')
+	else if (op == 'X')
 		ft_hexadecimal(va_arg(*args, unsigned int), len, 'X');
-	else if (s == 'p')
-		ft_pointer(va_arg(*args, size_t), len);
-	else if (s == 'c')
-		ft_putcharacter_len(va_arg(*args, int), len);
-	else if (s == '%')
-		ft_putcharacter_len('%', len);
+	else if (op == 'p')
+		ft_pointer(va_arg(*args, size_t), len);*/
+	else if (op == 'c')
+		ft_putchar_len(va_arg(*args, int), len);
+	else if (op == '%')
+		ft_putchar_len('%', len);
 	else
 		(*i)--;
 }
 
 int	ft_printf(char const *str, ...)
 {
-	va_list	args;
 	int		i;
 	int		len;
+	va_list	args;//pra almacenar argumentos variables
 
 	i = 0;
 	len = 0;
+	if (str == NULL)
+		return (0);
 	va_start(args, str);
-	while (str[i] != '\0')
+	while (str[i])
 	{
 		if (str[i] == '%')
 		{
 			i++;
-			ft_printf_checker(str[i], &args, &len, &i);
+			ft_printf_options(str[i], &args, &len, &i);
 			i++;
 		}
 		else
 		{
-			ft_putcharacter_len((char)str[i], &len);
+			ft_putchar_len(str[i], &len);
 			i++;
 		}
 	}
@@ -106,15 +104,30 @@ int	ft_printf(char const *str, ...)
 
 int	main(void)
 {
-	ft_printf("                           :    HolaMundo\n");
-	ft_printf("Cadena                     :    %s\n", "Mundo");
-	ft_printf("Digito                     :    %d\n", 8);
+	ft_printf("Cadena sin modificador     :    HolaMundo\n");
+	printf("Cadena sin modificador     :    HolaMundo\n");
+	
 	ft_printf("Caracter                   :    %c\n", 'A');
+	printf("Caracter                   :    %c\n", 'A');
+	
+	ft_printf("Cadena                     :    %s\n", "HolaMundo");
+	printf("Cadena                     :    %s\n", "HolaMundo");
+	
+	ft_printf("Entero en base10 (d)     :    %d\n", 052);//imprime 42
+	printf("Entero en base10 (d)     :    %d\n", 052);
+	
+	ft_printf("Entero en base10 (i)     :    %i\n", 052);
+	printf("Entero en base10 (i)     :    %i\n", 052);
+	
+	ft_printf("Simbolo porcentaje       :    %%\n");
+	printf("Simbolo porcentaje       :    %%\n");
+	
+	/*ft_printf("Decimal en base10 sin signo:    %u\n", -42.9);
+	printf("Decimal en base10 sin signo:    %u\n", -42.9);*/
+	/*
 	ft_printf("Pointer                    :    %p\n", (void *)0xDEADBEEF);
-	ft_printf("Entero en base10           :    %i\n", 42);
-	ft_printf("Decimal en base10 sin signo:    %u\n", -42.9);
 	ft_printf("Hexadecimal(base 16) en min:    %x\n", 255);
 	ft_printf("Hexadecimal(base 16) en may:    %X\n", 255);
-	ft_printf("Simbolo porcentaje         :    %%\n");
+	*/
 	return (0);
 }

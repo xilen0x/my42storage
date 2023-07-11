@@ -1,18 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_words.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/07 10:28:40 by castorga          #+#    #+#             */
+/*   Updated: 2023/07/07 10:28:44 by castorga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-//--------------Character--------------
-
-void	ft_putcharacter_len(char character, int *len)
+// ----------- in case of character -----------
+void	ft_putchar_len(char c, int *len)
 {
-	write(1, &character, 1);
+	write(1, &c, 1);
 	(*len)++;
 }
 
-//--------------String--------------
-
+// ----------- in case of string -----------
 void	ft_string(char *args, int *len)
 {
-	size_t	i;
+	unsigned int	i;//tipo anterior size_t
 
 	i = 0;
 	if (!args)
@@ -23,7 +33,7 @@ void	ft_string(char *args, int *len)
 	}
 	while (args[i] != '\0')
 	{
-		ft_putcharacter_len(args[i], len);
+		ft_putchar_len(args[i], len);
 		i++;
 	}
 }
