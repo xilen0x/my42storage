@@ -61,8 +61,8 @@ static void	ft_printf_options(char op, va_list *args, int *len, int *i)
 		ft_unsigned_int(va_arg(*args, unsigned int), len);
 	else if (op == 'x' || op == 'X')
 		ft_hexadecimal(va_arg(*args, unsigned int), len, op);
-	/*else if (op == 'p')
-		ft_pointer(va_arg(*args, size_t), len);*/
+	else if (op == 'p')
+		ft_pointer(va_arg(*args, unsigned long), len);
 	else if (op == 'c')
 		ft_putchar_len(va_arg(*args, int), len);
 	else if (op == '%')
@@ -100,36 +100,38 @@ int	ft_printf(char const *str, ...)
 	return (len);
 }
 
-int	main(void)
+/*int	main(void)
 {
 	ft_printf("Cadena sin modificador     :    HolaMundo\n");
-	printf("Cadena sin modificador     :    HolaMundo\n");
-	
+	   printf("Cadena sin modificador     :    HolaMundo\n");
+
 	ft_printf("Caracter                   :    %c\n", 'A');
-	printf("Caracter                   :    %c\n", 'A');
-	
+	   printf("Caracter                   :    %c\n", 'A');
+
 	ft_printf("Cadena                     :    %s\n", "HolaMundo");
-	printf("Cadena                     :    %s\n", "HolaMundo");
-	
-	ft_printf("Entero en base10 (d)     :    %d\n", 42);
-	printf("Entero en base10 (d)     :    %d\n", 42);
-	
-	ft_printf("Entero en base10 (i)     :    %i\n", 052);//imprime 42
-	printf("Entero en base10 (i)     :    %i\n", 052);
-	
-	ft_printf("Simbolo porcentaje       :    %%\n");
-	printf("Simbolo porcentaje       :    %%\n");
-	
-	ft_printf("Entero en base10 sin signo:    %u\n", -42);
-	printf("Entero en base10 sin signo:    %u\n", -42);
-		
+	   printf("Cadena                     :    %s\n", "HolaMundo");
+
+	ft_printf("Entero en base10 (d)       :    %d\n", 42);
+	   printf("Entero en base10 (d)       :    %d\n", 42);
+
+	ft_printf("Entero en base10 (i)       :    %i\n", 052);//imprime 42
+	   printf("Entero en base10 (i)       :    %i\n", 052);
+
+	ft_printf("Simbolo porcentaje         :    %%\n");
+	   printf("Simbolo porcentaje         :    %%\n");
+
+	ft_printf("Entero en base10 sin signo :    %u\n", -42);
+	   printf("Entero en base10 sin signo :    %u\n", -42);
+
 	ft_printf("Hexadecimal(base 16) en min:    %x\n", 0xdeadbeef);
-	printf("Hexadecimal(base 16) en min:    %x\n", 0xdeadbeef);
+	   printf("Hexadecimal(base 16) en min:    %x\n", 0xdeadbeef);
 
 	ft_printf("Hexadecimal(base 16) en may:    %X\n", 0xDEADBEEF);
-	printf("Hexadecimal(base 16) en may:    %X\n", 0xDEADBEEF);
-	/*
+	   printf("Hexadecimal(base 16) en may:    %X\n", 0xDEADBEEF);
+
 	ft_printf("Pointer                    :    %p\n", (void *)0xDEADBEEF);
-	*/
+	   printf("Pointer                    :    %p\n", (void *)0xDEADBEEF);
+
 	return (0);
 }
+*/

@@ -19,6 +19,7 @@ void	ft_putnbr(int nb, int *len)
 	if (nb == -2147483648)
 	{
 		write(1, "-2147483648", 11);
+		*len += 11;
 		return ;
 	}
 	if (nb < 0)
@@ -49,7 +50,7 @@ void	ft_unsigned_int(unsigned int nb, int *len)
 }
 
 // ----------- in case of hexadecimal -----------
-void	ft_hexadecimal(unsigned int x, int *len, char op)
+void	ft_hexadecimal(unsigned int exa, int *len, char op)
 {
 	char	str[20];
 	char	*base;
@@ -60,15 +61,41 @@ void	ft_hexadecimal(unsigned int x, int *len, char op)
 		base = "0123456789ABCDEF";
 	else
 		base = "0123456789abcdef";
-	if (x == 0)
+	if (exa == 0)
 	{
 		ft_putchar_len('0', len);
 		return ;
 	}
-	while (x != 0)
+	while (exa != 0)
 	{
-		str[i] = base [x % 16];
-		x = x / 16;
+		str[i] = base [exa % 16];	//primera iteracion seria str[0] = base[15] osea str[0] = 'f'
+		exa = exa / 16;
+		i++;
+	}
+	while (i--)
+		ft_putchar_len(str[i], len);
+}
+
+// ----------- in case of pointer -----------
+void	ft_pointer(unsigned long pointer, int *len)
+{
+	char	str[20];
+	char	*base;
+	int		i;
+
+	base = "0123456789abcdef";
+	i = 0;
+	write(1, "0x", 2);
+	(*len) += 2;
+	if (pointer == 0)
+	{
+		ft_putchar_len('0', len);
+		return ;
+	}
+	while (pointer != 0)
+	{
+		str[i] = base[pointer % 16];
+		pointer = pointer / 16;
 		i++;
 	}
 	while (i--)
