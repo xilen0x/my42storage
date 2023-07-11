@@ -32,3 +32,50 @@ void	ft_putnbr(int nb, int *len)
 	}
 	ft_putchar_len(nb % 10 + '0', len);
 }
+
+// ----------- in case of unsigned int-----------
+void	ft_unsigned_int(unsigned int nb, int *len)
+{
+	if (nb < 0)
+	{
+		nb = -nb;
+		ft_putchar_len(nb, len);
+	}
+	if (nb >= 10)
+	{
+		ft_putnbr(nb / 10, len);
+	}
+	ft_putchar_len(nb % 10 + '0', len);
+}
+
+// ----------- in case of hexadecimal -----------
+void	ft_hexadecimal(unsigned int x, int *len, char op)
+{
+	char	str[20];
+	char	*base;
+	int		i;
+
+	i = 0;
+	if (op == 'X')
+		base = "0123456789ABCDEF";
+	else
+		base = "0123456789abcdef";
+	if (x == 0)
+	{
+		ft_putchar_len('0', len);
+		return ;
+	}
+	while (x != 0)
+	{
+		str[i] = base [x % 16];
+		x = x / 16;
+		i++;
+	}
+	while (i--)
+		ft_putchar_len(str[i], len);
+}
+
+
+/*NOTA
+manejar la opcion si write falla...if write = -1...algo asi
+*/

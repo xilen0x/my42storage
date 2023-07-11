@@ -21,9 +21,9 @@
 // ------------------ Prototypes ----------------------
 void	ft_putchar_len(char character, int *len);
 void	ft_string(char *args, int *len);
-void	ft_putnbr(int number, int *len);
-void	ft_hexadecimal(unsigned int x, int *len, char x_or_x);
-void	ft_unsigned_int(unsigned int u, int *len);
+void	ft_putnbr(int nb, int *len);
+void	ft_hexadecimal(unsigned int x, int *len, char op);
+void	ft_unsigned_int(unsigned int nb, int *len);
 void	ft_pointer(size_t pointer, int *len);
 int		ft_printf(char const *str, ...);
 
