@@ -15,7 +15,11 @@
 // ----------- in case of character -----------
 void	ft_putchar_len(char c, int *len)
 {
-	write(1, &c, 1);
+	if (write(1, &c, 1) < 0)
+	{
+		(*len) = -1;
+		return ;
+	}
 	(*len)++;
 }
 
