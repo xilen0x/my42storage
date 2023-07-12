@@ -18,7 +18,11 @@ void	ft_putnbr(int nb, int *len)
 {
 	if (nb == -2147483648)
 	{
-		write(1, "-2147483648", 11);
+		if (write(1, "-2147483648", 11) < 0)
+		{
+			(*len) = -1;
+			return ;
+		}
 		*len += 11;
 		return ;
 	}
@@ -85,7 +89,11 @@ void	ft_pointer(unsigned long pointer, int *len)
 
 	base = "0123456789abcdef";
 	i = 0;
-	write(1, "0x", 2);
+	if (write(1, "0x", 2) < 0)
+	{
+		(*len) = -1;
+		return ;
+	}
 	(*len) += 2;
 	if (pointer == 0)
 	{
@@ -101,8 +109,3 @@ void	ft_pointer(unsigned long pointer, int *len)
 	while (i--)
 		ft_putchar_len(str[i], len);
 }
-
-
-/*NOTA
-manejar la opcion si write falla...if write = -1...algo asi
-*/

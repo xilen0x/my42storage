@@ -15,12 +15,15 @@
 // ----------- in case of character -----------
 void	ft_putchar_len(char c, int *len)
 {
-	if (write(1, &c, 1) < 0)
+	if (*len != -1)
 	{
-		(*len) = -1;
-		return ;
+		if (write(1, &c, 1) < 0)
+		{
+			(*len) = -1;
+			return ;
+		}
+		(*len)++;
 	}
-	(*len)++;
 }
 
 // ----------- in case of string -----------
@@ -29,13 +32,15 @@ void	ft_string(char *args, int *len)
 	unsigned int	i;//tipo anterior size_t
 
 	i = 0;
-	if (!args)
+	if (args == NULL)
 	{
-		write(1, "(null)", 6);
-		(*len) += 6;
+		if (write(1, "(null)", 6) == -1)
+			*len = -1;
+		else
+			(*len) += 6;
 		return ;
 	}
-	while (args[i] != '\0')
+	while (args[i] != '\0' && *len != -1)
 	{
 		ft_putchar_len(args[i], len);
 		i++;

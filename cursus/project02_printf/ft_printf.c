@@ -53,6 +53,8 @@ Tienes que implementar las siguientes conversiones:
 
 static void	ft_printf_options(char op, va_list *args, int *len, int *i)
 {
+	if (*len == -1)
+		return ;
 	if (op == 's')
 		ft_string(va_arg(*args, char *), len);
 	else if (op == 'd' || op == 'i')
@@ -79,10 +81,8 @@ int	ft_printf(char const *str, ...)
 
 	i = 0;
 	len = 0;
-	if (str == NULL)
-		return (0);
 	va_start(args, str);
-	while (str[i])
+	while (str[i] && len != -1)
 	{
 		if (str[i] == '%')
 		{
@@ -100,7 +100,7 @@ int	ft_printf(char const *str, ...)
 	return (len);
 }
 
-/*int	main(void)
+int	main(void)
 {
 	ft_printf("Cadena sin modificador     :    HolaMundo\n");
 	   printf("Cadena sin modificador     :    HolaMundo\n");
@@ -134,4 +134,3 @@ int	ft_printf(char const *str, ...)
 
 	return (0);
 }
-*/
