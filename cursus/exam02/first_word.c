@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   first_word.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/20 12:47:21 by castorga          #+#    #+#             */
-/*   Updated: 2023/04/20 12:47:24 by castorga         ###   ########.fr       */
+/*   Created: 2023/06/29 09:16:20 by castorga          #+#    #+#             */
+/*   Updated: 2023/06/29 09:16:22 by castorga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
+#include<unistd.h>
+
+int	main(int argc, char *argv[])
 {
 	int	i;
 
 	i = 0;
-	while (str[i] != '\0')
+	if (argc == 2)
 	{
-		i++;
+		while (argv[1][i] == ' ' || argv[1][i] == '\t')
+			i++;
+		while ((argv[1][i] != ' ' && argv[1][i] != '\t') && argv[1][i])
+		{
+			write(1, &argv[1][i], 1);
+			i++;
+		}
 	}
-	return (i);
-}
-
-
-/*
-#include<stdio.h>
-
-int	main(void)
-{
-	printf("%d", ft_strlen("Last day in the pool 42!"));
+	write(1, "\n", 1);
 	return (0);
 }
-*/

@@ -1,29 +1,48 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_words.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/07 10:28:40 by castorga          #+#    #+#             */
+/*   Updated: 2023/07/07 10:28:44 by castorga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-//--------------Character--------------
-
-void	ft_putcharacter_len(char character, int *len)
+// ----------- in case of character -----------
+void	ft_putchar_len(char c, int *len)
 {
-	write(1, &character, 1);
-	(*len)++;
+	if (*len != -1)
+	{
+		if (write(1, &c, 1) < 0)
+		{
+			(*len) = -1;
+			return ;
+		}
+		(*len)++;
+	}
 }
 
-//--------------String--------------
-
+// ----------- in case of string -----------
 void	ft_string(char *args, int *len)
 {
-	size_t	i;
+	unsigned int	i;//tipo anterior size_t
 
 	i = 0;
-	if (!args)
+	if (args == NULL)
 	{
-		write(1, "(null)", 6);
-		(*len) += 6;
+		if (write(1, "(null)", 6) == -1)
+			*len = -1;
+		else
+			(*len) += 6;
 		return ;
 	}
-	while (args[i] != '\0')
+	while (args[i] != '\0' && *len != -1)
 	{
-		ft_putcharacter_len(args[i], len);
+		ft_putchar_len(args[i], len);
 		i++;
 	}
 }
