@@ -107,15 +107,15 @@ int	ft_printf(char const *str, ...)
 
 int	main(void)
 {
-	ft_printf("                           :    HolaMundo\n");
-	ft_printf("Cadena                     :    %s\n", "Mundo");
-	ft_printf("Digito                     :    %d\n", 8);
-	ft_printf("Caracter                   :    %c\n", 'A');
-	ft_printf("Pointer                    :    %p\n", (void *)0xDEADBEEF);
-	ft_printf("Entero en base10           :    %i\n", 42);
-	ft_printf("Decimal en base10 sin signo:    %u\n", -42,9);
-	ft_printf("Hexadecimal(base 16) en min:    %x\n", 255);
-	ft_printf("Hexadecimal(base 16) en may:    %X\n", 255);
-	ft_printf("Simbolo porcentaje         :    %%\n");
+	ft_printf(" Cadena sin format specifier:    HolaMundo\n");
+	ft_printf("Cadena                      :    %s\n", "Mundo");
+	ft_printf("Digito                      :    %d\n", 8);
+	ft_printf("Caracter                    :    %c\n", 'A');
+	ft_printf("Pointer                     :    %p\n", (void *)0xDEADBEEF);
+	ft_printf("Entero en base10            :    %i\n", 42);
+	ft_printf("Decimal en base10 sin signo :    %u\n", -42,9);
+	ft_printf("Hexadecimal(base 16) en min :    %x\n", 255);
+	ft_printf("Hexadecimal(base 16) en may :    %X\n", 255);
+	ft_printf("Simbolo porcentaje          :    %%\n");
 	return (0);
 }
