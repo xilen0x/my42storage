@@ -29,7 +29,7 @@ void	ft_putchar_len(char c, int *len)
 // ----------- in case of string -----------
 void	ft_string(char *args, int *len)
 {
-	unsigned int	i;//tipo anterior size_t
+	unsigned int	i;
 
 	i = 0;
 	if (args == NULL)

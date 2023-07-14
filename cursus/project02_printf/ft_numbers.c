@@ -72,7 +72,7 @@ void	ft_hexadecimal(unsigned int exa, int *len, char op)
 	}
 	while (exa != 0)
 	{
-		str[i] = base [exa % 16];	//primera iteracion seria str[0] = base[15] osea str[0] = 'f'
+		str[i] = base [exa % 16];
 		exa = exa / 16;
 		i++;
 	}

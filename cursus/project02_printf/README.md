@@ -17,9 +17,6 @@ NAME, all, clean, fclean, re
 Authorized functions
 malloc, free, write, va_start, va_arg, va_copy, va_end
 
-libft is allowed
-Yes
-
 Prototype:
 int ft_printf(char const *, ...);
 
@@ -43,6 +40,29 @@ You have to implement the following conversions:
 • %X Prints a hexadecimal number (base 16) in upper case.
 • % % to print the percentage symbol.
 
+OUTPUT:
+'% gcc ft_printf.c ft_words.c ft_numbers.c
+...
 
+Cadena sin modificador     :    HolaMundo //output my solution
+Cadena sin modificador     :    HolaMundo //output original printf
+Caracter                   :    A
+Caracter                   :    A
+Cadena                     :    HolaMundo
+Cadena                     :    HolaMundo
+Entero en base10 (d)       :    42
+Entero en base10 (d)       :    42
+Entero en base10 (i)       :    42
+Entero en base10 (i)       :    42
+Simbolo porcentaje         :    %
+Simbolo porcentaje         :    %
+Entero en base10 sin signo :    4294967254
+Entero en base10 sin signo :    4294967254
+Hexadecimal(base 16) en min:    deadbeef
+Hexadecimal(base 16) en min:    deadbeef
+Hexadecimal(base 16) en may:    DEADBEEF
+Hexadecimal(base 16) en may:    DEADBEEF
+Pointer                    :    0xdeadbeef
+Pointer                    :    0xdeadbeef'
 
 castorga 2023
