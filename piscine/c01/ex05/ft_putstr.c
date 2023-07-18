@@ -14,12 +14,12 @@
 
 void	ft_putstr(char *str)
 {
-	int	counter;
+	int	i;
 
-	counter = 0;
-	while (str[counter] != 0)
+	i = 0;
+	while (str[i] != 0)
 	{
-		write(1, &str[counter], 1);
-		counter++;
+		write(1, &str[i], 1);
+		i++;
 	}
 }

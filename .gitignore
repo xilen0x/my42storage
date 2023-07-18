@@ -5,3 +5,4 @@
 *.code-workspace
 42-EXAM/
 /obj
+.vscode/*
