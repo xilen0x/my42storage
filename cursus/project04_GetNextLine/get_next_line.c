@@ -54,21 +54,23 @@ char	*get_next_line(int fd)
 {
 	char	buffer[BUFFER_SIZE + 1];
 	char	*line;
-	int		b;
+	int		bytes_read;
 	int		i;
+	int		j;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	line = malloc(sizeof(char) * (BUFFER_SIZE + 1)); // Almacenar línea dinámicamente
+	line = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!line)
 		return (NULL);
 	i = 0;
-	while ((b = read(fd, buffer, BUFFER_SIZE)) > 0)
+	bytes_read = read(fd, buffer, BUFFER_SIZE);
+	while (bytes_read > 0)
 	{
-		int j = 0;
-		while (j < b)
+		j = 0;
+		while (j < bytes_read)
 		{
-			line[i++] = buffer[j];
+			line[i++] = buffer[j]; 
 			if (buffer[j] == '\n')
 			{
 				line[i] = '\0';
@@ -76,9 +78,9 @@ char	*get_next_line(int fd)
 			}
 			j++;
 		}
+		bytes_read = read(fd, buffer, BUFFER_SIZE);
 	}
-
-	free(line); // Liberar memoria en caso de error o EOF
+	free(line);
 	return (NULL);
 }
 
@@ -92,23 +94,14 @@ int	main(void)
 
 	fd = open("example.txt", O_RDONLY);
 	if (fd < 0)
-	{
-		// Manejo      de error al abrir el archivo
 		return (1);
-	}
-
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
-		// Procesar o imprimir la línea leída
 		printf("%s\n", line);
-
-		free(line); // Liberar memoria después de su uso
-
+		free(line);
 		line = get_next_line(fd);
 	}
-
-	close(fd); // Cerrar el archivo al finalizar
-
+	close(fd);
 	return (0);
 }

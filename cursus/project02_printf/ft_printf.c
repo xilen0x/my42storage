@@ -61,7 +61,8 @@ int	ft_printf(char const *str, ...)
 	return (len);
 }
 
-/*int	main(void)
+/*
+int	main(void)
 {
 	ft_printf("Cadena sin modificador     :    HolaMundo\n");
 	   printf("Cadena sin modificador     :    HolaMundo\n");

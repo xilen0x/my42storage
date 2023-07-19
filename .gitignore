@@ -1,8 +1,8 @@
+.*
+!/.gitignore
 .DS_Store
 *.out
 *.o
-*.dSYM/
-*.code-workspace
 42-EXAM/
 /obj
-.vscode/*
+
