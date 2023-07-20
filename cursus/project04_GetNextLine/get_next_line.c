@@ -68,16 +68,14 @@ char	*get_next_line(int fd)
 	while (bytes_read > 0)
 	{
 		j = 0;
-		while (j < bytes_read)
-		{
-			line[i++] = buffer[j]; 
-			if (buffer[j] == '\n')
-			{
-				line[i] = '\0';
-				return (line);
-			}
-			j++;
-		}
+		//while (j < bytes_read)
+		//{
+		line =	ft_strdup(buffer);
+
+		// if (buffer[j] == '\n')
+		// {
+		// 	line[i] = '\0';
+		return (line);
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 	}
 	free(line);
