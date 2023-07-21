@@ -1,7 +1,12 @@
+.*
+!/.gitignore
 .DS_Store
 *.out
 *.o
-*.dSYM/
-*.code-workspace
 42-EXAM/
+<<<<<<< HEAD
 /obj/*
+=======
+/obj
+
+>>>>>>> 9b84612488717b91f801a323981bdfc4dd40aca6

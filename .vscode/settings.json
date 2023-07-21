@@ -2,6 +2,11 @@
 	"files.associations": {
 		"*.a": "c",
 		"cstring": "c",
-		"locale": "c"
+		"locale": "c",
+		"stdarg.h": "c",
+		"cstdarg": "c",
+		"cstdio": "c",
+		"cwchar": "c",
+		"get_next_line.h": "c"
 	}
 }

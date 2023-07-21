@@ -1,25 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/06 17:44:23 by castorga          #+#    #+#             */
-/*   Updated: 2023/04/06 17:44:36 by castorga         ###   ########.fr       */
+/*   Created: 2023/07/18 16:19:21 by castorga          #+#    #+#             */
+/*   Updated: 2023/07/18 16:20:50 by castorga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "get_next_line.h"
 
-void	ft_putstr(char *str)
+int	ft_strlen(const char *string)
 {
-	int	i;
+	int	count;
+
+	count = 0;
+	while (string[count])
+		count++;
+	return (count);
+}
+
+char	*ft_strdup(const char *string)
+{
+	int		i;
+	int		size;
+	char	*duplicate;
 
 	i = 0;
-	while (str[i] != 0)
+	size = ft_strlen(string);
+	duplicate = malloc(sizeof(char) * (size + 1));
+	if (!duplicate)
+		return (0);
+	while (string[i])
 	{
-		write(1, &str[i], 1);
+		duplicate[i] = string[i];
 		i++;
 	}
+	duplicate[i] = '\0';
+	return (duplicate);
 }
