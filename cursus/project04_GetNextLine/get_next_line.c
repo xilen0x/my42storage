@@ -54,9 +54,10 @@ char	*get_next_line(int fd)
 {
 	char	buffer[BUFFER_SIZE + 1];
 	char	*line;
+	char	*temp;
 	int		bytes_read;
 	int		i;
-	int		j;
+	//int		j;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
@@ -67,15 +68,20 @@ char	*get_next_line(int fd)
 	bytes_read = read(fd, buffer, BUFFER_SIZE);
 	while (bytes_read > 0)
 	{
-		j = 0;
-		//while (j < bytes_read)
-		//{
-		line =	ft_strdup(buffer);
-
-		// if (buffer[j] == '\n')
-		// {
-		// 	line[i] = '\0';
-		return (line);
+		buffer[bytes_read] = '\0'; // Asigno al buffer q termine con '\0'
+		i = 0;
+		while (buffer[i])
+		{
+			if (buffer[i] == '\n')
+			{
+				line = ft_strjoin(line, buffer, 0, i);
+				temp = ft_strdup(buffer + i + 1); // Copiar el resto de la línea a temp
+				free(line); // Liberar la memoria anterior de line
+				return (temp);
+			}
+			i++;
+		}
+		line = ft_strjoin(line, buffer, 0, i);
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 	}
 	free(line);
