@@ -50,44 +50,106 @@ get_next_line_utils.c
 
 #include "get_next_line.h"	
 
+/*char *get_next_line(int fd)
+{
+    static char buffer[BUFFER_SIZE + 1];
+    static int bytes_read = 0;
+    static int current_pos = 0;
+    char *line;
+    int i = 0;
+    //int j;
+
+    if (fd < 0 || BUFFER_SIZE <= 0)
+        return (NULL);
+
+    line = malloc((BUFFER_SIZE + 1) * sizeof(char));
+    if (!line)
+        return (NULL);
+
+    while (1)
+    {
+        if (current_pos == bytes_read)
+        {
+            bytes_read = read(fd, buffer, BUFFER_SIZE);
+            current_pos = 0;
+            if (bytes_read <= 0)
+            {
+                line[i] = '\0';
+                if (i == 0)
+                {
+                    free(line);
+                    line = NULL;
+                }
+                return (line);
+            }
+        }
+
+        if (buffer[current_pos] == '\n')
+        {
+            line[i] = '\0';
+            current_pos++;
+            return (line);
+        }
+
+        line[i] = buffer[current_pos];
+        i++;
+        current_pos++;
+    }
+
+    // This point should not be reached
+    return (NULL);
+}*/
+
+#include <unistd.h>
+#include <stdlib.h>
+
 char	*get_next_line(int fd)
 {
-	char	buffer[BUFFER_SIZE + 1];
-	char	*line;
-	char	*temp;
-	int		bytes_read;
-	int		i;
-	//int		j;
+	static char	buffer[BUFFER_SIZE + 1];
+	static int	bytes_read = 0;
+	static int	current_pos = 0;
+	char		*line;
+	int			i;
 
+	i = 0;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	line = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!line)
 		return (NULL);
-	i = 0;
-	bytes_read = read(fd, buffer, BUFFER_SIZE);
-	while (bytes_read > 0)
+	while (1)
 	{
-		buffer[bytes_read] = '\0'; // Asigno al buffer q termine con '\0'
-		i = 0;
-		while (buffer[i])
+		if (current_pos == bytes_read)
 		{
-			if (buffer[i] == '\n')
+			bytes_read = read(fd, buffer, BUFFER_SIZE);
+			current_pos = 0;
+			if (bytes_read <= 0)
 			{
-				line = ft_strjoin(line, buffer, 0, i);
-				temp = ft_strdup(buffer + i + 1); // Copiar el resto de la línea a temp
-				free(line); // Liberar la memoria anterior de line
-				return (temp);
+				line[i] = '\0';
+				if (i == 0)
+				{
+					free(line);
+					line = NULL;
+				}
+				bytes_read = 0;
+				current_pos = 0;
+				return (line);
 			}
-			i++;
 		}
-		line = ft_strjoin(line, buffer, 0, i);
-		bytes_read = read(fd, buffer, BUFFER_SIZE);
+		if (buffer[current_pos] == '\n')
+		{
+			line[i] = '\0';
+			current_pos++;
+			return (line);
+		}
+		line[i] = buffer[current_pos];
+		i++;
+		current_pos++;
 	}
-	free(line);
 	return (NULL);
 }
 
+/*
 #include <fcntl.h>
 #include <stdio.h>
 
@@ -109,3 +171,4 @@ int	main(void)
 	close(fd);
 	return (0);
 }
+*/
