@@ -6,7 +6,7 @@
 /*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 09:54:53 by castorga          #+#    #+#             */
-/*   Updated: 2023/07/17 09:54:56 by castorga         ###   ########.fr       */
+/*   Updated: 2023/07/25 11:49:19 by castorga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,108 +48,58 @@ función get_next_line.
 get_next_line_utils.c
 */
 
-#include "get_next_line.h"	
+#include "get_next_line.h"
 
-/*char *get_next_line(int fd)
+/* ------------------ Clean Line function ------------------ */
+char	clean_line(linea_ya_leida)
 {
-    static char buffer[BUFFER_SIZE + 1];
-    static int bytes_read = 0;
-    static int current_pos = 0;
-    char *line;
-    int i = 0;
-    //int j;
+	/*limpieza de linea aqui*/
 
-    if (fd < 0 || BUFFER_SIZE <= 0)
-        return (NULL);
-
-    line = malloc((BUFFER_SIZE + 1) * sizeof(char));
-    if (!line)
-        return (NULL);
-
-    while (1)
-    {
-        if (current_pos == bytes_read)
-        {
-            bytes_read = read(fd, buffer, BUFFER_SIZE);
-            current_pos = 0;
-            if (bytes_read <= 0)
-            {
-                line[i] = '\0';
-                if (i == 0)
-                {
-                    free(line);
-                    line = NULL;
-                }
-                return (line);
-            }
-        }
-
-        if (buffer[current_pos] == '\n')
-        {
-            line[i] = '\0';
-            current_pos++;
-            return (line);
-        }
-
-        line[i] = buffer[current_pos];
-        i++;
-        current_pos++;
-    }
-
-    // This point should not be reached
-    return (NULL);
-}*/
-
-#include <unistd.h>
-#include <stdlib.h>
-
-char	*get_next_line(int fd)
-{
-	static char	buffer[BUFFER_SIZE + 1];
-	static int	bytes_read = 0;
-	static int	current_pos = 0;
-	char		*line;
-	int			i;
-
-	i = 0;
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
-	line = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!line)
-		return (NULL);
-	while (1)
-	{
-		if (current_pos == bytes_read)
-		{
-			bytes_read = read(fd, buffer, BUFFER_SIZE);
-			current_pos = 0;
-			if (bytes_read <= 0)
-			{
-				line[i] = '\0';
-				if (i == 0)
-				{
-					free(line);
-					line = NULL;
-				}
-				bytes_read = 0;
-				current_pos = 0;
-				return (line);
-			}
-		}
-		if (buffer[current_pos] == '\n')
-		{
-			line[i] = '\0';
-			current_pos++;
-			return (line);
-		}
-		line[i] = buffer[current_pos];
-		i++;
-		current_pos++;
-	}
-	return (NULL);
+	return (linea_limpia);
 }
 
-/*
+/* ------------------ Read Line function ------------------- */
+char	read_line(int fd, char *line)
+{
+	int		bytes_read;
+	char	*buf_reserved;
+	static int	*bytes_read;
+	int		i;
+
+	bytes_read = 0;
+	buf_reserved = malloc((BUFFER_SIZE + 1) * sizeof(char));
+	if (!buf_reserved)
+		return (NULL);
+	bytes_read = read(fd, buf_reserved, BUFFER_SIZE);
+	i = 0;
+	while (buf_reserved > 0)
+	{
+		if (buf_reserved[i] == '\n')
+		{
+			clean_line(bytes_read);
+			return (line);
+		}
+		line[i] == buf_reserved[i];
+		i++;
+	}
+	clean_line(bytes_read);
+	return (line);
+}
+
+/* ---------------- Get Next Line function ----------------- */
+char	*get_next_line(int fd)
+{
+	char		*line;
+
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	line = read_line(fd, &line);
+
+	return (line);
+}
+
+/* --------------------- Main function --------------------- */
+
 #include <fcntl.h>
 #include <stdio.h>
 
@@ -171,4 +121,3 @@ int	main(void)
 	close(fd);
 	return (0);
 }
-*/
