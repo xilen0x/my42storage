@@ -51,38 +51,38 @@ get_next_line_utils.c
 #include "get_next_line.h"
 
 /* ------------------ Clean Line function ------------------ */
-char	clean_line(linea_ya_leida)
+/*void	clean_line(int bytes_read)
 {
-	/*limpieza de linea aqui*/
+	bytes_read = 0;
 
-	return (linea_limpia);
-}
+}*/
 
 /* ------------------ Read Line function ------------------- */
-char	read_line(int fd, char *line)
+char	*read_line(int fd, char *line)
 {
-	int		bytes_read;
-	char	*buf_reserved;
-	static int	*bytes_read;
-	int		i;
+	int				i;
+	char			*buf_reserved;
+	static ssize_t	bytes_read;
 
 	bytes_read = 0;
 	buf_reserved = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buf_reserved)
-		return (NULL);
+		return (0);
 	bytes_read = read(fd, buf_reserved, BUFFER_SIZE);
 	i = 0;
 	while (buf_reserved > 0)
 	{
 		if (buf_reserved[i] == '\n')
 		{
-			clean_line(bytes_read);
+			//clean_line(bytes_read);
+			bytes_read = 0;
 			return (line);
 		}
-		line[i] == buf_reserved[i];
+		line[i] = buf_reserved[i];
 		i++;
 	}
-	clean_line(bytes_read);
+	//clean_line(bytes_read);
+	bytes_read = 0;
 	return (line);
 }
 
@@ -91,16 +91,17 @@ char	*get_next_line(int fd)
 {
 	char		*line;
 
+	line = 0;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	line = read_line(fd, &line);
+	line = read_line(fd, line);
 
 	return (line);
 }
 
 /* --------------------- Main function --------------------- */
 
-#include <fcntl.h>
+/*#include <fcntl.h>
 #include <stdio.h>
 
 int	main(void)
@@ -121,3 +122,4 @@ int	main(void)
 	close(fd);
 	return (0);
 }
+*/
