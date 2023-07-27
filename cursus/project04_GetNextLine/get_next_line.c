@@ -58,32 +58,43 @@ get_next_line_utils.c
 }*/
 
 /* ------------------ Read Line function ------------------- */
+/*
+mientras no aparezca '\n' q lea y almacene y una con lo anterior(strjoin)
+*/
 char	*read_line(int fd, char *line)
 {
 	int				i;
 	char			*buf_reserved;
 	static ssize_t	bytes_read;
 
-	bytes_read = 0;
+	bytes_read = 1;
+	i = 0;
 	buf_reserved = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buf_reserved)
 		return (0);
-	i = 0;
 	bytes_read = read(fd, buf_reserved, BUFFER_SIZE);
+	if (bytes_read == -1)
+	{
+		free(buf_reserved);
+		return (NULL);
+	}
 	while (bytes_read > 0)
 	{
-		if (buf_reserved[i] == '\n')
+		if (buf_reserved[i] != '\n' && i < BUFFER_SIZE)
 		{
-			//clean_line(bytes_read);
-			bytes_read = 0;
+			line[i] = buf_reserved[i];
+		}
+		else if (buf_reserved[i] == '\n')
+		{
+			line[i] = '\n';
+			line[i+1] = '\0';
+			free(buf_reserved);
 			return (line);
 		}
-		//line[i] = buf_reserved[i];
-		line = ft_strdup(buf_reserved);
 		i++;
 	}
-	//clean_line(bytes_read);
-	bytes_read = 0;
+	line[i] = '\0';
+	free(buf_reserved);
 	return (line);
 }
 
@@ -92,7 +103,7 @@ char	*get_next_line(int fd)
 {
 	char		*line;
 
-	line = NULL;
+	line = ????????????????????????????????;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	line = read_line(fd, line);

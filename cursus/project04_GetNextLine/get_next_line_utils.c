@@ -42,8 +42,56 @@ char	*ft_strdup(const char *string)
 	return (duplicate);
 }
 
-/*char *ft_strjoin(char *line, char *buffer, int start, int end)
+char	*ft_strchr(const char *s, int c)
 {
+	unsigned char	c_to_find;
 
+	c_to_find = c;
+	while (*s != c_to_find)
+	{
+		if (*s == 0)
+			return (0);
+		s++;
+	}
+	return ((char *)s);
 }
-*/
+
+static char	*ft_strncpy(char *dest, char *src, unsigned int n)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (src[i] != '\0' && i < n)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	while (i < n)
+	{
+		dest[i] = '\0';
+		i++;
+	}
+	return (dest);
+}
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char			*space_reserved;
+	unsigned int	len_s1;
+	unsigned int	len_s2;
+
+	len_s1 = ft_strlen(s1);
+	len_s2 = ft_strlen(s2);
+	if (s1 == 0 && s2 == 0)
+		return (0);
+	space_reserved = malloc((len_s1 + len_s2) + 1);
+	if (!space_reserved)
+		return (0);
+	else
+	{
+		ft_strncpy(space_reserved, (char *)s1, len_s1);
+		ft_strncpy(space_reserved + len_s1, (char *)s2, len_s2);
+		space_reserved[len_s1 + len_s2] = '\0';
+		return (space_reserved);
+	}
+}
