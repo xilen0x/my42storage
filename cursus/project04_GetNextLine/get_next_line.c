@@ -68,9 +68,9 @@ char	*read_line(int fd, char *line)
 	buf_reserved = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buf_reserved)
 		return (0);
-	bytes_read = read(fd, buf_reserved, BUFFER_SIZE);
 	i = 0;
-	while (buf_reserved > 0)
+	bytes_read = read(fd, buf_reserved, BUFFER_SIZE);
+	while (bytes_read > 0)
 	{
 		if (buf_reserved[i] == '\n')
 		{
@@ -78,7 +78,8 @@ char	*read_line(int fd, char *line)
 			bytes_read = 0;
 			return (line);
 		}
-		line[i] = buf_reserved[i];
+		//line[i] = buf_reserved[i];
+		line = ft_strdup(buf_reserved);
 		i++;
 	}
 	//clean_line(bytes_read);
@@ -91,7 +92,7 @@ char	*get_next_line(int fd)
 {
 	char		*line;
 
-	line = 0;
+	line = NULL;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	line = read_line(fd, line);
@@ -101,7 +102,7 @@ char	*get_next_line(int fd)
 
 /* --------------------- Main function --------------------- */
 
-/*#include <fcntl.h>
+#include <fcntl.h>
 #include <stdio.h>
 
 int	main(void)
@@ -122,4 +123,3 @@ int	main(void)
 	close(fd);
 	return (0);
 }
-*/
