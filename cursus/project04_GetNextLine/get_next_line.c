@@ -6,7 +6,7 @@
 /*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 09:54:53 by castorga          #+#    #+#             */
-/*   Updated: 2023/07/17 09:54:56 by castorga         ###   ########.fr       */
+/*   Updated: 2023/07/25 11:49:19 by castorga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,72 +49,73 @@ get_next_line_utils.c
 */
 
 #include "get_next_line.h"
-#include <stdio.h>
-#include <fcntl.h>
 
-char *get_next_line(int fd)
+/* ------------------ Clean Line function ------------------ */
+/*void	clean_line(int bytes_read)
 {
-    static char buffer[10000000];
-    static int bytes_read = 0;
-    static int current_pos = 0;
-    char *line;
-    int i = 0;
+	bytes_read = 0;
 
-    if (fd < 0 || BUFFER_SIZE <= 0)
-        return (NULL);
+}*/
 
-    line = malloc((BUFFER_SIZE + 1) * sizeof(char));
-    if (!line)
-        return (NULL);
+/* ------------------ Read Line function ------------------- */
+/*
+mientras no aparezca '\n' q lea y almacene y una con lo anterior(strjoin)
+*/
+char	*read_line(int fd, char *line)
+{
+	int				i;
+	char			*buf_reserved;
+	static ssize_t	bytes_read;
 
-    while (1)
-    {
-        if (current_pos == bytes_read)
-        {
-            bytes_read = read(fd, buffer, BUFFER_SIZE);
-            current_pos = 0;
-            if (bytes_read <= 0)
-            {
-                line[i] = '\0';
-                if (i == 0)
-                {
-                    free(line);
-                    line = NULL;
-                }
-                return (line);
-            }
-        }
-
-        if (buffer[current_pos] == '\n')
-        {
-            line[i] = '\0';
-            current_pos++;
-            return (line);
-        }
-
-        line[i] = buffer[current_pos];
-        i++;
-        current_pos++;
-
-        // Check if the line length exceeds BUFFER_SIZE
-        if (i == BUFFER_SIZE)
-        {
-            char *new_line = realloc(line, (i + 1) * sizeof(char) + 1);
-            if (!new_line)
-            {
-                free(line);
-                return (NULL);
-            }
-            line = new_line;
-        }
-    }
-
-    // Cleanup in case of unexpected termination
-    free(line);
-    return (NULL);
+	bytes_read = 1;
+	i = 0;
+	buf_reserved = malloc((BUFFER_SIZE + 1) * sizeof(char));
+	if (!buf_reserved)
+		return (0);
+	bytes_read = read(fd, buf_reserved, BUFFER_SIZE);
+	if (bytes_read == -1)
+	{
+		free(buf_reserved);
+		return (NULL);
+	}
+	while (bytes_read > 0)
+	{
+		if (buf_reserved[i] != '\n' && i < BUFFER_SIZE)
+		{
+			line[i] = buf_reserved[i];
+		}
+		else if (buf_reserved[i] == '\n')
+		{
+			line[i] = '\n';
+			line[i+1] = '\0';
+			free(buf_reserved);
+			return (line);
+		}
+		i++;
+	}
+	line[i] = '\0';
+	free(buf_reserved);
+	return (line);
 }
 
-/*
+/* ---------------- Get Next Line function ----------------- */
+char	*get_next_line(int fd)
+{
+	char		*line;
+
+	line = ????????????????????????????????;
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	line = read_line(fd, line);
+
+	return (line);
+}
+
+/* --------------------- Main function --------------------- */
+
+#include <fcntl.h>
+#include <stdio.h>
+
 int	main(void)
 {
 	int		fd;
@@ -136,4 +137,3 @@ int	main(void)
 	close(fd);
 	return (0);
 }
-*/
