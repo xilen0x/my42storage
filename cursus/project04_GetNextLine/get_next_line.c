@@ -48,64 +48,13 @@ función get_next_line.
 get_next_line_utils.c
 */
 
-#include "get_next_line.h"	
-
-/*char *get_next_line(int fd)
-{
-    static char buffer[BUFFER_SIZE + 1];
-    static int bytes_read = 0;
-    static int current_pos = 0;
-    char *line;
-    int i = 0;
-    //int j;
-
-    if (fd < 0 || BUFFER_SIZE <= 0)
-        return (NULL);
-
-    line = malloc((BUFFER_SIZE + 1) * sizeof(char));
-    if (!line)
-        return (NULL);
-
-    while (1)
-    {
-        if (current_pos == bytes_read)
-        {
-            bytes_read = read(fd, buffer, BUFFER_SIZE);
-            current_pos = 0;
-            if (bytes_read <= 0)
-            {
-                line[i] = '\0';
-                if (i == 0)
-                {
-                    free(line);
-                    line = NULL;
-                }
-                return (line);
-            }
-        }
-
-        if (buffer[current_pos] == '\n')
-        {
-            line[i] = '\0';
-            current_pos++;
-            return (line);
-        }
-
-        line[i] = buffer[current_pos];
-        i++;
-        current_pos++;
-    }
-
-    // This point should not be reached
-    return (NULL);
-}*/
-
-#include <unistd.h>
-#include <stdlib.h>
+#include "get_next_line.h"
+#include <stdio.h>
+#include <fcntl.h>
 
 char *get_next_line(int fd)
 {
-    static char buffer[BUFFER_SIZE + 1];
+    static char buffer[10000000];
     static int bytes_read = 0;
     static int current_pos = 0;
     char *line;
@@ -132,8 +81,6 @@ char *get_next_line(int fd)
                     free(line);
                     line = NULL;
                 }
-                bytes_read = 0;
-                current_pos = 0;
                 return (line);
             }
         }
@@ -148,17 +95,26 @@ char *get_next_line(int fd)
         line[i] = buffer[current_pos];
         i++;
         current_pos++;
+
+        // Check if the line length exceeds BUFFER_SIZE
+        if (i == BUFFER_SIZE)
+        {
+            char *new_line = realloc(line, (i + 1) * sizeof(char) + 1);
+            if (!new_line)
+            {
+                free(line);
+                return (NULL);
+            }
+            line = new_line;
+        }
     }
 
-    // This point should not be reached
+    // Cleanup in case of unexpected termination
+    free(line);
     return (NULL);
 }
 
-
 /*
-#include <fcntl.h>
-#include <stdio.h>
-
 int	main(void)
 {
 	int		fd;
@@ -166,7 +122,10 @@ int	main(void)
 
 	fd = open("example.txt", O_RDONLY);
 	if (fd < 0)
-		return (1);
+    {
+        perror("Error while opening file");
+	    return (1);
+    }
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
