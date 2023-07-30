@@ -1,139 +1,143 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   getnextline.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/17 09:54:53 by castorga          #+#    #+#             */
-/*   Updated: 2023/07/25 11:49:19 by castorga         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/*
-Nombre de función
-get_next_line
-
-Prototipo 
-char *get_next_line(int fd);
-
-Archivos a entregar
-get_next_line.c, get_next_line_utils.c, get_next_line.h
-
-Parámetros fd: 
-File descriptor del que leer
-
-Valor devuelto 
-Si todo va bien: la línea leída
-En caso de fallo o si la lectura termina: NULL
-
-Funciones autorizadas
-read, malloc, free
-
-Descripción
-Escribe una función que devuelva la línea leída de un file descriptor
-• Llamar a tu función get_next_line de manera repetida (por ejemplo, usando un
-bucle) te permitirá leer el contenido del archivo hacia el que apunta el file 
-descriptor, línea a línea, hasta el final.
-• Tu función deberá devolver la línea que se acaba de leer.
-Si no hay nada más que leer o si ha ocurrido un error, deberá devolver NULL.
-• Asegúrate de que tu función se comporta adecuadamente cuando lea de un 
-archivo y cuando lea de stdin.
-• Ten en cuenta que la línea devuelta debe terminar con el caracter n, 
-excepto si se ha llegado al final del archivo y esté no termina con un 
-caracter n.
-• En el header get_next_line.h deberás tener como mínimo el prototipo de la 
-función get_next_line.
-• Añade todas las funciones de ayuda que necesites en el archivo 
-get_next_line_utils.c
-*/
-
 #include "get_next_line.h"
 
-/* ------------------ Clean Line function ------------------ */
-/*void	clean_line(int bytes_read)
+#include <unistd.h>
+#include <stdlib.h>
+#include "get_next_line.h"
+
+/*La función read_and_append_line lee el contenido del archivo asociado al 
+descriptor de archivo (fd) y almacena la línea en el puntero line. 
+La función utiliza un buffer para leer el archivo en bloques definidos por
+ BUFFER_SIZE y luego concatena el contenido del buffer a la línea hasta 
+ encontrar un salto de línea o hasta que se llegue al final del archivo.*/
+char	*ft_read_and_append_line(int fd, char *line)
 {
-	bytes_read = 0;
+	char	*buffer;
+	ssize_t	read_bytes;
 
-}*/
-
-/* ------------------ Read Line function ------------------- */
-/*
-mientras no aparezca '\n' q lea y almacene y una con lo anterior(strjoin)
-*/
-char	*read_line(int fd, char *line)
-{
-	int				i;
-	char			*buf_reserved;
-	static ssize_t	bytes_read;
-
-	bytes_read = 1;
-	i = 0;
-	buf_reserved = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!buf_reserved)
-		return (0);
-	bytes_read = read(fd, buf_reserved, BUFFER_SIZE);
-	if (bytes_read == -1)
+	buffer = (char *)malloc(BUFFER_SIZE + 1);
+	if (!buffer)
+		return (NULL);
+	read_bytes = 1;
+	while (!ft_strchr(line, '\n') && read_bytes > 0)
 	{
-		free(buf_reserved);
+		read_bytes = read(fd, buffer, BUFFER_SIZE);
+		if (read_bytes == -1)
+		{
+			free(buffer);
+			free(line);
+			return (NULL);
+		}
+		buffer[read_bytes] = '\0';
+		line = ft_strjoin(line, buffer);
+	}
+	free(buffer);
+	return (line);
+}
+
+/*La función ft_extract_next_line crea una nueva cadena que contiene todo el 
+contenido de la línea después del primer salto de línea encontrado en la cadena
+original. Es decir, elimina la primera línea de la cadena original y devuelve
+el resto.*/
+char	*ft_extract_next_line(char *line)
+{
+	int		i;
+	int		j;
+	char	*str;
+
+	i = 0;
+	while (line[i] && line[i] != '\n')
+		i++;
+	if (!line[i])
+	{
+		free(line);
 		return (NULL);
 	}
-	while (bytes_read > 0)
+	str = (char *)malloc(sizeof(char) * (ft_strlen(line) - i + 1));
+	if (!str)
+		return (NULL);
+	i++;
+	j = 0;
+	while (line[i])
+		str[j++] = line[i++];
+	str[j] = '\0';
+	free(line);
+	return (str);
+}
+
+/*La función ft_get_line_from_fd extrae la primera línea de la cadena pasada 
+como argumento y la devuelve en una nueva cadena.*/
+char	*ft_get_line_from_fd(char *line)
+{
+	int		i;
+	char	*str;
+
+	i = 0;
+	if (!line[i])
+		return (NULL);
+	while (line[i] && line[i] != '\n')
+		i++;
+	str = (char *)malloc(i + 2);
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (line[i] && line[i] != '\n')
 	{
-		if (buf_reserved[i] != '\n' && i < BUFFER_SIZE)
-		{
-			line[i] = buf_reserved[i];
-		}
-		else if (buf_reserved[i] == '\n')
-		{
-			line[i] = '\n';
-			line[i+1] = '\0';
-			free(buf_reserved);
-			return (line);
-		}
+		str[i] = line[i];
 		i++;
 	}
-	line[i] = '\0';
-	free(buf_reserved);
-	return (line);
+	if (line[i] == '\n')
+	{
+		str[i] = line[i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }
 
-/* ---------------- Get Next Line function ----------------- */
+/*
+La función get_next_line es la función principal que se utilizará para obtener 
+la siguiente línea del archivo. Llama a read_and_append_line para leer el 
+contenido del archivo y almacenarlo en line, luego llama a get_line_from_fd 
+para extraer la primera línea y finalmente llama a extract_next_line para 
+eliminar la línea extraída de line.*/
 char	*get_next_line(int fd)
 {
-	char		*line;
+	static char	*line;
+	char		*next_line;
 
-	line = ????????????????????????????????;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	line = read_line(fd, line);
-
-	return (line);
+	line = ft_read_and_append_line(fd, line);
+	if (!line)
+	{
+		free(line);
+		return (NULL);
+	}
+	next_line = ft_get_line_from_fd(line);
+	line = ft_extract_next_line(line);
+	return (next_line);
 }
+
+
 
 /* --------------------- Main function --------------------- */
 
-#include <fcntl.h>
+/*#include <fcntl.h>
 #include <stdio.h>
 
 int	main(void)
 {
 	int		fd;
-	char	*line;
+	char	*line_result;
 
 	fd = open("example.txt", O_RDONLY);
-	if (fd < 0)
-    {
-        perror("Error while opening file");
-	    return (1);
-    }
-	line = get_next_line(fd);
-	while (line != NULL)
+
+	while ((line_result = get_next_line(fd)) != NULL)
 	{
-		printf("%s\n", line);
-		free(line);
-		line = get_next_line(fd);
+		printf("%s\n", line_result);
+		free(line_result);
 	}
 	close(fd);
 	return (0);
 }
+*/
