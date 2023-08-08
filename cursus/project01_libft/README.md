@@ -1,5 +1,5 @@
 # my42storage
-
+[![castorga's 42 stats](https://badge42.vercel.app/api/v2/clktfjk1y003008jnbh6tuz61/stats?cursusId=21&coalitionId=206)](https://github.com/JaeSeoKim/badge42)
 # libft | 42 BCN
 *Your first library*
 
