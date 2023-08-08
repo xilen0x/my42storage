@@ -17,14 +17,10 @@
   bloques definidos por BUFFER_SIZE y luego concatena el contenido del
    buffer a la línea hasta encontrar un salto de línea o hasta que se 
    llegue al final del archivo.*/
-char	*ft_read_and_append_line(int fd, char *current_line)
+char	*ft_read_and_append_line(int fd, char *current_line, char *buffer)
 {
-	char	*buffer;
 	ssize_t	read_bytes;
 
-	buffer = (char *)malloc(BUFFER_SIZE + 1);
-	if (!buffer)
-		return (NULL);
 	read_bytes = 1;
 	while (!ft_strchr(current_line, '\n') && read_bytes > 0)
 	{
@@ -105,17 +101,21 @@ char	*ft_get_line_from_fd(char *current_line)
 /*
 función principal que se utilizará para obtener la siguiente línea del archivo. 
 Llama a ft_read_and_append_line para leer el contenido del archivo y almacenarlo 
-en line, luego llama a ft_get_line_from_fd para extraer la primera línea y 
-finalmente llama a ft_extract_next_line para eliminar la línea extraída de line
+en current_line, luego llama a ft_get_line_from_fd para extraer la primera línea 
+y finalmente llama a ft_extract_next_line para eliminar la línea extraída de line
 .*/
 char	*get_next_line(int fd)
 {
 	static char	*current_line;
 	char		*next_line;
+	char		*buffer;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	current_line = ft_read_and_append_line(fd, current_line);
+	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buffer)
+		return (0);
+	current_line = ft_read_and_append_line(fd, current_line, buffer);
 	if (!current_line)
 		return (NULL);
 	next_line = ft_get_line_from_fd(current_line);
@@ -125,7 +125,7 @@ char	*get_next_line(int fd)
 
 /* --------------------- Main function --------------------- */
 
-int	main(void)
+/*int	main(void)
 {
 	int		fd;
 	char	*line_result;
@@ -139,3 +139,4 @@ int	main(void)
 	close(fd);
 	return (0);
 }
+*/
