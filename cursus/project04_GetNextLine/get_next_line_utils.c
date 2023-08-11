@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/03 14:54:30 by castorga          #+#    #+#             */
+/*   Updated: 2023/08/03 14:54:32 by castorga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 size_t	ft_strlen(char *s)
@@ -12,6 +24,10 @@ size_t	ft_strlen(char *s)
 	return (i);
 }
 
+/* strchr(): Locates a character in a string. This finds the first occurrence
+ of the desired character in a string or NULL if the character does not appear
+  in the string.
+*/
 char	*ft_strchr(char *s, int c)
 {
 	int	i;
@@ -44,7 +60,7 @@ char	*ft_strjoin(char *line, char *buff)
 	if (!line || !buff)
 		return (NULL);
 	str = malloc(sizeof(char) * ((ft_strlen(line) + ft_strlen(buff)) + 1));
-	if (str == NULL)
+	if (!str)
 		return (NULL);
 	i = -1;
 	j = 0;

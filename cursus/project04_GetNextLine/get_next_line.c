@@ -1,37 +1,41 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/03 14:54:59 by castorga          #+#    #+#             */
+/*   Updated: 2023/08/03 14:55:01 by castorga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
-#include <unistd.h>
-#include <stdlib.h>
-#include "get_next_line.h"
-
-/*La función read_and_append_line lee el contenido del archivo asociado al 
-descriptor de archivo (fd) y almacena la línea en el puntero line. 
-La función utiliza un buffer para leer el archivo en bloques definidos por
- BUFFER_SIZE y luego concatena el contenido del buffer a la línea hasta 
- encontrar un salto de línea o hasta que se llegue al final del archivo.*/
-char	*ft_read_and_append_line(int fd, char *line)
+/*función q lee el contenido del archivo asociado al fd y almacena la línea
+ en el puntero current_line. La función utiliza un buffer para leer el archivo en
+  bloques definidos por BUFFER_SIZE y luego concatena el contenido del
+   buffer a la línea hasta encontrar un salto de línea o hasta que se 
+   llegue al final del archivo.*/
+char	*ft_read_and_append_line(int fd, char *current_line, char *buffer)
 {
-	char	*buffer;
 	ssize_t	read_bytes;
 
-	buffer = (char *)malloc(BUFFER_SIZE + 1);
-	if (!buffer)
-		return (NULL);
 	read_bytes = 1;
-	while (!ft_strchr(line, '\n') && read_bytes > 0)
+	while (!ft_strchr(current_line, '\n') && read_bytes > 0)
 	{
 		read_bytes = read(fd, buffer, BUFFER_SIZE);
 		if (read_bytes == -1)
 		{
 			free(buffer);
-			free(line);
+			free(current_line);
 			return (NULL);
 		}
 		buffer[read_bytes] = '\0';
-		line = ft_strjoin(line, buffer);
+		current_line = ft_strjoin(current_line, buffer);
 	}
 	free(buffer);
-	return (line);
+	return (current_line);
 }
 
 /*La función ft_extract_next_line crea una nueva cadena que contiene todo el 
@@ -66,28 +70,28 @@ char	*ft_extract_next_line(char *line)
 
 /*La función ft_get_line_from_fd extrae la primera línea de la cadena pasada 
 como argumento y la devuelve en una nueva cadena.*/
-char	*ft_get_line_from_fd(char *line)
+char	*ft_get_line_from_fd(char *current_line)
 {
 	int		i;
 	char	*str;
 
 	i = 0;
-	if (!line[i])
+	if (!current_line[i])
 		return (NULL);
-	while (line[i] && line[i] != '\n')
+	while (current_line[i] && current_line[i] != '\n')
 		i++;
 	str = (char *)malloc(i + 2);
 	if (!str)
 		return (NULL);
 	i = 0;
-	while (line[i] && line[i] != '\n')
+	while (current_line[i] && current_line[i] != '\n')
 	{
-		str[i] = line[i];
+		str[i] = current_line[i];
 		i++;
 	}
-	if (line[i] == '\n')
+	if (current_line[i] == '\n')
 	{
-		str[i] = line[i];
+		str[i] = current_line[i];
 		i++;
 	}
 	str[i] = '\0';
@@ -95,43 +99,38 @@ char	*ft_get_line_from_fd(char *line)
 }
 
 /*
-La función get_next_line es la función principal que se utilizará para obtener 
-la siguiente línea del archivo. Llama a read_and_append_line para leer el 
-contenido del archivo y almacenarlo en line, luego llama a get_line_from_fd 
-para extraer la primera línea y finalmente llama a extract_next_line para 
-eliminar la línea extraída de line.*/
+función principal que se utilizará para obtener la siguiente línea del archivo. 
+Llama a ft_read_and_append_line para leer el contenido del archivo y almacenarlo 
+en current_line, luego llama a ft_get_line_from_fd para extraer la primera línea 
+y finalmente llama a ft_extract_next_line para eliminar la línea extraída de line
+.*/
 char	*get_next_line(int fd)
 {
-	static char	*line;
+	static char	*current_line;
 	char		*next_line;
+	char		*buffer;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	line = ft_read_and_append_line(fd, line);
-	if (!line)
-	{
-		free(line);
+	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buffer)
+		return (0);
+	current_line = ft_read_and_append_line(fd, current_line, buffer);
+	if (!current_line)
 		return (NULL);
-	}
-	next_line = ft_get_line_from_fd(line);
-	line = ft_extract_next_line(line);
+	next_line = ft_get_line_from_fd(current_line);
+	current_line = ft_extract_next_line(current_line);
 	return (next_line);
 }
 
-
-
 /* --------------------- Main function --------------------- */
 
-/*#include <fcntl.h>
-#include <stdio.h>
-
-int	main(void)
+/*int	main(void)
 {
 	int		fd;
 	char	*line_result;
 
 	fd = open("example.txt", O_RDONLY);
-
 	while ((line_result = get_next_line(fd)) != NULL)
 	{
 		printf("%s\n", line_result);
