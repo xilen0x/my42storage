@@ -32,7 +32,7 @@ char	*ft_read_and_append_line(int fd, char *current_line, char *buffer)
 			return (NULL);
 		}
 		buffer[read_bytes] = '\0';
-		current_line = ft_strjoin(current_line, buffer);
+		current_line = ft_strjoin(current_line, buffer);// Concatenar los datos leídos a la línea actual
 	}
 	free(buffer);
 	return (current_line);
@@ -40,8 +40,7 @@ char	*ft_read_and_append_line(int fd, char *current_line, char *buffer)
 
 /*La función ft_extract_next_line crea una nueva cadena que contiene todo el 
 contenido de la línea después del primer salto de línea encontrado en la cadena
-original. Es decir, elimina la primera línea de la cadena original y devuelve
-el resto.*/
+original. */
 char	*ft_extract_next_line(char *line)
 {
 	int		i;
@@ -115,17 +114,17 @@ char	*get_next_line(int fd)
 	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
 		return (0);
-	current_line = ft_read_and_append_line(fd, current_line, buffer);
+	current_line = ft_read_and_append_line(fd, current_line, buffer);//agrega nuevas líneas a current_line
 	if (!current_line)
 		return (NULL);
-	next_line = ft_get_line_from_fd(current_line);
-	current_line = ft_extract_next_line(current_line);
+	next_line = ft_get_line_from_fd(current_line);//extrae una línea completa de current_line y la guarda en next_line.
+	current_line = ft_extract_next_line(current_line);//elimina la parte de current_line que corresponde a la línea extraída.
 	return (next_line);
 }
 
 /* --------------------- Main function --------------------- */
 
-/*int	main(void)
+int	main(void)
 {
 	int		fd;
 	char	*line_result;
@@ -139,4 +138,3 @@ char	*get_next_line(int fd)
 	close(fd);
 	return (0);
 }
-*/
