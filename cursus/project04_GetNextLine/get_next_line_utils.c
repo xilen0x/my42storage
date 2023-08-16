@@ -54,7 +54,7 @@ char	*ft_strjoin(char *line, char *buff)
 
 	if (!line)
 	{
-		line = (char *)malloc(1 * sizeof(char));
+		line = (char *)malloc(1 * sizeof(char) + 1);//-------->
 		line[0] = '\0';
 	}
 	if (!line || !buff)
