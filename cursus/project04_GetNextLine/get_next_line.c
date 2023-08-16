@@ -149,7 +149,7 @@ char	*get_next_line(int fd)
 	int		fd;
 	char	*line_result;
 
-	fd = open("example.txt", O_RDONLY);
+	fd = open("empty.txt", O_RDONLY);
 	while ((line_result = get_next_line(fd)) != NULL)
 	{
 		printf("%s\n", line_result);
