@@ -33,8 +33,8 @@ char	*ft_read_and_append_line(int fd, char *current_line, char *buffer)
 		}
 		buffer[read_bytes] = '\0';
 		current_line = ft_strjoin(current_line, buffer);
-		if (!current_line)
-			return (0);
+		/*if (!current_line)
+			return (0);*/
 	}
 	free(buffer);
 	return (current_line);
@@ -83,11 +83,25 @@ char	*ft_get_line_from_fd(char *current_line)
 	while (current_line[i] && current_line[i] != '\n')
 		i++;
 	if (current_line[i] == '\n')
-		str = (char *)malloc(i + 2);
+		{
+			str = (char *)malloc(i + 2);
+			if (!str)
+			{
+				//free(str);
+				//free(current_line);
+				return (NULL);
+			}
+		}
 	else
-		str = (char *)malloc(i + 1);
-	if (!str)
-		return (NULL);
+		{
+			str = (char *)malloc(i + 1);
+			if (!str)
+			{
+				//free(str);
+				//free(current_line);
+				return (NULL);
+			}
+		}
 	i = 0;
 	while (current_line[i] && current_line[i] != '\n')
 	{
@@ -117,7 +131,7 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	buffer = (char *)malloc(BUFFER_SIZE + 1);
 	if (!buffer)
 		return (0);
 	current_line = ft_read_and_append_line(fd, current_line, buffer);
