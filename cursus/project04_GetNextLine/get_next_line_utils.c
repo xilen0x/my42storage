@@ -48,24 +48,27 @@ char	*ft_strchr(char *current_line, int c)
 
 char	*ft_strjoin(char *line, char *buff)
 {
+	char	*str;
 	size_t	i;
 	size_t	j;
-	char	*str;
 
+	i = -1;
+	j = 0;
 	if (!line)
 	{
 		line = (char *)malloc(sizeof(char));
 		if (!line)
-			return (0);
+			return (NULL);
 		line[0] = '\0';
 	}
 	if (!line || !buff)
 		return (NULL);
 	str = malloc(sizeof(char) * ((ft_strlen(line) + ft_strlen(buff)) + 1));
 	if (!str)
-		return (0);
-	i = -1;
-	j = 0;
+		{
+			free(line);
+			return (NULL);
+		}
 	if (line)
 		while (line[++i] != '\0')
 			str[i] = line[i];

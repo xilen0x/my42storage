@@ -12,29 +12,44 @@
 
 #include "get_next_line.h"
 
+char	*ft_free(char *current_line)
+{
+	free (current_line);
+	current_line = NULL;
+	return (NULL);
+}
+
 /*función q lee el contenido del archivo asociado al fd y almacena la línea
  en el puntero current_line. La función utiliza un buffer para leer el archivo en
   bloques definidos por BUFFER_SIZE y luego concatena el contenido del
    buffer a la línea hasta encontrar un salto de línea o hasta que se 
    llegue al final del archivo.*/
-char	*ft_read_and_append_line(int fd, char *current_line, char *buffer)
+//char	*ft_read_and_append_line(int fd, char *current_line, char *buffer)
+char	*ft_read_and_append_line(int fd, char *current_line)
 {
 	ssize_t	read_bytes;
+	char	*buffer;
 
 	read_bytes = 1;
+	buffer = (char *)malloc(BUFFER_SIZE + 1);
+	if (!buffer)
+		return (0);
 	while (!ft_strchr(current_line, '\n') && read_bytes > 0)
 	{
 		read_bytes = read(fd, buffer, BUFFER_SIZE);
-		if (read_bytes == -1)
+		if ((read_bytes == 0 && current_line == NULL) || read_bytes == -1)
 		{
 			free(buffer);
-			free(current_line);
-			return (NULL);
+			return (current_line = ft_free(current_line)); 
 		}
-		buffer[read_bytes] = '\0';
+		if (buffer > 0)
+			buffer[read_bytes] = '\0';
 		current_line = ft_strjoin(current_line, buffer);
-		/*if (!current_line)
-			return (0);*/
+		if (!current_line)
+			{
+				free(buffer);
+				return (NULL);
+			}
 	}
 	free(buffer);
 	return (current_line);
@@ -127,14 +142,14 @@ char	*get_next_line(int fd)
 {
 	static char	*current_line;
 	char		*next_line;
-	char		*buffer;
+	//char		*buffer;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	buffer = (char *)malloc(BUFFER_SIZE + 1);
+	/*buffer = (char *)malloc(BUFFER_SIZE + 1);
 	if (!buffer)
-		return (0);
-	current_line = ft_read_and_append_line(fd, current_line, buffer);
+		return (0);*/
+	current_line = ft_read_and_append_line(fd, current_line);
 	if (!current_line)
 		return (NULL);
 	next_line = ft_get_line_from_fd(current_line);
