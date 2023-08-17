@@ -58,17 +58,21 @@ char	*ft_strjoin(char *line, char *buff)
 	{
 		line = (char *)malloc(sizeof(char));
 		if (!line)
+		{
+			free(line);
 			return (NULL);
+		}
 		line[0] = '\0';
 	}
 	if (!line || !buff)
 		return (NULL);
 	str = malloc(sizeof(char) * ((ft_strlen(line) + ft_strlen(buff)) + 1));
 	if (!str)
-		{
-			free(line);
-			return (NULL);
-		}
+	{
+		free(line);
+		free(str);
+		return (NULL);
+	}
 	if (line)
 		while (line[++i] != '\0')
 			str[i] = line[i];

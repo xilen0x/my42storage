@@ -33,7 +33,11 @@ char	*ft_read_and_append_line(int fd, char *current_line)
 	read_bytes = 1;
 	buffer = (char *)malloc(BUFFER_SIZE + 1);
 	if (!buffer)
+	{
+		free(buffer);
+		free(current_line);
 		return (0);
+	}
 	while (!ft_strchr(current_line, '\n') && read_bytes > 0)
 	{
 		read_bytes = read(fd, buffer, BUFFER_SIZE);
@@ -46,10 +50,10 @@ char	*ft_read_and_append_line(int fd, char *current_line)
 			buffer[read_bytes] = '\0';
 		current_line = ft_strjoin(current_line, buffer);
 		if (!current_line)
-			{
-				free(buffer);
-				return (NULL);
-			}
+		{
+			free(buffer);
+			return (NULL);
+		}
 	}
 	free(buffer);
 	return (current_line);
@@ -66,6 +70,8 @@ char	*ft_extract_next_line(char *line)
 	char	*str;
 
 	i = 0;
+	if(!line)
+		return (NULL);
 	while (line[i] && line[i] != '\n')
 		i++;
 	if (!line[i])
@@ -75,7 +81,10 @@ char	*ft_extract_next_line(char *line)
 	}
 	str = (char *)malloc(sizeof(char) * (ft_strlen(line) - i + 1));
 	if (!str)
-		return (NULL);
+		{
+			free(line);
+			return (NULL);
+		}
 	i++;
 	j = 0;
 	while (line[i])
@@ -98,25 +107,21 @@ char	*ft_get_line_from_fd(char *current_line)
 	while (current_line[i] && current_line[i] != '\n')
 		i++;
 	if (current_line[i] == '\n')
+	{
+		str = (char *)malloc(i + 2);
+		if (!str)
 		{
-			str = (char *)malloc(i + 2);
-			if (!str)
-			{
-				//free(str);
-				//free(current_line);
-				return (NULL);
-			}
+			return (NULL);
 		}
+	}
 	else
+	{
+		str = (char *)malloc(i + 1);
+		if (!str)
 		{
-			str = (char *)malloc(i + 1);
-			if (!str)
-			{
-				//free(str);
-				//free(current_line);
-				return (NULL);
-			}
+			return (NULL);
 		}
+	}
 	i = 0;
 	while (current_line[i] && current_line[i] != '\n')
 	{
@@ -153,7 +158,13 @@ char	*get_next_line(int fd)
 	if (!current_line)
 		return (NULL);
 	next_line = ft_get_line_from_fd(current_line);
-	current_line = ft_extract_next_line(current_line);
+	if(!next_line)
+	{
+		free(current_line);
+		current_line = NULL;
+	}
+	else
+		current_line = ft_extract_next_line(current_line);
 	return (next_line);
 }
 
@@ -164,7 +175,7 @@ char	*get_next_line(int fd)
 	int		fd;
 	char	*line_result;
 
-	fd = open("empty.txt", O_RDONLY);
+	fd = open("only_nl.txt", O_RDONLY);
 	while ((line_result = get_next_line(fd)) != NULL)
 	{
 		printf("%s\n", line_result);
