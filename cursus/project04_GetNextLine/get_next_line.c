@@ -57,8 +57,6 @@ char	*ft_extract_next_line(char *line)
 	char	*str;
 
 	i = 0;
-	if (!line)
-		return (NULL);
 	while (line[i] && line[i] != '\n')
 		i++;
 	if (!line[i])
