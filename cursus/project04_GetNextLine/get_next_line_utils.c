@@ -12,6 +12,20 @@
 
 #include "get_next_line.h"
 
+char	*ft_free_cl(char *current_line)
+{
+	free (current_line);
+	current_line = NULL;
+	return (NULL);
+}
+
+char	*ft_free_buf(char *buffer, char *current_line)
+{
+	free(buffer);
+	free(current_line);
+	return (0);
+}
+
 size_t	ft_strlen(char *line)
 {
 	size_t	i;

@@ -1,6 +1,6 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
+/*       my42.....                                           */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
@@ -12,19 +12,11 @@
 
 #include "get_next_line.h"
 
-char	*ft_free(char *current_line)
-{
-	free (current_line);
-	current_line = NULL;
-	return (NULL);
-}
-
 /*función q lee el contenido del archivo asociado al fd y almacena la línea
  en el puntero current_line. La función utiliza un buffer para leer el archivo en
   bloques definidos por BUFFER_SIZE y luego concatena el contenido del
    buffer a la línea hasta encontrar un salto de línea o hasta que se 
    llegue al final del archivo.*/
-//char	*ft_read_and_append_line(int fd, char *current_line, char *buffer)
 char	*ft_read_and_append_line(int fd, char *current_line)
 {
 	ssize_t	read_bytes;
@@ -44,16 +36,11 @@ char	*ft_read_and_append_line(int fd, char *current_line)
 		if ((read_bytes == 0 && current_line == NULL) || read_bytes == -1)
 		{
 			free(buffer);
-			return (current_line = ft_free(current_line)); 
+			return (current_line = ft_free_cl(current_line)); 
 		}
 		if (buffer > 0)
 			buffer[read_bytes] = '\0';
 		current_line = ft_strjoin(current_line, buffer);
-		if (!current_line)
-		{
-			free(buffer);
-			return (NULL);
-		}
 	}
 	free(buffer);
 	return (current_line);
@@ -70,7 +57,7 @@ char	*ft_extract_next_line(char *line)
 	char	*str;
 
 	i = 0;
-	if(!line)
+	if (!line)
 		return (NULL);
 	while (line[i] && line[i] != '\n')
 		i++;
@@ -81,10 +68,10 @@ char	*ft_extract_next_line(char *line)
 	}
 	str = (char *)malloc(sizeof(char) * (ft_strlen(line) - i + 1));
 	if (!str)
-		{
-			free(line);
-			return (NULL);
-		}
+	{
+		free(line);
+		return (NULL);
+	}
 	i++;
 	j = 0;
 	while (line[i])
@@ -94,34 +81,10 @@ char	*ft_extract_next_line(char *line)
 	return (str);
 }
 
-/*La función ft_get_line_from_fd extrae la primera línea de la cadena pasada 
-como argumento y la devuelve en una nueva cadena.*/
-char	*ft_get_line_from_fd(char *current_line)
+char	*ft_get_line_from_cl_extend(char *current_line, char *str)
 {
-	int		i;
-	char	*str;
+	int	i;
 
-	i = 0;
-	if (!current_line[i])
-		return (NULL);
-	while (current_line[i] && current_line[i] != '\n')
-		i++;
-	if (current_line[i] == '\n')
-	{
-		str = (char *)malloc(i + 2);
-		if (!str)
-		{
-			return (NULL);
-		}
-	}
-	else
-	{
-		str = (char *)malloc(i + 1);
-		if (!str)
-		{
-			return (NULL);
-		}
-	}
 	i = 0;
 	while (current_line[i] && current_line[i] != '\n')
 	{
@@ -137,6 +100,34 @@ char	*ft_get_line_from_fd(char *current_line)
 	return (str);
 }
 
+/*La función ft_get_line_from_fd extrae la primera línea de la cadena pasada 
+como argumento y la devuelve en una nueva cadena.*/
+char	*ft_get_line_from_cl(char *current_line)
+{
+	int		i;
+	char	*str;
+
+	i = 0;
+	if (!current_line[i])
+		return (NULL);
+	while (current_line[i] && current_line[i] != '\n')
+		i++;
+	if (current_line[i] == '\n')
+	{
+		str = (char *)malloc(i + 2);
+		if (!str)
+			return (NULL);
+	}
+	else
+	{
+		str = (char *)malloc(i + 1);
+		if (!str)
+			return (NULL);
+	}
+	str = ft_get_line_from_cl_extend(current_line, str);
+	return (str);
+}
+
 /*
 función principal que se utilizará para obtener la siguiente línea del archivo. 
 Llama a ft_read_and_append_line para leer el contenido del archivo y almacenarlo 
@@ -147,18 +138,14 @@ char	*get_next_line(int fd)
 {
 	static char	*current_line;
 	char		*next_line;
-	//char		*buffer;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	/*buffer = (char *)malloc(BUFFER_SIZE + 1);
-	if (!buffer)
-		return (0);*/
 	current_line = ft_read_and_append_line(fd, current_line);
 	if (!current_line)
 		return (NULL);
-	next_line = ft_get_line_from_fd(current_line);
-	if(!next_line)
+	next_line = ft_get_line_from_cl(current_line);
+	if (!next_line)
 	{
 		free(current_line);
 		current_line = NULL;
