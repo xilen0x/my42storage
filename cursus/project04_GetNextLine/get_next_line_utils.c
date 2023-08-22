@@ -19,12 +19,12 @@ char	*ft_free_cl(char *current_line)
 	return (NULL);
 }
 
-char	*ft_free_buf(char *buffer, char *current_line)
+/*char	*ft_free_buf(char *buffer, char *current_line)
 {
 	free(buffer);
 	free(current_line);
 	return (0);
-}
+}*/
 
 size_t	ft_strlen(char *line)
 {
@@ -60,7 +60,7 @@ char	*ft_strchr(char *current_line, int c)
 	return (0);
 }
 
-char	*ft_strjoin(char *line, char *buff)
+char	*ft_strjoin2(char *line, char *buff)
 {
 	char	*str;
 	size_t	i;
@@ -72,27 +72,18 @@ char	*ft_strjoin(char *line, char *buff)
 	{
 		line = (char *)malloc(sizeof(char));
 		if (!line)
-		{
-			free(line);
 			return (NULL);
-		}
 		line[0] = '\0';
 	}
-	if (!line || !buff)
-		return (NULL);
 	str = malloc(sizeof(char) * ((ft_strlen(line) + ft_strlen(buff)) + 1));
-	if (!str)
+	if (str != NULL)
 	{
-		free(line);
-		free(str);
-		return (NULL);
-	}
-	if (line)
-		while (line[++i] != '\0')
+		while (line && line[++i] != '\0')
 			str[i] = line[i];
-	while (buff[j] != '\0')
-		str[i++] = buff[j++];
-	str[ft_strlen(line) + ft_strlen(buff)] = '\0';
+		while (buff[j] != '\0')
+			str[i++] = buff[j++];
+		str[ft_strlen(line) + ft_strlen(buff)] = '\0';
+	}
 	free(line);
 	return (str);
 }

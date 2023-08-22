@@ -1,6 +1,6 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*       my42.....                                           */
+/*                                                                            */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
@@ -36,11 +36,11 @@ char	*ft_read_and_append_line(int fd, char *current_line)
 		if ((read_bytes == 0 && current_line == NULL) || read_bytes == -1)
 		{
 			free(buffer);
-			return (current_line = ft_free_cl(current_line)); 
+			return (current_line = ft_free_cl(current_line));
 		}
 		if (buffer > 0)
 			buffer[read_bytes] = '\0';
-		current_line = ft_strjoin(current_line, buffer);
+		current_line = ft_strjoin2(current_line, buffer);
 	}
 	free(buffer);
 	return (current_line);
@@ -137,7 +137,7 @@ char	*get_next_line(int fd)
 	static char	*current_line;
 	char		*next_line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0)
 		return (NULL);
 	current_line = ft_read_and_append_line(fd, current_line);
 	if (!current_line)

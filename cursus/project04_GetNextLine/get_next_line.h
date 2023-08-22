@@ -24,12 +24,10 @@
 # include <unistd.h>
 
 char	*get_next_line(int fd);
-//char	*ft_read_and_append_line(int fd, char *line);
 char	*ft_read_and_append_line(int fd, char *current_line);
-//char	*ft_read_and_append_line(int fd, char *current_line, char	*buffer);
 char	*ft_extract_next_line(char *line);
 char	*ft_get_line_from_cl(char *line);
-char	*ft_strjoin(char *line, char *buff);
+char	*ft_strjoin2(char *line, char *buff);
 char	*ft_strchr(char *s, int c);
 size_t	ft_strlen(char *s);
 char	*ft_free_buf(char *buffer, char *current_line);
