@@ -12,7 +12,7 @@ my42storage is the repository of the main projects developed in 42Barcelona.
 | ``Printf`` [![castorga's 42 ft_printf Score](https://badge42.vercel.app/api/v2/clktfjk1y003008jnbh6tuz61/project/3140993)](https://github.com/JaeSeoKim/badge42) | library that contain the function ft_printf(), which mimics the original printf(). ![Link](https://github.com/xilen0x/my42storage/tree/main/cursus/project02_printf) |
 | ``Get_next_line`` [![castorga's 42 get_next_line Score](https://badge42.vercel.app/api/v2/clktfjk1y003008jnbh6tuz61/project/3141002)](https://github.com/JaeSeoKim/badge42) | The `ft_get_next_line` is a program for reading lines from a file written in C. The program incrementally reads the content of a file identified by its file descriptor (`fd`) and returns a complete line on each call. ![Link](https://github.com/xilen0x/my42storage/tree/main/cursus/project04_GetNextLine)|
 
-| ``push_swap`` [![castorga's 42 get_next_line Score]() | in progress... ![Link](https://)|
+| ``push_swap`` [![]() | in progress... ![Link](https://)|
 
 
 
