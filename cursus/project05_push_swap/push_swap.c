@@ -23,26 +23,35 @@ El juego se compone de dos stacks, llamados a y b.
 	◦ En b no habrá nada.
 • El objetivo es ordenar los números del stack a en orden ascendente.
 • Para hacerlo tienes las siguientes operaciones a tu disposición:
+
 sa : swap a - intercambia los dos primeros elementos encima del stack a. No 
 hace nada si hay uno o menos elementos.
 sb : swap b - intercambia los dos primeros elementos encima del stack b. No 
 hace nada si hay uno o menos elementos.
 ss : swap a y swap b a la vez.
+
 pa : push a - toma el primer elemento del stack b y lo pone encima del stack a.
 No hace nada si b está vacío.
+
 pb : push b - toma el primer elemento del stack a y lo pone encima del stack b.
 No hace nada si a está vacío.
+
 ra : rotate a - desplaza hacia arriba todos los elementos del stack a una 
 posición, de forma que el primer elemento se convierte en el último.
+
 rb : rotate b - desplaza hacia arriba todos los elementos del stack b una 
 posición, de forma que el primer elemento se convierte en el último.
+
 rr : rotate a y rotate b - desplaza al mismo tiempo todos los elementos del 
 stack a y del stack b una posición hacia arriba, de forma que el primer 
 elemento se convierte en el último.
+
 rra : reverse rotate a - desplaza hacia abajo todos los elementos del stack a 
 una posición, de forma que el último elemento se convierte en el primero.
+
 rrb : reverse rotate b - desplaza hacia abajo todos los elementos del stack b 
 una posición, de forma que el último elemento se convierte en el primero.
+
 rrr : reverse rotate a y reverse rotate b - desplaza al mismo tiempo todos
 los elementos del stack a y del stack b una posición hacia abajo, de forma que
 el último elemento se convierte en el primero.
@@ -64,4 +73,56 @@ devolver el control al usuario.
 • En caso de error, deberás mostrar Error seguido de un “\n” en la salida de 
 errores estándar. Algunos de los posibles errores son: argumentos que no son 
 enteros, argumentos superiores a un int, y/o encontrar números duplicados.
+
+https://www.figma.com/file/kJE3C5sebDLtd5imytkOUa/Untitled?type=design&node-id=0%3A1&mode=design&t=nONFp0J2mEaVbnq3-1
+
 */
+#include <unistd.h>
+#include "libft/libft.h"
+//#include <limits.h>
+
+int	ft_check_errors(int argc, char *argv)
+{
+	int	i;
+
+	i = 0;
+	if (argc > __INT_MAX__)
+		return (1);
+
+	int j = 1;
+	while (argv[j])
+	{
+		int i = 0;
+		while (argv[j][&i])//????
+		{
+			//printf("%c", argv[j][i]);
+			i++;
+		}
+		j++;
+	}
+
+	/*if (!ft_isinteger(argv[1][i]))
+		return (1);
+	if (duplicados)
+		return (1);
+	*/
+
+	return (0);
+}
+
+
+int	main(int argc, char* argv[])
+{
+	if (argc > 1)
+	{
+		if (ft_check_errors(argc, *argv) == 1)
+		{
+			write (2, "Error\n", 6);
+		}
+		else
+		{
+			push_swap();
+		}
+	}
+	return (0);
+}
