@@ -15,12 +15,14 @@ DESCRIPTION
      The strdup() function allocates sufficient memory for a copy of the
      string s1, does the copy, and returns a pointer to it.  The pointer may
      subsequently be used as an argument to the function free(3).
-
      If insufficient memory is available, NULL is returned and errno is set to
      ENOMEM.
 
-     The strndup() function copies at most n characters from the string s1
-     always NUL terminating the copied string.
+RETURN VALUE
+       On  success,  the strdup() function returns a pointer to the duplicated
+       string.  It returns NULL if insufficient memory was available, with er‐
+       rno set to indicate the cause of the error.
+
 */
 #include "libft.h"
 

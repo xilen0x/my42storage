@@ -27,7 +27,7 @@ $> ./do_op "1" "+" "-43" | cat -e
 $> ./do_op | cat -e
 $*/
 
-/*#include <stdlib.h>
+#include <stdlib.h>
 #include <stdio.h>
 
 int	main(int argc, char *argv[])
@@ -44,32 +44,6 @@ int	main(int argc, char *argv[])
 			printf("%d", atoi(argv[1]) / atoi(argv[3]));
 		else if (argv[2][0] == '%')
 			printf("%d", atoi(argv[1]) % atoi(argv[3]));
-	}
-	printf("\n");
-	return (0);
-}
-*/
-
-#include <stdio.h>
-#include <stdlib.h>
-
-int	main(int ac, char *av[])
-{
-	int	i;
-
-	i = 0;
-	if (ac == 4)
-	{
-		if (av[2][0] == '+')
-			printf("%d", atoi(av[1]) + atoi(av[3]));
-		else if (av[2][0] == '-')
-			printf("%d", atoi(av[1]) - atoi(av[3]));
-		else if (av[2][0] == '*')
-			printf("%d", atoi(av[1]) * atoi(av[3]));
-		else if (av[2][0] == '/')
-			printf("%d", atoi(av[1]) / atoi(av[3]));
-		else if (av[2][0] == '%')
-			printf("%d", atoi(av[1]) % atoi(av[3]));
 	}
 	printf("\n");
 	return (0);
