@@ -14,7 +14,8 @@ If the number of arguments is not 2, the program displays \n.
 
 Examples:
 
-$>./inter "padinton" "paqefwtdjetyiytjneytjoeyjnejeyj" | cat -e
+$>./inter "padinton" "paqefwtdjetyiytjneytjoeyjnejeyj" | 
+cat -e
 padinto$
 $>./inter ddf6vewg64f gtwthgdwthdwfteewhrtag6h4ffdhsd | cat -e
 df6ewg4$
