@@ -80,57 +80,56 @@ https://www.figma.com/file/kJE3C5sebDLtd5imytkOUa/Untitled?type=design&node-id=0
 #include <unistd.h>
 #include <stdio.h>
 #include "libft/libft.h"
-//#include <limits.h>
 #include <stdlib.h>
+//#include <limits.h>
 //#include <ctype.h>
 
-int ft_check_errors(int argc, char *argv[])
+int	ft_check_errors(int argc, char *av[])
 {
-    int i;
-    int j;
+	int	i;
+	int	j;
+	int	num;
 
-    i = 0;
-    j = 1;
+	i = 0;
+	j = 1;
+	if (argc > __INT_MAX__)
+		return (1);
+	while (av[j])
+	{
+		i = 0;
+		while (av[j][i])
+		{
+			if (!ft_isdigit(av[j][i]))//retorna 1 si es digito
+				return (1);
+			i++;
+		}
+		num = ft_atoi(av[j]); // Convertir el valor del string a entero ********************asski voooy********************
+		if (num > __INT_MAX__)    // Comparar con __INT_MAX__
+			return (1);
 
-    if (argc > __INT_MAX__)
-        return (1);
+		j++;
+	}
 
-    while (argv[j])
-    {
-        i = 0;
-        while (argv[j][i])
-        {
-            if (!ft_isdigit(argv[j][i]))
-                return (1);
-            i++;
-        }
-
-        int num = atoi(argv[j]); // Convertir el valor del string a entero
-        if (num > __INT_MAX__)    // Comparar con __INT_MAX__
-            return (1);
-
-        j++;
-    }
-
-    return (0);
+	return (0);
 }
 
-int main(int argc, char *argv[])
+int	main(int argc, char *av[])
 {
-    if (argc > 1)
-    {
-        argv++;
-        if (argc == 2)
-            argv = ft_split(*argv, ' ');
-        if (ft_check_errors(argc, argv) == 1)
-        {
-            write(2, "Error\n", 6);
-        }
-        else
-        {
+	if (argc > 1)
+	{
+		if (argc == 2 && !av[1][0])
+			return (0);
+		else if (argc == 2)
+			av = ft_split(av[1], ' ');
+		if (ft_check_errors(argc, av) == 1)
+		{
+			write(2, "Error\n", 6);
+		}
+		else
+		{
             //push_swap(argv);
-            printf("No hubo errores\n");
-        }
-    }
-    return (0);
+			printf("No hubo errores\n");
+		}
+	}
+	return (0);
 }
