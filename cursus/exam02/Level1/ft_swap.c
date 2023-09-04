@@ -22,11 +22,11 @@ void	ft_swap(int *a, int *b);*/
 
 void	ft_swap(int *a, int *b)
 {
-	int	*aux;
+	int	aux;
 
-	*aux = *a;
+	aux = *a;
 	*a = *b;
-	*b = *aux;
+	*b = aux;
 }
 
 int	main(void)

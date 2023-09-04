@@ -56,6 +56,8 @@ int	main(int ac, char **av)
 				else
 					write(1, &av[1][i], 1);
 			}
+			else
+				return (0);
 			i++;
 		}
 	}
