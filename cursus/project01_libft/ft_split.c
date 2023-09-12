@@ -6,7 +6,7 @@
 /*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 10:11:11 by castorga          #+#    #+#             */
-/*   Updated: 2023/06/15 14:45:53 by castorga         ###   ########.fr       */
+/*   Updated: 2023/09/08 12:23:03 by castorga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,10 +109,10 @@ char	**ft_split(const char *s, char c)
 	return (array_strings);
 }
 
-/*
+
 int	main(void)
 {
-	char *str0 = "hola mundo 42 Chile";
+	char *str0 = "42";
 	int character = ' ';
 	char **result = ft_split(str0, character);
 
@@ -135,4 +135,4 @@ int	main(void)
 	}
     return (0);
 }
-*/
+
