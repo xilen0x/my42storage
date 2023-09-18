@@ -11,7 +11,7 @@ my42storage is the repository of the main projects developed in 42Barcelona.
 | ``Born2beRoot`` | Born2beRoot, was a project which consisted of building and configuring a Linux(Debian) virtual machine, making various adjustments and configurations of it to meet the client's requirements. In it, the services of:ssh, sudo, lighttpd, wordpress, PHP, Docker, UFW, mariaDB, among others.  ![Link](https://github.com/xilen0x/Born2beroot-Tutorial)|
 | ``Printf`` | library that contain the function ft_printf(), which mimics the original printf(). ![Link](https://github.com/xilen0x/my42storage/tree/main/cursus/project02_printf) |
 | ``Get_next_line`` | The `ft_get_next_line` is a program for reading lines from a file written in C. The program incrementally reads the content of a file identified by its file descriptor (`fd`) and returns a complete line on each call. ![Link](https://github.com/xilen0x/my42storage/tree/main/cursus/project04_GetNextLine)|
-| ``push_swap`` | **in progress...**   ---->    "Push_swap" es un proyecto de programación en C que desafía a ordenar un conjunto de enteros utilizando dos pilas y un conjunto mínimo de instrucciones, buscando la solución más eficiente. ![Link](https://github.com/xilen0x/42_push_swap)|
+| ``push_swap`` | **in progress...**   ---->    ""Push_swap" is a C programming project that challenges you to sort a set of integers using two stacks and a minimal set of instructions, aiming for the most efficient solution. ![Link](https://github.com/xilen0x/42_push_swap)|
 
 
 
