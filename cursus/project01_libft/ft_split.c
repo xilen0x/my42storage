@@ -6,7 +6,7 @@
 /*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 10:11:11 by castorga          #+#    #+#             */
-/*   Updated: 2023/09/08 12:23:03 by castorga         ###   ########.fr       */
+/*   Updated: 2023/09/15 11:56:45 by castorga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ char	**ft_split(const char *s, char c)
 
 int	main(void)
 {
-	char *str0 = "42";
+	char *str0 = "1";
 	int character = ' ';
 	char **result = ft_split(str0, character);
 

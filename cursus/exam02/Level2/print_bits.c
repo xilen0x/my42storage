@@ -42,19 +42,5 @@ int	main(void)
 	print_bits(2);
 	printf("\n");
 	print_bits(3);
-	printf("\n");
-	print_bits(4);
-	printf("\n");
-	print_bits(5);
-	printf("\n");
-	print_bits(6);
-	printf("\n");
-	print_bits(7);
-	printf("\n");
-	print_bits(8);
-	printf("\n");
-	print_bits(9);
-	printf("\n");
-	print_bits(10);
 	return (0);
 }
