@@ -21,10 +21,8 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 
 	count = 0;
 	j = 0;
-	while (src[count] != '\0')
-	{
+	while (src[count])
 		count++;
-	}
 	if (size == 0)
 		return (count);
 	while ((j < size - 1) && (j < count))
@@ -35,6 +33,25 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	dst[j] = '\0';
 	return (count);
 }
+/*
+#include <stdio.h>
+#include <string.h>
+
+size_t ft_strlcpy(char *dst, const char *src, size_t size);
+
+int main() {
+    char src[] = "Hola, mundo!";
+    char dst[20];
+
+    size_t copied = ft_strlcpy(dst, src, sizeof(dst));
+
+    printf("Cadena copiada: %s\n", dst);
+    printf("Número de caracteres copiados: %zu\n", copied);
+
+    return 0;
+}
+*/
+
 /*
 int	main(void)
 {

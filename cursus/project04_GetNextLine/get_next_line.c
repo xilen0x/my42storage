@@ -6,7 +6,7 @@
 /*   By: castorga <castorga@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:54:59 by castorga          #+#    #+#             */
-/*   Updated: 2023/08/03 14:55:01 by castorga         ###   ########.fr       */
+/*   Updated: 2023/09/04 15:24:58 by castorga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,7 +155,7 @@ char	*get_next_line(int fd)
 
 /* --------------------- Main function --------------------- */
 
-/*int	main(void)
+int	main(void)
 {
 	int		fd;
 	char	*line_result;
@@ -169,4 +169,4 @@ char	*get_next_line(int fd)
 	close(fd);
 	return (0);
 }
-*/
+

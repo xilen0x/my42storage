@@ -2,7 +2,9 @@
 .DS_Store
 *.out
 *.o
+*.d
 42-EXAM/
 /obj/*
 a.out.dSYM
 */a.out.dSYM/*
+*.h.gch

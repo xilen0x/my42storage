@@ -42,7 +42,7 @@ int	ft_check_repeated(char *str, char c, int pos)
 	return (1);
 }
 
-int		main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	int	i;
 	int	j;
