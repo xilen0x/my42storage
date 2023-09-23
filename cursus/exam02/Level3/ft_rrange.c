@@ -32,25 +32,16 @@ int	*ft_rrange(int start, int end)
 {
 	int i = 0;
 	int len = ft_abs(end - start) + 1;
-	int *res;
+	int *range = (int *)malloc(sizeof(int) * len);
 
-	res = (int *)malloc(sizeof(int) * len);
-	if (!res)
-		return (NULL);
+	if (start > end)
+		return (ft_rrange(end, start));
+
 	while (i < len)
 	{
-		if (start < end)
-		{
-			res[i] = end;
-			end++;
-			i++;
-		}
-		else
-		{
-			res[i] = end;
-			//start--;
-			i++;
-		}
+		range[i] = end;
+		end--;
+		i++;
 	}
-	return (res);
+	return (range);
 }

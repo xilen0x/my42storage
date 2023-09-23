@@ -31,26 +31,23 @@ int	*ft_range(int start, int end)
 {
 	int i = 0;
 	int len = ft_abs(end - start) + 1;
-	int *res;
+	int *range = (int *)malloc(sizeof(int) * len);
 
-	res = (int *)malloc(sizeof(int) * len);
-	if (!res)
-		return (NULL);
 	while (i < len)
 	{
 		if (start < end)
 		{
-			res[i] = start;
+			range[i] = start;
 			start++;
 			i++;
 		}
 		else
 		{
-			res[i] = start;
+			range[i] = start;
 			start--;
 			i++;
 		}
 	}
-	return (res);
+	return (range);
 }
 

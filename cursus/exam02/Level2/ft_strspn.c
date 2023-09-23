@@ -49,9 +49,18 @@ size_t	ft_strspn(const char *s, const char *accept)
 
 int	main(void)
 {
-	char string[] = "abcdefghi";
-	char accept[] = "abcde";
-	printf("Antes de ft_strspn: %s\n", string);
-	printf("Despues de ft_strspn: %zu\n", ft_strspn(string, accept));
+	char *s = "4444abc456";
+	char *accept = "01234765389";
+
+	printf("Antes de ft_strspn: %s\n", s);
+	printf("Despues de ft_strspn: %zu\n", ft_strspn(s, accept));
 	return (0);
 }
+
+/*Retorna la longitud de la cadena s hasta donde coincide con los caracteres de la segunda cadena(los aceptados)*/
+
+/*
+$ ./a.out 
+Antes de ft_strspn: 4444abc456
+Despues de ft_strspn: 4
+*/

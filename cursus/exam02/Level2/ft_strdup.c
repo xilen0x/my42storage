@@ -21,16 +21,15 @@ RETURN VALUE
 */
 
 #include <stdlib.h>//malloc
+#include <string.h>//strdup
+#include <stdio.h>//printf
 
 char	ft_strlen(char *str)
 {
-	int	i;
+	int	i = 0;
 
-	i = 0;
 	while (str[i])
-	{
 		i++;
-	}
 	return (i);
 }
 
@@ -55,12 +54,15 @@ char	*ft_strdup(char *src)
 	return (dest);
 }
 
-#include <string.h>//strdup
-#include <stdio.h>//printf
-
 int	main(void)
 {
 	printf("%s\n", strdup("holanda"));
 	printf("%s\n", ft_strdup("holanda"));
 	return (0);
 }
+
+/*$ cc ft_strdup.c 
+$ ./a.out 
+holanda
+holanda
+*/
