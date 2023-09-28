@@ -8,3 +8,4 @@
 a.out.dSYM
 */a.out.dSYM/*
 *.h.gch
+*.a
