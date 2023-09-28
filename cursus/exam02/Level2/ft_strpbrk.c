@@ -19,7 +19,7 @@ RETURN VALUE
 */
 
 #include <stdio.h>
-#include <string.h>
+//#include <string.h>
 
 char	*ft_strpbrk(const char *s1, const char *s2)
 {
@@ -45,13 +45,18 @@ char	*ft_strpbrk(const char *s1, const char *s2)
 
 int	main(void)
 {
-	const char	*string1 = "Hello, world!";
-	const char	*string2 = "d";
+	const char	*s = "Hello, world!";
+	const char	*accept = "d";
 
-	char *result = ft_strpbrk(string1, string2);
+	char *result = ft_strpbrk(s, accept);
 	if (result)
 		printf("La primera coincidencia se encuentra en: %s\n", result);
 	else
 		printf("No se encontraron coincidencias.\n");
 	return (0);
 }
+
+/*
+./a.out 
+La primera coincidencia se encuentra en: d!
+*/

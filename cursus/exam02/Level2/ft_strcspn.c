@@ -13,11 +13,11 @@ The strcspn() function calculates the length of the initial segment  of
 s which consists entirely of bytes not in reject.
 
 RETURN VALUE
-The strcspn() function returns the number of bytes in the initial  seg‐
+The strcspn() function returns the number of bytes in the initial seg‐
 ment of s which are not in the string reject.
 */
 
-/*#include <stddef.h>
+//#include <stddef.h>
 #include <stdio.h>
 
 size_t	ft_strcspn(const char *s, const char *reject)
@@ -40,46 +40,20 @@ size_t	ft_strcspn(const char *s, const char *reject)
 	return (i);
 }
 
+
 int	main(void)
 {
-	char *s = "Hello World";
-	char *reject = "l";
+	char *s = "hola mundo";
+	char *reject = "aeiou";
 
-	printf("%zu\n", ft_strcspn(s, reject));
+	printf("Antes de ft_strcspn: %s\n", s);
+	printf("Despues de ft_strcspn: %zu\n", ft_strcspn(s, reject));
 	return (0);
 }
+/*Retorna la longitud de la cadena s hasta donde se encontró alguno de los caracteres de la segunda cadena(los rechazados)*/
+/*
+$ ./a.out 
+Antes de ft_strcspn: hola mundo
+Despues de ft_strcspn: 1
+
 */
-
-#include <stddef.h>
-#include <stdio.h>
-
-size_t	ft_strcspn(const char *s, const char *reject)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (s[i])
-	{
-		j = 0;
-		while (reject[j])
-		{
-			if (s[i] == reject[j])
-			{
-				return (i);
-			}
-			j++;
-		}
-		i++;
-	}
-	return (0);
-}
-
-int	main(void)
-{
-	char *s = "Hello World";
-	char *reject = "o";
-
-	printf("%ld\n", ft_strcspn(s, reject));
-	return (0);
-}

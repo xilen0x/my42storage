@@ -7,7 +7,7 @@ Your function must be declared as follows:
 int ft_strcmp(char *s1, char *s2);
 DESCRIPTION
        The  strcmp()  function compares the two strings s1 and s2.
-strcmp() returns an integer indicating the result of the comparison, as
+	   strcmp() returns an integer indicating the result of the comparison, as
        follows:
 
        • 0, if the s1 and s2 are equal;

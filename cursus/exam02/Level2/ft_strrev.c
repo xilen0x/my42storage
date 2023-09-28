@@ -34,19 +34,17 @@ char    *ft_strrev(char *str);
 
 char	*ft_strrev(char *str)
 {
-	int		i;
-	int		len;
-	char	temp;
+	int	len = 0;
+	int	i = 0;
+	int aux = 0;
 
-	i = 0;
-	len = 0;
 	while (str[len])
 		len++;
 	while (i < (len / 2))
 	{
-		temp = str[i];
+		aux = str[i];
 		str[i] = str[(len - 1) - i];
-		str[(len - 1) - i] = temp;
+		str[(len - 1) - i] = aux;
 		i++;
 	}
 	return (str);
@@ -60,4 +58,8 @@ int	main(void)
 	printf("Despues de ft_strrev: %s\n", string);
 	return (0);
 }
-
+/*
+$ ./a.out 
+Antes de ft_strrev: Hello, world!
+Despues de ft_strrev: !dlrow ,olleH
+*/
