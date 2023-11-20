@@ -1,5 +1,5 @@
-# Repository of my projects done at 42Barcelona Telefónica in C language.
-[![castorga's 42 stats](https://badge42.vercel.app/api/v2/clktfjk1y003008jnbh6tuz61/stats?cursusId=21&coalitionId=206)](https://github.com/JaeSeoKim/badge42)
+# Projects done at 42Barcelona Telefónica in C language.
+
 ## Summary
 my42storage is the repository of the main projects developed in 42Barcelona.
 
