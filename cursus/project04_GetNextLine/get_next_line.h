@@ -30,7 +30,7 @@ char	*ft_get_line_from_cl(char *line);
 char	*ft_strjoin2(char *line, char *buff);
 char	*ft_strchr(char *s, int c);
 size_t	ft_strlen(char *s);
-char	*ft_free_buf(char *buffer, char *current_line);
+//char	*ft_free_buf(char *buffer, char *current_line);
 char	*ft_free_cl(char *current_line);
 
 #endif

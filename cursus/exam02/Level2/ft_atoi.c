@@ -42,7 +42,7 @@ int	ft_atoi(const char *str);*/
 
 int	main(void)
 {
-	char str[] = "551";
+	char str[] = "   551";
 	printf("%d\n", ft_atoi(str));
 	return (0);
 }*/
@@ -79,3 +79,30 @@ int	main(void)
 	printf("%d\n", ft_atoi(str));
 	return (0);
 }
+/*
+long	ft_atoi(const char *str)
+{
+	short int	parity;
+	long		number;
+	char		*mystr;
+
+	parity = 0;
+	number = 0;
+	mystr = ft_isspace((char *)str);
+	if (*mystr == '+' || *mystr == '-')
+	{
+		if (*mystr == '-')
+			parity++;
+		mystr++;
+	}
+	while (*mystr >= '0' && *mystr <= '9')
+	{
+		number *= 10;
+		number += *mystr - '0';
+		mystr++;
+	}
+	if (parity % 2 == 0)
+		return (number);
+	return (-number);
+}
+*/

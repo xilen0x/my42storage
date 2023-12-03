@@ -18,7 +18,7 @@ int	ft_atoi_base(const char *str, int str_base)
 {
 	int	i = 0;
 	int	sign = 1;
-	int	result = 0;
+	int	res = 0;
 
 	if (str[i] == '-')
 	{
@@ -27,16 +27,16 @@ int	ft_atoi_base(const char *str, int str_base)
 	}
 	while (str[i])
 	{
-		result *= str_base;
+		res = res * str_base;
 		if (str[i] >= '0' && str[i] <= '9')
-			result += str[i] - 48;
+			res += str[i] - 48;
 		else if (str[i] >= 'A' && str[i] <= 'Z')
-			result += str[i] - 55;
+			res += str[i] - 55;
 		else if (str[i] >= 'a' && str[i] <= 'z')
-			result += str[i] - 87;
+			res += str[i] - 87;
 		i++;
 	}
-	return (result * sign);
+	return (res * sign);
 }
 
 #include<stdio.h>

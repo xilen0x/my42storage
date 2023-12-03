@@ -110,7 +110,7 @@ char	**ft_split(const char *s, char c)
 }
 
 
-int	main(void)
+/*int	main(void)
 {
 	char *str0 = "1";
 	int character = ' ';
@@ -135,4 +135,4 @@ int	main(void)
 	}
     return (0);
 }
-
+*/

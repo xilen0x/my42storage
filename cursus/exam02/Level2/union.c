@@ -64,7 +64,7 @@ int	main(int argc, char **argv)
 		while (k <= i)
 		{
 			if (ft_check_repeated(argv[1], argv[1][k], k)) 
-				write (1, &argv[1][k], 1); 
+				write (1, &argv[1][k], 1);
 			k++;
 		}
 	}
