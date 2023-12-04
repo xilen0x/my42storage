@@ -73,12 +73,13 @@ int	ft_atoi(const char *str)
 	return (res * sign);
 }
 
-int	main(void)
+/*int	main(void)
 {
 	char	str[] = "250";
 	printf("%d\n", ft_atoi(str));
 	return (0);
-}
+}*/
+
 /*
 long	ft_atoi(const char *str)
 {

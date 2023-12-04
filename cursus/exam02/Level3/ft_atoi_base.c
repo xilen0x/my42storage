@@ -39,7 +39,7 @@ int	ft_atoi_base(const char *str, int str_base)
 	return (res * sign);
 }
 
-#include<stdio.h>
+/*#include<stdio.h>
 
 int	main(void)
 {
@@ -59,5 +59,5 @@ int	main(void)
     printf("Resultado 3: %d\n", resultado3);
 
     return 0;
-}
+}*/
 

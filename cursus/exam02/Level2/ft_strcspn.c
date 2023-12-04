@@ -22,8 +22,8 @@ ment of s which are not in the string reject.
 
 size_t	ft_strcspn(const char *s, const char *reject)
 {
-	unsigned int	i;
-	unsigned int	j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (s[i])
@@ -41,7 +41,7 @@ size_t	ft_strcspn(const char *s, const char *reject)
 }
 
 
-int	main(void)
+/*int	main(void)
 {
 	char *s = "hola mundo";
 	char *reject = "aeiou";
@@ -49,7 +49,8 @@ int	main(void)
 	printf("Antes de ft_strcspn: %s\n", s);
 	printf("Despues de ft_strcspn: %zu\n", ft_strcspn(s, reject));
 	return (0);
-}
+}*/
+
 /*Retorna la longitud de la cadena s hasta donde se encontró alguno de los caracteres de la segunda cadena(los rechazados)*/
 /*
 $ ./a.out 

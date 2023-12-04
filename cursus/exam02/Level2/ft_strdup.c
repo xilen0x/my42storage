@@ -54,12 +54,12 @@ char	*ft_strdup(char *src)
 	return (dest);
 }
 
-int	main(void)
+/*int	main(void)
 {
 	printf("%s\n", strdup("holanda"));
 	printf("%s\n", ft_strdup("holanda"));
 	return (0);
-}
+}*/
 
 /*$ cc ft_strdup.c 
 $ ./a.out 

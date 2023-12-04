@@ -43,7 +43,7 @@ char	*ft_strpbrk(const char *s1, const char *s2)
 	return (0);
 }
 
-int	main(void)
+/*int	main(void)
 {
 	const char	*s = "Hello, world!";
 	const char	*accept = "d";
@@ -54,7 +54,7 @@ int	main(void)
 	else
 		printf("No se encontraron coincidencias.\n");
 	return (0);
-}
+}*/
 
 /*
 ./a.out 
