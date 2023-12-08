@@ -14,18 +14,26 @@ string.
 Your function must be declared as follows:
 int	ft_atoi_base(const char *str, int str_base);*/
 
+int	check(char c)
+{
+	if (c >= '0' && c <= '9') return 1;
+	if (c >= 'A' && c <= 'F') return 1;
+	if (c >= 'a' && c <= 'f') return 1;
+	return (0);
+}
+
 int	ft_atoi_base(const char *str, int str_base)
 {
 	int	i = 0;
-	int	sign = 1;
 	int	res = 0;
+	int	sign = 1;
 
-	if (str[i] == '-')
+	if (str[0] == '-')
 	{
 		sign = -1;
 		i++;
 	}
-	while (str[i])
+	while (str[i] && check(str[i]) == 1)
 	{
 		res = res * str_base;
 		if (str[i] >= '0' && str[i] <= '9')
