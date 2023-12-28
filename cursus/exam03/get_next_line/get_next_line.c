@@ -1,78 +1,80 @@
 #include "get_next_line.h"
 
-char	*ft_strchr(char *s, int c)
-{
-	while (*s)
-	{
-		if (*s == (char)c)
-			return ((char *)s);
-		s++;
-	}
-	return (NULL);
-}
+#include "get_next_line.h"
 
-size_t	ft_strlen(const char *s)
+int	ft_strlen(const char *str)
 {
-	size_t	i;
-
-	i = 0;
-	while (s[i])
+	int i = 0;
+	while (str[i])
 		i++;
 	return (i);
 }
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+char *ft_strchr(char *str, int c)
 {
-	size_t	srcsize;
-	size_t	i;
-
-	srcsize = ft_strlen(src);
-	i = 0;
-	if (dstsize > 0)
+	while (*str)
 	{
-		while (i < srcsize && i < dstsize - 1)
+		if (*str == (char)c)
+			return ((char *)str);
+		str++;
+	}
+	return (NULL);
+}
+
+
+size_t ft_strlcpy(char *dst, const char *src, size_t size)
+{
+	size_t	len;
+	size_t	i = 0;
+
+	len = ft_strlen(src);
+	if (size > 0)
+	{
+		while (i < len && i < size - 1)
 		{
 			dst[i] = src[i];
 			i++;
 		}
 		dst[i] = '\0';
 	}
-	return (srcsize);
+	return (len);
 }
 
-char	*ft_strdup(const char *src)
+char *ft_strdup(const char *src)
 {
-	char	*dst;
-	size_t	len;
+	char 	*dst;
+	int	len;
 
 	len = ft_strlen(src) + 1;
 	dst = malloc(len);
-	if (dst == NULL)
-		return (NULL);
+	if (!dst)
+		return (0);
 	ft_strlcpy(dst, src, len);
+
 	return (dst);
 }
 
-char	*ft_strjoin(char *s1, char const *s2, size_t len)
+char *ft_strjoin(char *s1,   char const *s2,   size_t len)
 {
-	size_t	s1_len;
-	size_t	s2_len;
-	char	*join;
+	size_t 	s1_len;
+	size_t 	s2_len;
+	char 	*join;
 
 	if (!s1 || !s2)
-		return (NULL);
+		return (0);
 	s1_len = ft_strlen(s1);
 	s2_len = len;
-	join = (char *)malloc((s1_len + s2_len + 1) * sizeof(char));
+	join = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
 	if (!join)
-		return (NULL);
+		return (0);
 	ft_strlcpy(join, s1, s1_len + 1);
 	ft_strlcpy((join + s1_len), s2, s2_len + 1);
 	free(s1);
+
 	return (join);
 }
 
-char	*get_next_line(int fd)
+char *get_next_line(int fd)
 {
 	static char	buf[BUFFER_SIZE + 1];
 	char		*line;
