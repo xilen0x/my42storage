@@ -13,7 +13,7 @@ my42storage is the repository of the main projects developed in 42Barcelona.
 | ``Get_next_line`` | The `ft_get_next_line` is a program for reading lines from a file written in C. The program incrementally reads the content of a file identified by its file descriptor (`fd`) and returns a complete line on each call. ![Link](https://github.com/xilen0x/my42storage/tree/main/cursus/project04_GetNextLine)|
 | ``push_swap`` 🔒| The "Push_swap" project is a program that can sort a set of integers, uses internally linked lists and a minimal set of instructions (moves), with the aim of finding the most efficient solution. ![Link](https://github.com/xilen0x/42_push_swap)|
 | ``pipex`` 🔒| The "Pipex" project is a program that mimics the original terminal pipe '\|'. ![Link](https://github.com/xilen0x/42_pipex/tree/main)|
-| ``so_long`` 🔒| The "so_long" is a computer graphics project, in which we have worked with the minilibx library. The goal is to create a small video game in C.![screenshot](https://raw.githubusercontent.com/xilen0x/42_so_long/main/textures/Screen%20Shot%202023-12-27%20at%2012.14.58%20PM.png?token=GHSAT0AAAAAACJB5PESUEMFBPJVR3VC5TG4ZMMDBMA)![Link](https://github.com/xilen0x/42_so_long)|
+| ``so_long`` 🔒| The "so_long" is a computer graphics project, in which we have worked with the minilibx library. The goal is to create a small video game in C.![Screenshot](https://raw.githubusercontent.com/xilen0x/xilen0x/master/images_x_repos/so_long.png)|
 
 
 castorga 2023
