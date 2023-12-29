@@ -29,7 +29,7 @@ void	ft_swap(int *a, int *b)
 	*b = aux;
 }
 
-int	main(void)
+/*int	main(void)
 {
 	int	a;
 	int	b;
@@ -40,4 +40,4 @@ int	main(void)
 	ft_swap(&a, &b);
 	printf("\nDespues del cambio: \na:%d \nb:%d", a, b);
 	return (0);
-}
+}*/

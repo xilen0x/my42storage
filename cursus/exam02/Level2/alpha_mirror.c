@@ -67,12 +67,12 @@ int	main(int argc, char *argv[])
 		{
 			if (argv[1][i] >= 'A' && argv[1][i] <= 'Z')
 			{
-				argv[1][i] = ('Z' - argv[1][i]) + 65;
+				argv[1][i] = ('Z' - argv[1][i]) + 'A';
 				write(1, &argv[1][i], 1);
 			}
 			else if (argv[1][i] >= 'a' && argv[1][i] <= 'z')
 			{
-				argv[1][i] = ('z' - argv[1][i]) + 97;
+				argv[1][i] = ('z' - argv[1][i]) + 'a';
 				write(1, &argv[1][i], 1);
 			}
 			else

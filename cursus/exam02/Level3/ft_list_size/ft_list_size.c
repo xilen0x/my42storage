@@ -33,7 +33,7 @@ int	ft_list_size(t_list *begin_list)
 		return (ft_list_size(begin_list->next) + 1);
 }
 
-int	main(void)
+/*int	main(void)
 {
     // Crear una lista simple
     t_list node1, node2, node3;
@@ -53,4 +53,4 @@ int	main(void)
     printf("El tamaño de la lista es: %d\n", size);
 
     return (0);
-}
+}*/

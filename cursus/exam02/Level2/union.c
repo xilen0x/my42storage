@@ -44,27 +44,27 @@ int	ft_check_repeated(char *str, char c, int pos)
 	return (1);
 }
 
-int	main(int argc, char **argv)
+int	main(int ac, char **av)
 {
 	int i = 0;
 	int j = 0;
 	int k = 0;
 
-	if (argc == 3)
+	if (ac == 3)
 	{
-		while (argv[1][i])
+		while (av[1][i])
 			i++;
-		while (argv[2][j])
+		while (av[2][j])
 		{
-			argv[1][i] = argv[2][j];
+			av[1][i] = av[2][j];
 			i++;
 			j++;
 		}
 		i--;
 		while (k <= i)
 		{
-			if (ft_check_repeated(argv[1], argv[1][k], k)) 
-				write (1, &argv[1][k], 1);
+			if (ft_check_repeated(av[1], av[1][k], k)) 
+				write (1, &av[1][k], 1);
 			k++;
 		}
 	}

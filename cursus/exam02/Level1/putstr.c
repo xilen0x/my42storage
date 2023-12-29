@@ -32,10 +32,10 @@ void	ft_putstr(char *str)
 	}
 }
 
-int	main(void)
+/*int	main(void)
 {
 	char *str = "holamundo";
 
 	ft_putstr(str);
 	return (0);
-}
+}*/

@@ -42,15 +42,14 @@ int	ft_is_prime(int nb)
 
 int	ft_atoi(char *str)
 {
-	int	result;
+	int	res = 0;
 
-	result = 0;
 	while (*str)
 	{
-		result = result * 10 + (*str - '0');
+		res = res * 10 + (*str - '0');
 		str++;
 	}
-	return (result);
+	return (res);
 }
 
 void	ft_putnbr(int nb)

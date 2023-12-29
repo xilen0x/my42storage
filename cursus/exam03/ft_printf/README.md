@@ -25,12 +25,3 @@ call: ft_printf("Hexadecimal for %d is %x\n", 42, 42);
 out: Hexadecimal for 42 is 2a$
 
 Obs: Your function must not have memory leaks. Moulinette will test that.
-
-
-Compile:
-```% gcc ft_printf.c ft_words.c ft_numbers.c
-...
-
-
-
-castorga 2023

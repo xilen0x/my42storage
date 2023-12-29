@@ -38,9 +38,9 @@ int	ft_atoi_base(const char *str, int str_base)
 		res = res * str_base;
 		if (str[i] >= '0' && str[i] <= '9')
 			res += str[i] - 48;
-		else if (str[i] >= 'A' && str[i] <= 'Z')
+		else if (str[i] >= 'A' && str[i] <= 'F')
 			res += str[i] - 55;
-		else if (str[i] >= 'a' && str[i] <= 'z')
+		else if (str[i] >= 'a' && str[i] <= 'f')
 			res += str[i] - 87;
 		i++;
 	}

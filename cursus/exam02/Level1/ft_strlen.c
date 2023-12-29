@@ -31,9 +31,10 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-int	main(void)
+/*int	main(void)
 {
 	char	s1[] = "holamundo";
 	printf("%d", ft_strlen(s1));
 	return (0);
 }
+*/

@@ -17,16 +17,16 @@ The flood_fill function will be prototyped like this:
   void  flood_fill(char **tab, t_point size, t_point begin);
 
 The t_point structure is prototyped like this:
-
+*/
   typedef struct  s_point
   {
     int           x;
     int           y;
   }               t_point;
 
-Example:
+//Example:
 
-$> cat test.c
+//$> cat test.c
 #include <stdlib.h>
 #include <stdio.h>
 #include "flood_fill.h"
@@ -69,7 +69,7 @@ int main(void)
 		printf("%s\n", area[i]);
 	return (0);
 }
-
+/*
 $> gcc flood_fill.c test.c -o test; ./test
 11111111
 10001001
@@ -93,7 +93,8 @@ typedef struct s_point
 
 void	fill(char **tab, t_point size, t_point cur, char to_fill)
 {
-	if (cur.y < 0 || cur.y >= size.y || cur.x < 0 || cur.x >= size.x
+	if (cur.y < 0 || cur.y >= size.y || 
+	    cur.x < 0 || cur.x >= size.x
 		|| tab[cur.y][cur.x] != to_fill)
 		return ;
 

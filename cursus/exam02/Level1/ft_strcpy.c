@@ -34,7 +34,8 @@ char    *ft_strcpy(char *s1, char *s2)
 	s1[i] = '\0';
 	return (s1);
 }
-#include <stdio.h>
+
+/*#include <stdio.h>
 
 int	main(void)
 {
@@ -43,4 +44,4 @@ int	main(void)
 
 	printf("%s", ft_strcpy(s1, s2));
 	return (0);
-}
+}*/

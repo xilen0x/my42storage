@@ -29,8 +29,7 @@ int	max(int *tab, unsigned int len)
 	return (max);
 }
 
-
-#include <stdio.h>
+/*#include <stdio.h>
 
 int	main(void)
 {
@@ -39,3 +38,4 @@ int	main(void)
 	printf("%d\n", max(tab, 9));
 	return (0);
 }
+*/

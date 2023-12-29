@@ -8,7 +8,6 @@ Your function must be declared as follows:
 char    *ft_strrev(char *str);
 */
 
-
 /*char	*ft_strrev(char *str)
 {
 	int		i;
@@ -28,9 +27,8 @@ char    *ft_strrev(char *str);
 	}
 	return (str);
 }
-
 */
-#include <stdio.h>
+
 
 char	*ft_strrev(char *str)
 {
@@ -50,6 +48,9 @@ char	*ft_strrev(char *str)
 	return (str);
 }
 
+/*
+#include <stdio.h>
+
 int	main(void)
 {
 	char string[] = "Hello, world!";
@@ -57,7 +58,8 @@ int	main(void)
 	ft_strrev(string);
 	printf("Despues de ft_strrev: %s\n", string);
 	return (0);
-}
+}*/
+
 /*
 $ ./a.out 
 Antes de ft_strrev: Hello, world!

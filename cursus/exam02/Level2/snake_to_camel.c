@@ -19,22 +19,22 @@ $
 */
 #include <unistd.h>
 
-int	main(int argc, char *argv[])
+int	main(int ac, char *av[])
 {
 	int		i;
 	char	*res;
 
 	i = 0;
-	if (argc == 2)
+	if (ac == 2)
 	{
-		while (argv[1][i])
+		while (av[1][i])
 		{
-			if (argv[1][i] == '_')
+			if (av[1][i] == '_')
 			{
 				i++;
-				argv[1][i] -= 32;
+				av[1][i] -= 32;
 			}
-			write (1, &argv[1][i], 1);
+			write (1, &av[1][i], 1);
 			i++;
 		}
 	}

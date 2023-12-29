@@ -1,5 +1,4 @@
 #include <stdarg.h>
-#include <stdio.h>
 #include <unistd.h>
 
 
@@ -54,15 +53,19 @@ int	ft_printf(const char *format, ...)
 	return (va_end(pointer), len);
 }
 
+#include <stdio.h>
 
 int	main(void)
 {
 	ft_printf("Cadena                     :    %s\n", "HolaMundo");
 	printf("Cadena                     :    %s\n", "HolaMundo");
+
 	ft_printf("Entero en base10 (d)       :    %d\n", 42);
 	printf("Entero en base10 (d)       :    %d\n", 42);
-	ft_printf("Hexadecimal(base 16) en min:    %x\n", 0xdeadbeef);
-	printf("Hexadecimal(base 16) en min:    %x\n", 0xdeadbeef);
+
+	ft_printf("Hexadecimal(base 16) en min:    %x\n", 0xff);
+	printf("Hexadecimal(base 16) en min:    %x\n", 0xff);
+
 	ft_printf("%s\n", "toto");
 	ft_printf("Magic %s is %d\n", "number", 42);
 	ft_printf("Hexadecimal for %d is %x\n", 42, 42);
