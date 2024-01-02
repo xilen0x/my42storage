@@ -1,7 +1,5 @@
 #include "get_next_line.h"
 
-#include "get_next_line.h"
-
 int	ft_strlen(const char *str)
 {
 	int i = 0;
@@ -10,18 +8,21 @@ int	ft_strlen(const char *str)
 	return (i);
 }
 
+/*Locates a character in a string(the first occurrence).*/
 char *ft_strchr(char *str, int c)
 {
-	while (*str)
+	int	i = 0;
+	while (str[i])
 	{
-		if (*str == (char)c)
-			return ((char *)str);
-		str++;
+		if (str[i] == c)
+			return (&str[i]);
+		i++;
 	}
 	return (NULL);
 }
 
-
+/*Copies && concatenate strings from a source to a destination.
+  Return: len of src*/
 size_t ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	size_t	len;
@@ -40,25 +41,24 @@ size_t ft_strlcpy(char *dst, const char *src, size_t size)
 	return (len);
 }
 
-char *ft_strdup(const char *src)
+char	*ft_strdup(const char *src)
 {
-	char 	*dst;
-	int	len;
+	char	*dst;
+	int		len;
 
 	len = ft_strlen(src) + 1;
 	dst = malloc(len);
 	if (!dst)
 		return (0);
 	ft_strlcpy(dst, src, len);
-
 	return (dst);
 }
 
-char *ft_strjoin(char *s1,   char const *s2,   size_t len)
+char	*ft_strjoin(char *s1, char const *s2, size_t len)
 {
-	size_t 	s1_len;
-	size_t 	s2_len;
-	char 	*join;
+	size_t	s1_len;
+	size_t	s2_len;
+	char	*join;
 
 	if (!s1 || !s2)
 		return (0);
@@ -105,3 +105,19 @@ char *get_next_line(int fd)
 	line[to_copy] = '\0';
 	return (line);
 }
+
+/*int	main(void)
+{
+	int		fd;
+	char	*line_result;
+
+	fd = open("only_nl.txt", O_RDONLY);
+	while ((line_result = get_next_line(fd)) != NULL)
+	{
+		printf("%s\n", line_result);
+		free(line_result);
+	}
+	close(fd);
+	return (0);
+}
+*/
