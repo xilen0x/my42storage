@@ -3,15 +3,17 @@
 int	ft_strlen(const char *str)
 {
 	int i = 0;
+
 	while (str[i])
 		i++;
 	return (i);
 }
 
 /*Locates a character in a string(the first occurrence).*/
-char *ft_strchr(char *str, int c)
+char	*ft_strchr(char *str, int c)
 {
 	int	i = 0;
+
 	while (str[i])
 	{
 		if (str[i] == c)
@@ -106,18 +108,17 @@ char *get_next_line(int fd)
 	return (line);
 }
 
-/*int	main(void)
+int	main(void)
 {
 	int		fd;
 	char	*line_result;
 
-	fd = open("only_nl.txt", O_RDONLY);
+	fd = open("texto.txt", O_RDONLY);
 	while ((line_result = get_next_line(fd)) != NULL)
 	{
-		printf("%s\n", line_result);
+		printf("%s", line_result);
 		free(line_result);
 	}
 	close(fd);
 	return (0);
 }
-*/
