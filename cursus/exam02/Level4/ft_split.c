@@ -29,7 +29,7 @@ char	**ft_split(char *str)
 	tab = (char**)malloc(sizeof(**tab) * WD_NUM);
 	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n')
 		i++;
-	while (str[i] != '\0')
+	while (str[i])
 	{
 		if (str[i] > 32)
 		{
@@ -47,6 +47,6 @@ char	**ft_split(char *str)
 		else
 			i++;
 	}
-	tab[i2] = 0;
+	tab[i2] = '\0';
 	return (tab);
 }

@@ -1,21 +1,20 @@
 #include <stdarg.h>
 #include <unistd.h>
 
-
-void	put_string(char *str, int *len)
+void put_string(char *str, int *len)
 {
-	int	i = 0;
+	int i = 0;
 
 	if (!str)
 		str = "(null)";
 	while (str[i])
 	{
-		*len += write (1, &str[i], 1);
+		*len += write(1, &str[i], 1);
 		i++;
 	}
 }
 
-void	put_digit(long long int num, int base, int *len)
+void put_digit(long long int num, int base, int *len)
 {
 	if (num < 0)
 	{
@@ -27,11 +26,11 @@ void	put_digit(long long int num, int base, int *len)
 	*len += write(1, &"0123456789abcdef"[num % base], 1);
 }
 
-int	ft_printf(const char *format, ...)
+int ft_printf(const char *format, ...)
 {
 	va_list	pointer;
-	int	i = 0;
-	int	len = 0;
+	int i = 0;
+	int len = 0;
 
 	va_start(pointer, format);
 	while (format[i])
@@ -55,7 +54,7 @@ int	ft_printf(const char *format, ...)
 
 #include <stdio.h>
 
-int	main(void)
+int main(void)
 {
 	ft_printf("Cadena                     :    %s\n", "HolaMundo");
 	printf("Cadena                     :    %s\n", "HolaMundo");
@@ -65,6 +64,8 @@ int	main(void)
 
 	ft_printf("Hexadecimal(base 16) en min:    %x\n", 0xff);
 	printf("Hexadecimal(base 16) en min:    %x\n", 0xff);
+
+	ft_printf("%s\n", NULL);
 
 	ft_printf("%s\n", "toto");
 	ft_printf("Magic %s is %d\n", "number", 42);

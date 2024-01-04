@@ -1,6 +1,13 @@
-#include "get_next_line.h"
+#ifndef BUFFER_SIZE
+# define BUFFER_SIZE 42
+#endif
 
-int	ft_strlen(const char *str)
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <fcntl.h>
+
+int	ft_strlen(char *str)
 {
 	int i = 0;
 
@@ -25,10 +32,10 @@ char	*ft_strchr(char *str, int c)
 
 /*Copies && concatenate strings from a source to a destination.
   Return: len of src*/
-size_t ft_strlcpy(char *dst, const char *src, size_t size)
+int ft_strlcpy(char *dst, char *src, int size)
 {
-	size_t	len;
-	size_t	i = 0;
+	int	len;
+	int	i = 0;
 
 	len = ft_strlen(src);
 	if (size > 0)
@@ -43,7 +50,7 @@ size_t ft_strlcpy(char *dst, const char *src, size_t size)
 	return (len);
 }
 
-char	*ft_strdup(const char *src)
+char	*ft_strdup(char *src)
 {
 	char	*dst;
 	int		len;
@@ -56,21 +63,21 @@ char	*ft_strdup(const char *src)
 	return (dst);
 }
 
-char	*ft_strjoin(char *s1, char const *s2, size_t len)
+char	*ft_strjoin(char *s1, char *s2, int len)
 {
-	size_t	s1_len;
-	size_t	s2_len;
+	int		len_s1;
+	int		len_s2;
 	char	*join;
 
 	if (!s1 || !s2)
 		return (0);
-	s1_len = ft_strlen(s1);
-	s2_len = len;
-	join = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
+	len_s1 = ft_strlen(s1);
+	len_s2 = len;
+	join = (char *)malloc(sizeof(char) * (len_s1 + len_s2 + 1));
 	if (!join)
 		return (0);
-	ft_strlcpy(join, s1, s1_len + 1);
-	ft_strlcpy((join + s1_len), s2, s2_len + 1);
+	ft_strlcpy(join, s1, len_s1 + 1);
+	ft_strlcpy((join + len_s1), s2, len_s2 + 1);
 	free(s1);
 
 	return (join);
